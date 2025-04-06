@@ -44,6 +44,12 @@ public class Control {
 		departamento = new Escuela(pNombreEscuela);
 		departamentos.add(departamento);
 	}
+	public void cambiarTelefono(String pTelefono) {
+		universidad.setTelefonoU(pTelefono);
+	}
+	public void cambiarDireccion(String pDireccion) {
+		universidad.setDireccionU(pDireccion);
+	}
 	//Iniciar la GUI a través de la controller.
 	public void startGUI() {
 		GUI.setVisible(true);
