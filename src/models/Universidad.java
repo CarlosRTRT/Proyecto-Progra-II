@@ -7,7 +7,6 @@ public class Universidad {
 	private String varNombre;
 	private String varDireccion;
 	private String varTelefono;
-	private Escuela varEscuela;
 	private ArrayList <Escuela> departamentos;
 	
 	//Constructor completo. Crea la clase.
@@ -15,7 +14,6 @@ public class Universidad {
 		varNombre = pN;
 		varDireccion = pDir;
 		varTelefono = pT;
-		varEscuela = pEscuela;
 		departamentos = new ArrayList<>();
 		departamentos.add(pEscuela);
 	}
