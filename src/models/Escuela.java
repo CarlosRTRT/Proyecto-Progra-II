@@ -6,4 +6,7 @@ public class Escuela {
 	public Escuela(String pNombre) {
 		varNombre = pNombre;
 	}
+	public String getNombre() {
+		return varNombre;
+	}
 }

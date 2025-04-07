@@ -1,6 +1,5 @@
  package models;
 
-import models.Escuela;
 import java.util.ArrayList;
 
 public class Universidad {
@@ -8,18 +7,20 @@ public class Universidad {
 	private String varNombre;
 	private String varDireccion;
 	private String varTelefono;
-	//private ArrayList <Escuela> departamento;
+	private Escuela varEscuela;
+	private ArrayList <Escuela> departamentos;
+	
 	//Constructor completo. Crea la clase.
-	public Universidad(String pN, String pDir, String pT) {
+	public Universidad(String pN, String pDir, String pT, Escuela pEscuela) {
 		varNombre = pN;
 		varDireccion = pDir;
 		varTelefono = pT;
-		//departamento.add(pDepa);
+		varEscuela = pEscuela;
+		departamentos = new ArrayList<>();
+		departamentos.add(pEscuela);
 	}
+	
 	//Setters y getters.
-	public void setNombreU(String pText) {
-		varNombre = pText;
-	}
 	public String getNombreU() {
 		return varNombre;
 	}
@@ -34,5 +35,15 @@ public class Universidad {
 	}
 	public String getTelefonoU() {
 		return varTelefono;
+	}
+	public void agregarEscuela(Escuela pDepartamento) {
+		departamentos.add(pDepartamento);
+	}
+	public String vectorToString() {
+		String txt = "";
+		for(int i = 0; i < departamentos.size(); i++) {
+			txt = "\n" + departamentos.get(i).getNombre() + "\n";
+		}
+		return txt;
 	}
 }
