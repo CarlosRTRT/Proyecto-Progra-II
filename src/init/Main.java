@@ -1,7 +1,6 @@
 package init;
 
 import control.*;
-import models.*;
 import views.*;
 
 public class Main {

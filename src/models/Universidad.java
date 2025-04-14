@@ -34,6 +34,7 @@ public class Universidad {
 	public String getTelefonoU() {
 		return varTelefono;
 	}
+	//Métodos
 	public void agregarEscuela(Escuela pDepartamento) {
 		departamentos.add(pDepartamento);
 	}
