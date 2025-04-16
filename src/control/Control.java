@@ -8,8 +8,8 @@ import models.*;
 public class Control {
 	//Atributos de la clase.
 	private View GUI;
-	private LogicUniversidad logicU;
-	private LogicEscuela logicE;
+	private Logic logic;
+	
 	//Constructor completo que recibe a View para obtener los getText de la GUI.
 	public Control(View pGUI) {
 		GUI = pGUI;
@@ -28,23 +28,23 @@ public class Control {
 				Universidad u = new Universidad(nombre, direccion, telefono);
 				
 				//Crear la clase universidad con los inputs de View. (clase pasada por parámetros al constructor)
-				logicU = new LogicUniversidad(u);
+				logic = new Logic(u);
 				agregarEscuela("EIF");
 				mostrarEscuelas();
 			}
 		});
 	}
 	public void agregarEscuela(String pNombreEscuela) {
-		logicU.agregarEscuela(new Escuela(pNombreEscuela));
+		logic.agregarEscuela(new Escuela(pNombreEscuela));
 	}
 	public void actualizarDireccion(String pDireccion) {
-		logicU.actualizarDireccion(pDireccion);
+		logic.actualizarDireccion(pDireccion);
 	}
 	public void actualizarTelefono(String pTelefono) {
-		logicU.actualizarTelefono(pTelefono);
+		logic.actualizarTelefono(pTelefono);
 	}
 	public void mostrarEscuelas() {
-		System.out.println(logicU.mostrarEscuelas());
+		System.out.println(logic.mostrarEscuelas());
 	}
 	//Métodos respecto a las escuelas
 	

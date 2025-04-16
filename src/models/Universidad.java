@@ -10,10 +10,10 @@ public class Universidad {
 	private ArrayList <Escuela> departamentos;
 	
 	//Constructor completo. Crea la clase.
-	public Universidad(String pN, String pDir, String pT) {
-		varNombre = pN;
-		varDireccion = pDir;
-		varTelefono = pT;
+	public Universidad(String pNombre, String pDireccion, String pTelefono) {
+		varNombre = pNombre;
+		varDireccion = pDireccion;
+		varTelefono = pTelefono;
 		departamentos = new ArrayList<>();
 	}
 	
