@@ -10,12 +10,11 @@ public class Universidad {
 	private ArrayList <Escuela> departamentos;
 	
 	//Constructor completo. Crea la clase.
-	public Universidad(String pN, String pDir, String pT, Escuela pEscuela) {
+	public Universidad(String pN, String pDir, String pT) {
 		varNombre = pN;
 		varDireccion = pDir;
 		varTelefono = pT;
 		departamentos = new ArrayList<>();
-		departamentos.add(pEscuela);
 	}
 	
 	//Setters y getters.
@@ -34,15 +33,11 @@ public class Universidad {
 	public String getTelefonoU() {
 		return varTelefono;
 	}
-	//Métodos
-	public void agregarEscuela(Escuela pDepartamento) {
-		departamentos.add(pDepartamento);
+	public void setVector(ArrayList <Escuela> pVector) {
+		departamentos = pVector;
 	}
-	public String vectorToString() {
-		String txt = "";
-		for(int i = 0; i < departamentos.size(); i++) {
-			txt = "\n" + departamentos.get(i).getNombre() + "\n";
-		}
-		return txt;
+	public ArrayList <Escuela> getVector() {
+		return departamentos;
 	}
+	
 }
