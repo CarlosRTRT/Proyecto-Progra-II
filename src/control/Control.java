@@ -1,17 +1,17 @@
 package control;
 
-import views.View;
+import views.PrincipalMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import models.*;
 
 public class Control {
 	//Atributos de la clase.
-	private View GUI;
+	private PrincipalMenu GUI;
 	private Logic logic;
 	
 	//Constructor completo que recibe a View para obtener los getText de la GUI.
-	public Control(View pGUI) {
+	public Control(PrincipalMenu pGUI) {
 		GUI = pGUI;
 		crearUniversidad();
 	}
