@@ -19,7 +19,7 @@ public class Escuela {
 	public void setVector(ArrayList pArray) {
 		cursos = pArray;
 	}
-	public ArrayList <Curso> getVector(){
+	public ArrayList <Curso> getVector(){	
 		return cursos;
 	}
 }
