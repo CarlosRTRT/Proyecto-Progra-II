@@ -1,122 +1,114 @@
 package views;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.FlowLayout;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.border.TitledBorder;
+import java.util.ArrayList;
+import models.Escuela;
+import models.Universidad;
 
 public class SchoolsView extends JFrame {
-    
     private static final long serialVersionUID = 1L;
     
-    // Componentes para agregar escuelas
-    private JTextField txtNombreEscuela;
-    private JButton btnAgregarEscuela;
-    private JButton btnVolver;
+    private JComboBox<String> comboEscuelas;
+    private JButton btnConsultar, btnGestionarCursos, btnVolver;
+    private Universidad universidad;
     
-    // Componentes para mostrar escuelas
-    private JTextArea areaEscuelas;
-    private JTable tablaEscuelas;
-    private DefaultTableModel modeloTabla;
-    
-    // Componentes para gestionar cursos (para futura expansión)
-    private JButton btnGestionarCursos;
-    
-    public SchoolsView() {
+    public SchoolsView(Universidad universidad) {
+        this.universidad = universidad;
         init();
     }
     
     private void init() {
-        // Configuración de la ventana
-        setTitle("Gestión de Escuelas");
-        setLayout(new BorderLayout(10, 10));
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 600);
+        // Configuracion de la ventana
+        setTitle("Gestion de Escuelas - " + universidad.getNombreU());
+        setLayout(new BorderLayout(15, 15));
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(500, 300);
         setLocationRelativeTo(null);
         
-        // Panel superior para agregar escuelas
-        JPanel panelAgregar = new JPanel(new GridLayout(2, 2, 10, 10));
-        panelAgregar.setBorder(BorderFactory.createTitledBorder("Información de la Escuela"));
+        // Panel principal
+        JPanel panelPrincipal = new JPanel(new BorderLayout(10, 10));
+        panelPrincipal.setBorder(BorderFactory.createTitledBorder(
+            BorderFactory.createLineBorder(Color.CYAN, 2, true),
+            "Seleccion de Escuela",
+            TitledBorder.LEFT,
+            TitledBorder.TOP,
+            new Font("SansSerif", Font.BOLD, 14),
+            Color.CYAN
+        ));
         
-        panelAgregar.add(new JLabel("Nombre de la Escuela:"));
-        txtNombreEscuela = new JTextField();
-        panelAgregar.add(txtNombreEscuela);
+        // Panel de seleccion
+        JPanel panelSeleccion = new JPanel(new FlowLayout(FlowLayout.LEFT));
         
-        btnAgregarEscuela = new JButton("Agregar Escuela");
-        panelAgregar.add(btnAgregarEscuela);
+        JLabel lblEscuela = new JLabel("Escuela:");
+        lblEscuela.setFont(new Font("SansSerif", Font.BOLD, 12));
+        
+        // Llenar el combo box con las escuelas
+        comboEscuelas = new JComboBox<>();
+        actualizarListaEscuelas();
+        
+        panelSeleccion.add(lblEscuela);
+        panelSeleccion.add(comboEscuelas);
+        
+        // Panel de botones
+        JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        
         
         btnGestionarCursos = new JButton("Gestionar Cursos");
-        panelAgregar.add(btnGestionarCursos);
+        btnGestionarCursos.setBackground(Color.BLUE);
+        btnGestionarCursos.setForeground(Color.WHITE);
+        btnGestionarCursos.setFont(new Font("SansSerif", Font.BOLD, 12));
         
-        // Panel central con dos áreas: TextArea y Tabla
-        JPanel panelCentral = new JPanel(new GridLayout(1, 2, 10, 10));
         
-        // Área de texto para mostrar escuelas
-        areaEscuelas = new JTextArea();
-        areaEscuelas.setEditable(false);
-        JScrollPane scrollArea = new JScrollPane(areaEscuelas);
-        scrollArea.setBorder(BorderFactory.createTitledBorder("Lista de Escuelas"));
-        panelCentral.add(scrollArea);
+        panelBotones.add(btnGestionarCursos);
         
-        // Tabla para mostrar escuelas (alternativa visual)
-        modeloTabla = new DefaultTableModel();
-        modeloTabla.addColumn("Nombre de Escuela");
-        modeloTabla.addColumn("Cantidad de Cursos");
-        
-        tablaEscuelas = new JTable(modeloTabla);
-        JScrollPane scrollTabla = new JScrollPane(tablaEscuelas);
-        scrollTabla.setBorder(BorderFactory.createTitledBorder("Detalle de Escuelas"));
-        panelCentral.add(scrollTabla);
-        
-        // Panel inferior con botón para volver
+        // Panel inferior con boton volver
         JPanel panelInferior = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        btnVolver = new JButton("Volver al Menú Principal");
+        
+        btnVolver = new JButton("Volver");
+        btnVolver.setForeground(Color.WHITE);
+        btnVolver.setFont(new Font("SansSerif", Font.BOLD, 12));
+        
         panelInferior.add(btnVolver);
         
-        // Agregar paneles a la ventana
-        add(panelAgregar, BorderLayout.NORTH);
-        add(panelCentral, BorderLayout.CENTER);
+        // AÃ±adir paneles a la ventana
+        panelPrincipal.add(panelSeleccion, BorderLayout.NORTH);
+        panelPrincipal.add(panelBotones, BorderLayout.CENTER);
+        
+        add(panelPrincipal, BorderLayout.CENTER);
         add(panelInferior, BorderLayout.SOUTH);
     }
     
-    // Getters para los componentes
-    public JTextField getTxtNombreEscuela() {
-        return txtNombreEscuela;
+    public void actualizarListaEscuelas() {
+        comboEscuelas.removeAllItems();
+        for(Escuela escuela : universidad.getVector()) {
+            comboEscuelas.addItem(escuela.getNombre());
+        }
     }
     
-    public JButton getBtnAgregarEscuela() {
-        return btnAgregarEscuela;
+    public Escuela getEscuelaSeleccionada() {
+        int index = comboEscuelas.getSelectedIndex();
+        if(index >= 0) {
+            return universidad.getVector().get(index);
+        }
+        return null;
     }
     
-    public JButton getBtnVolver() {
-        return btnVolver;
+    // Getters para los botones
+    public JButton getBtnConsultar() {
+        return btnConsultar;
     }
     
     public JButton getBtnGestionarCursos() {
         return btnGestionarCursos;
     }
     
-    public JTextArea getAreaEscuelas() {
-        return areaEscuelas;
+    public JButton getBtnVolver() {
+        return btnVolver;
     }
     
-    // Metodo para actualizar la tabla de escuelas
-    public void actualizarTablaEscuelas(String[] nombres, int[] cantidadCursos) {
-        // Limpiar la tabla
-        modeloTabla.setRowCount(0);
-        
-        // Agregar filas con los datos
-        for (int i = 0; i < nombres.length; i++) {
-            modeloTabla.addRow(new Object[] {nombres[i], cantidadCursos[i]});
-        }
+    public Universidad getUniversidad() {
+        return universidad;
     }
 }

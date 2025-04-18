@@ -1,10 +1,17 @@
 package init;
 
+import com.formdev.flatlaf.FlatDarkLaf;
+
 import control.*;
 import views.*;
 
 public class Main {
     public static void main(String[] args) {
+        try {
+            javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         // Crear instancia de View (GUI).
         PrincipalMenu view = new PrincipalMenu();
         // Crear instancia de la Controller que recibe a View.

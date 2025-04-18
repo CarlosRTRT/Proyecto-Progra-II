@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Options extends JFrame {
+public class OptionsView extends JFrame {
     
     private static final long serialVersionUID = 1L;
     
@@ -22,7 +22,7 @@ public class Options extends JFrame {
     private JButton btnAgregarEscuela;
     private JButton btnConsultarEscuelas;
     
-    public Options() {
+    public OptionsView() {
         init();
     }
     
@@ -39,11 +39,11 @@ public class Options extends JFrame {
         panelModificar.setBorder(BorderFactory.createTitledBorder("Modificar Universidad"));
         
         txtDireccion = new JTextField();
-        panelModificar.add(new JLabel("Nueva Dirección:"));
+        panelModificar.add(new JLabel("Nueva Direccion:"));
         panelModificar.add(txtDireccion);
         
         txtTelefono = new JTextField();
-        panelModificar.add(new JLabel("Nuevo Teléfono:"));
+        panelModificar.add(new JLabel("Nuevo Telefono:"));
         panelModificar.add(txtTelefono);
         
         btnModificar = new JButton("Actualizar Datos");
@@ -52,7 +52,7 @@ public class Options extends JFrame {
         
         // Panel para gestionar escuelas
         JPanel panelEscuelas = new JPanel(new GridLayout(3, 2, 10, 10));
-        panelEscuelas.setBorder(BorderFactory.createTitledBorder("Gestión de Escuelas"));
+        panelEscuelas.setBorder(BorderFactory.createTitledBorder("Gestion de Escuelas"));
         
         txtNombreEscuela = new JTextField();
         panelEscuelas.add(new JLabel("Nombre de Escuela:"));

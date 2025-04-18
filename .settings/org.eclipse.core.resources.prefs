@@ -1,2 +1,10 @@
 eclipse.preferences.version=1
+encoding//src/views/ConsultarCursoView.java=UTF-8
+encoding//src/views/CursoManagerView.java=UTF-8
+encoding//src/views/EliminarCursoView.java=UTF-8
+encoding//src/views/IncluirCursoView.java=UTF-8
+encoding//src/views/ListarCursosEscuelaView.java=UTF-8
+encoding//src/views/ListarTodosCursosView.java=UTF-8
+encoding//src/views/ModificarCursoView.java=UTF-8
 encoding//src/views/PrincipalMenu.java=UTF-8
+encoding//src/views/SchoolsView.java=UTF-8

@@ -1,19 +1,19 @@
 package models;
 
 public class Curso {
-	private char sigla;
+	private String sigla;
 	private String nombreCurso;
 	
-	public Curso(char pSigla,String pNombreCurso) {
+	public Curso(String pSigla,String pNombreCurso) {
 		sigla=pSigla;
 		nombreCurso=pNombreCurso;
 	}
 
-	public char getSigla() {
+	public String getSigla() {
 		return sigla;
 	}
 
-	public void setSigla(char pSigla) {
+	public void setSigla(String pSigla) {
 		this.sigla = pSigla;
 	}
 
