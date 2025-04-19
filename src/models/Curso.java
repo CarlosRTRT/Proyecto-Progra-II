@@ -5,8 +5,8 @@ public class Curso {
 	private String nombreCurso;
 	
 	public Curso(String pSigla,String pNombreCurso) {
-		sigla=pSigla;
-		nombreCurso=pNombreCurso;
+		sigla = pSigla;
+		nombreCurso = pNombreCurso;
 	}
 
 	public String getSigla() {

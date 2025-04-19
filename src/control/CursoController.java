@@ -13,11 +13,6 @@ public class CursoController {
     private CursoManagerView managerView;
     
     public CursoController(Logic logic, SchoolsView schoolsView) {
-        try {
-            javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
         this.logic = logic;
         this.schoolsView = schoolsView;
         

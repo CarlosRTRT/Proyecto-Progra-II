@@ -1,6 +1,6 @@
 package init;
 
-import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 
 import control.*;
 import views.*;
@@ -8,7 +8,7 @@ import views.*;
 public class Main {
     public static void main(String[] args) {
         try {
-            javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
+            javax.swing.UIManager.setLookAndFeel(new FlatMacDarkLaf());
         } catch (Exception ex) {
             ex.printStackTrace();
         }

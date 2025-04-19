@@ -25,7 +25,7 @@ public class CursoManagerView extends JFrame {
         // Configuracion basica de la ventana
         setTitle("Gestion de Cursos - " + escuelaActual.getNombre());
         setLayout(new BorderLayout(15, 15));
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 400);
         setLocationRelativeTo(null);
         

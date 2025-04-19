@@ -23,18 +23,17 @@ public class PrincipalMenu extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(600, 250);
 		setLocationRelativeTo(null);
-		getContentPane().setBackground(Color.DARK_GRAY);
 
 
 		// Panel Formulario
 		JPanel panelFormulario = new JPanel(new GridLayout(4, 2, 15, 15));
 		panelFormulario.setBorder(BorderFactory.createTitledBorder(
-			BorderFactory.createLineBorder(Color.CYAN, 2, true),
+			BorderFactory.createLineBorder(Color.GRAY, 2, true),
 			"Datos de la Universidad",
 			TitledBorder.CENTER,
 			TitledBorder.TOP,
 			new Font("SansSerif", Font.BOLD, 14),
-			Color.CYAN
+			Color.GRAY
 		));
 		
 		panelFormulario.setPreferredSize(new Dimension(500, 150));
@@ -69,7 +68,7 @@ public class PrincipalMenu extends JFrame {
 		panelFormulario.add(lblTelefono);
 		panelFormulario.add(telefono);
 
-		// Botón
+		// Boton
 		btnAgregar = new JButton("Agregar Universidad");
 		btnAgregar.setBackground(Color.BLUE);
 		btnAgregar.setForeground(Color.WHITE);

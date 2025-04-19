@@ -19,22 +19,22 @@ public class ConsultarCursoView extends JFrame {
     }
     
     private void init() {
-        // Configuración de la ventana
+        // Configuracion de la ventana
         setTitle("Consultar Curso - " + escuelaActual.getNombre());
         setLayout(new BorderLayout(15, 15));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(500, 300);
         setLocationRelativeTo(null);
         
-        // Panel de búsqueda
+        // Panel de busqueda
         JPanel panelBusqueda = new JPanel(new BorderLayout(10, 10));
         panelBusqueda.setBorder(BorderFactory.createTitledBorder(
-            BorderFactory.createLineBorder(Color.BLUE, 2, true),
+            BorderFactory.createLineBorder(Color.GRAY, 2, true),
             "Buscar Curso",
             TitledBorder.LEFT,
             TitledBorder.TOP,
             new Font("SansSerif", Font.BOLD, 14),
-            Color.BLUE
+            Color.GRAY
         ));
         
         JPanel inputPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -71,9 +71,8 @@ public class ConsultarCursoView extends JFrame {
         JScrollPane scrollPane = new JScrollPane(txtResultado);
         panelResultado.add(scrollPane, BorderLayout.CENTER);
         
-        // Panel de botón volver
+        // Panel de boton volver
         JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        panelBotones.setBackground(Color.WHITE);
         
         btnVolver = new JButton("Volver");
         btnVolver.setForeground(Color.WHITE);
