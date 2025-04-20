@@ -22,7 +22,7 @@ public class IncluirCursoView extends JFrame {
         setTitle("Incluir Nuevo Curso - " + escuelaActual.getNombre());
         setLayout(new BorderLayout(15, 15));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(400, 250);
+        setSize(400, 230);
         setLocationRelativeTo(null);
         
         // Panel de formulario

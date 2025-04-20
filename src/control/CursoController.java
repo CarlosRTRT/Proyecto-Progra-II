@@ -48,7 +48,7 @@ public class CursoController {
             }
         });
         
-        //Boton para consultar curso
+        // 	Boton para consultar curso
         managerView.getBtnConsultarCurso().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

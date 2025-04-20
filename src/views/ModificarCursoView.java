@@ -22,7 +22,7 @@ public class ModificarCursoView extends JFrame {
         setTitle("Modificar Curso - " + escuelaActual.getNombre());
         setLayout(new BorderLayout(15, 15));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(500, 300);
+        setSize(500, 210);
         setLocationRelativeTo(null);
         
         // Panel de busqueda

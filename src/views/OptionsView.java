@@ -31,7 +31,7 @@ public class OptionsView extends JFrame {
         setTitle("Opciones de Universidad");
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600, 400);
+        setSize(600, 325);
         setLocationRelativeTo(null);
         
         // Panel para modificar datos de universidad

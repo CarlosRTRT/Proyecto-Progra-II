@@ -21,7 +21,7 @@ public class PrincipalMenu extends JFrame {
 		setTitle("Registro de Universidad");
 		setLayout(new BorderLayout(15, 15));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(600, 250);
+		setSize(600, 240);
 		setLocationRelativeTo(null);
 
 
@@ -69,15 +69,12 @@ public class PrincipalMenu extends JFrame {
 
 		//Crear paneles para envolver cada campo
 		JPanel panelNombre = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
-		panelNombre.setOpaque(false);
 		panelNombre.add(nombre);
 
 		JPanel panelDireccion = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
-		panelDireccion.setOpaque(false);
 		panelDireccion.add(direccion);
 
 		JPanel panelTelefono = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
-		panelTelefono.setOpaque(false);
 		panelTelefono.add(telefono);
 
 		//Agregar al formulario

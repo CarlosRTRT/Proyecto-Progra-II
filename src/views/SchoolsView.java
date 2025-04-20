@@ -24,7 +24,7 @@ public class SchoolsView extends JFrame {
         setTitle("Gestion de Escuelas - " + universidad.getNombreU());
         setLayout(new BorderLayout(15, 15));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(500, 300);
+        setSize(500, 200);
         setLocationRelativeTo(null);
         
         // Panel principal
