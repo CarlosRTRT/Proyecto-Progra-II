@@ -28,11 +28,11 @@ public class EliminarCursoView extends JFrame {
         // Panel principal
         JPanel panelPrincipal = new JPanel(new BorderLayout(10, 10));
         panelPrincipal.setBorder(BorderFactory.createTitledBorder(
-            BorderFactory.createLineBorder(Color.RED, 2, true),
+            BorderFactory.createLineBorder(Color.RED, 1, true),
             "Eliminar Curso",
             TitledBorder.CENTER,
             TitledBorder.TOP,
-            new Font("SansSerif", Font.BOLD, 14),
+            new Font("SansSerif", Font.PLAIN, 14),
             Color.RED
         ));
         
@@ -40,7 +40,7 @@ public class EliminarCursoView extends JFrame {
         JPanel panelEntrada = new JPanel(new GridLayout(1, 2, 10, 0));
         
         JLabel lblNombre = new JLabel("Nombre del Curso:");
-        lblNombre.setFont(new Font("SansSerif", Font.BOLD, 12));
+        lblNombre.setFont(new Font("SansSerif", Font.PLAIN, 12));
         
         txtNombreCurso = new JTextField();
         
@@ -50,7 +50,7 @@ public class EliminarCursoView extends JFrame {
         // Añadir mensaje de advertencia
         JLabel lblAdvertencia = new JLabel("ADVERTENCIA: Esta accion no se puede deshacer.");
         lblAdvertencia.setForeground(Color.RED);
-        lblAdvertencia.setFont(new Font("SansSerif", Font.BOLD, 12));
+        lblAdvertencia.setFont(new Font("SansSerif", Font.PLAIN, 12));
         lblAdvertencia.setHorizontalAlignment(SwingConstants.CENTER);
         
         // Panel de botones
@@ -59,12 +59,12 @@ public class EliminarCursoView extends JFrame {
         btnEliminar = new JButton("Eliminar");
         btnEliminar.setBackground(new Color(220, 53, 69));
         btnEliminar.setForeground(Color.WHITE);
-        btnEliminar.setFont(new Font("SansSerif", Font.BOLD, 12));
+        btnEliminar.setFont(new Font("SansSerif", Font.PLAIN, 12));
         
         btnCancelar = new JButton("Cancelar");
         btnCancelar.setBackground(new Color(108, 117, 125));
         btnCancelar.setForeground(Color.WHITE);
-        btnCancelar.setFont(new Font("SansSerif", Font.BOLD, 12));
+        btnCancelar.setFont(new Font("SansSerif", Font.PLAIN, 12));
         
         panelBotones.add(btnEliminar);
         panelBotones.add(btnCancelar);

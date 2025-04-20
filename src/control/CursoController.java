@@ -40,7 +40,7 @@ public class CursoController {
     }
     
     private void configurarListenersManager() {
-        // Boton para incluir curso
+        //Boton para incluir curso
         managerView.getBtnIncluir().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -48,7 +48,7 @@ public class CursoController {
             }
         });
         
-        // Boton para consultar curso
+        //Boton para consultar curso
         managerView.getBtnConsultarCurso().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

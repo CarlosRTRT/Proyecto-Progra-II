@@ -28,23 +28,23 @@ public class ModificarCursoView extends JFrame {
         // Panel de busqueda
         JPanel panelBusqueda = new JPanel(new GridLayout(1, 3, 10, 0));
         panelBusqueda.setBorder(BorderFactory.createTitledBorder(
-            BorderFactory.createLineBorder(Color.CYAN, 2, true),
+            BorderFactory.createLineBorder(Color.GRAY, 1, true),
             "Buscar Curso",
             TitledBorder.LEFT,
             TitledBorder.TOP,
-            new Font("SansSerif", Font.BOLD, 14),
-            Color.CYAN
+            new Font("SansSerif", Font.PLAIN, 14),
+            Color.GRAY
         ));
         
         JLabel lblNombreBuscar = new JLabel("Nombre del Curso:");
-        lblNombreBuscar.setFont(new Font("SansSerif", Font.BOLD, 12));
+        lblNombreBuscar.setFont(new Font("SansSerif", Font.PLAIN, 12));
         
         txtNombreCursoBuscar = new JTextField();
         
         btnBuscar = new JButton("Buscar");
         btnBuscar.setForeground(Color.WHITE);
         btnBuscar.setFocusPainted(false);
-        btnBuscar.setFont(new Font("SansSerif", Font.BOLD, 12));
+        btnBuscar.setFont(new Font("SansSerif", Font.PLAIN, 12));
         
         panelBusqueda.add(lblNombreBuscar);
         panelBusqueda.add(txtNombreCursoBuscar);
@@ -62,7 +62,7 @@ public class ModificarCursoView extends JFrame {
         JPanel panelCampos = new JPanel(new GridLayout(1, 2, 10, 0));
         
         JLabel lblNuevoNombre = new JLabel("Nuevo Nombre:");
-        lblNuevoNombre.setFont(new Font("SansSerif", Font.BOLD, 12));
+        lblNuevoNombre.setFont(new Font("SansSerif", Font.PLAIN, 12));
         
         txtNuevoNombre = new JTextField();
         
@@ -73,11 +73,11 @@ public class ModificarCursoView extends JFrame {
         
         btnGuardar = new JButton("Guardar");
         btnGuardar.setForeground(Color.WHITE);
-        btnGuardar.setFont(new Font("SansSerif", Font.BOLD, 12));
+        btnGuardar.setFont(new Font("SansSerif", Font.PLAIN, 12));
         
         btnCancelar = new JButton("Cancelar");
         btnCancelar.setForeground(Color.WHITE);
-        btnCancelar.setFont(new Font("SansSerif", Font.BOLD, 12));
+        btnCancelar.setFont(new Font("SansSerif", Font.PLAIN, 12));
         
         panelBotonesAccion.add(btnGuardar);
         panelBotonesAccion.add(btnCancelar);

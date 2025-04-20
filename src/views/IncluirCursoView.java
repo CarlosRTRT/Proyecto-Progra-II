@@ -28,20 +28,20 @@ public class IncluirCursoView extends JFrame {
         // Panel de formulario
         JPanel panelFormulario = new JPanel(new GridLayout(2, 2, 10, 10));
         panelFormulario.setBorder(BorderFactory.createTitledBorder(
-            BorderFactory.createLineBorder(Color.CYAN, 2, true),
+            BorderFactory.createLineBorder(Color.GRAY, 1, true),
             "Datos del Curso",
             TitledBorder.LEFT,
             TitledBorder.TOP,
-            new Font("SansSerif", Font.BOLD, 14),
-            Color.CYAN
+            new Font("SansSerif", Font.PLAIN, 14),
+            Color.GRAY
         ));
         
         // Componentes del formulario
         JLabel lblSigla = new JLabel("Siglas (3 caracteres):");
-        lblSigla.setFont(new Font("SansSerif", Font.BOLD, 12));
+        lblSigla.setFont(new Font("SansSerif", Font.PLAIN, 12));
         
         JLabel lblNombre = new JLabel("Nombre del Curso:");
-        lblNombre.setFont(new Font("SansSerif", Font.BOLD, 12));
+        lblNombre.setFont(new Font("SansSerif", Font.PLAIN, 12));
         
         txtSigla = new JTextField();
         txtNombreCurso = new JTextField();
@@ -57,12 +57,12 @@ public class IncluirCursoView extends JFrame {
         btnGuardar = new JButton("Guardar");
         btnGuardar.setForeground(Color.WHITE);
         btnGuardar.setFocusPainted(false);
-        btnGuardar.setFont(new Font("SansSerif", Font.BOLD, 12));
+        btnGuardar.setFont(new Font("SansSerif", Font.PLAIN, 12));
         
         btnCancelar = new JButton("Cancelar");
         btnCancelar.setForeground(Color.WHITE);
         btnCancelar.setFocusPainted(false);
-        btnCancelar.setFont(new Font("SansSerif", Font.BOLD, 12));
+        btnCancelar.setFont(new Font("SansSerif", Font.PLAIN, 12));
         
         panelBotones.add(btnGuardar);
         panelBotones.add(btnCancelar);

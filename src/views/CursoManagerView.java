@@ -32,12 +32,12 @@ public class CursoManagerView extends JFrame {
         // Panel principal con las opciones
         JPanel panelOpciones = new JPanel(new GridLayout(6, 1, 10, 10));
         panelOpciones.setBorder(BorderFactory.createTitledBorder(
-            BorderFactory.createLineBorder(Color.CYAN, 2, true),
+            BorderFactory.createLineBorder(Color.GRAY, 1, true),
             "Opciones de Gestion de Cursos",
             TitledBorder.LEFT,
             TitledBorder.TOP,
-            new Font("SansSerif", Font.BOLD, 14),
-            Color.CYAN
+            new Font("SansSerif", Font.PLAIN, 14),
+            Color.GRAY 	
         ));
         
         // Crear botones con estilo similar al resto de la aplicacion
@@ -60,7 +60,7 @@ public class CursoManagerView extends JFrame {
         JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         btnVolver = new JButton("Volver");
         btnVolver.setForeground(Color.WHITE);
-        btnVolver.setFont(new Font("SansSerif", Font.BOLD, 12));
+        btnVolver.setFont(new Font("SansSerif", Font.PLAIN, 12));
         panelBotones.add(btnVolver);
         
         // Añadir paneles a la ventana

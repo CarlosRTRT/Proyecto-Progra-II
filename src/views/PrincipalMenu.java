@@ -17,7 +17,7 @@ public class PrincipalMenu extends JFrame {
 	}
 
 	private void init() {
-		// Ventana Principal
+		//Ventana Principal
 		setTitle("Registro de Universidad");
 		setLayout(new BorderLayout(15, 15));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,21 +25,21 @@ public class PrincipalMenu extends JFrame {
 		setLocationRelativeTo(null);
 
 
-		// Panel Formulario
-		JPanel panelFormulario = new JPanel(new GridLayout(4, 2, 15, 15));
+		//Panel Formulario
+		JPanel panelFormulario = new JPanel(new GridLayout(4, 2, 25, 2));
 		panelFormulario.setBorder(BorderFactory.createTitledBorder(
-			BorderFactory.createLineBorder(Color.GRAY, 2, true),
+			BorderFactory.createLineBorder(Color.GRAY, 1, true),
 			"Datos de la Universidad",
 			TitledBorder.CENTER,
 			TitledBorder.TOP,
-			new Font("SansSerif", Font.BOLD, 14),
+			new Font("SansSerif", Font.PLAIN, 14),
 			Color.GRAY
 		));
 		
-		panelFormulario.setPreferredSize(new Dimension(500, 150));
+		panelFormulario.setPreferredSize(new Dimension(500, 170));
 
 
-		Font labelFont = new Font("SansSerif", Font.BOLD, 13);
+		Font labelFont = new Font("SansSerif", Font.PLAIN, 13);
 		Border leftPadding = BorderFactory.createEmptyBorder(0, 5, 0, 0);
 
 		JLabel lblNombre = new JLabel("Nombre");
@@ -57,23 +57,46 @@ public class PrincipalMenu extends JFrame {
 		lblTelefono.setHorizontalAlignment(SwingConstants.LEFT);
 		lblTelefono.setBorder(leftPadding);
 
+		//Campos de texto
 		nombre = new JTextField();
 		direccion = new JTextField();
 		telefono = new JTextField();
 
-		panelFormulario.add(lblNombre);
-		panelFormulario.add(nombre);
-		panelFormulario.add(lblDireccion);
-		panelFormulario.add(direccion);
-		panelFormulario.add(lblTelefono);
-		panelFormulario.add(telefono);
+		//Ajustar altura de los campos
+		nombre.setPreferredSize(new Dimension(200, 25));
+		direccion.setPreferredSize(new Dimension(200, 25));
+		telefono.setPreferredSize(new Dimension(200, 25));
 
-		// Boton
+		//Crear paneles para envolver cada campo
+		JPanel panelNombre = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		panelNombre.setOpaque(false);
+		panelNombre.add(nombre);
+
+		JPanel panelDireccion = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		panelDireccion.setOpaque(false);
+		panelDireccion.add(direccion);
+
+		JPanel panelTelefono = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		panelTelefono.setOpaque(false);
+		panelTelefono.add(telefono);
+
+		//Agregar al formulario
+		panelFormulario.add(lblNombre);
+		panelFormulario.add(panelNombre);
+
+		panelFormulario.add(lblDireccion);
+		panelFormulario.add(panelDireccion);
+
+		panelFormulario.add(lblTelefono);
+		panelFormulario.add(panelTelefono);
+
+
+		//Boton
 		btnAgregar = new JButton("Agregar Universidad");
 		btnAgregar.setBackground(Color.BLUE);
 		btnAgregar.setForeground(Color.WHITE);
 		btnAgregar.setFocusPainted(false);
-		btnAgregar.setFont(new Font("SansSerif", Font.BOLD, 13));
+		btnAgregar.setFont(new Font("SansSerif", Font.PLAIN, 13));
 		btnAgregar.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
 		JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));

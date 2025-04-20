@@ -30,19 +30,19 @@ public class SchoolsView extends JFrame {
         // Panel principal
         JPanel panelPrincipal = new JPanel(new BorderLayout(10, 10));
         panelPrincipal.setBorder(BorderFactory.createTitledBorder(
-            BorderFactory.createLineBorder(Color.CYAN, 2, true),
+            BorderFactory.createLineBorder(Color.GRAY, 1, true),
             "Seleccion de Escuela",
             TitledBorder.LEFT,
             TitledBorder.TOP,
-            new Font("SansSerif", Font.BOLD, 14),
-            Color.CYAN
+            new Font("SansSerif", Font.PLAIN, 14),
+            Color.GRAY
         ));
         
         // Panel de seleccion
         JPanel panelSeleccion = new JPanel(new FlowLayout(FlowLayout.LEFT));
         
         JLabel lblEscuela = new JLabel("Escuela:");
-        lblEscuela.setFont(new Font("SansSerif", Font.BOLD, 12));
+        lblEscuela.setFont(new Font("SansSerif", Font.PLAIN, 12));
         
         // Llenar el combo box con las escuelas
         comboEscuelas = new JComboBox<>();
@@ -58,7 +58,7 @@ public class SchoolsView extends JFrame {
         btnGestionarCursos = new JButton("Gestionar Cursos");
         btnGestionarCursos.setBackground(Color.BLUE);
         btnGestionarCursos.setForeground(Color.WHITE);
-        btnGestionarCursos.setFont(new Font("SansSerif", Font.BOLD, 12));
+        btnGestionarCursos.setFont(new Font("SansSerif", Font.PLAIN, 12));
         
         
         panelBotones.add(btnGestionarCursos);
@@ -68,7 +68,7 @@ public class SchoolsView extends JFrame {
         
         btnVolver = new JButton("Volver");
         btnVolver.setForeground(Color.WHITE);
-        btnVolver.setFont(new Font("SansSerif", Font.BOLD, 12));
+        btnVolver.setFont(new Font("SansSerif", Font.PLAIN, 12));
         
         panelInferior.add(btnVolver);
         

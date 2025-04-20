@@ -28,12 +28,12 @@ public class ListarTodosCursosView extends JFrame {
         // Panel principal
         JPanel panelPrincipal = new JPanel(new BorderLayout(10, 10));
         panelPrincipal.setBorder(BorderFactory.createTitledBorder(
-            BorderFactory.createLineBorder(Color.CYAN, 2, true),
-            "Todos los Cursos por Escuela",
+            BorderFactory.createLineBorder(Color.GRAY, 1, true),
+            "Todos los Cursos",
             TitledBorder.LEFT,
             TitledBorder.TOP,
-            new Font("SansSerif", Font.BOLD, 14),
-            Color.CYAN
+            new Font("SansSerif", Font.PLAIN, 14),
+            Color.GRAY
         ));
         
         //Area de texto para mostrar los cursos
@@ -52,11 +52,11 @@ public class ListarTodosCursosView extends JFrame {
         
         btnActualizar = new JButton("Actualizar");
         btnActualizar.setForeground(Color.WHITE);
-        btnActualizar.setFont(new Font("SansSerif", Font.BOLD, 12));
+        btnActualizar.setFont(new Font("SansSerif", Font.PLAIN, 12));
         
         btnVolver = new JButton("Volver");
         btnVolver.setForeground(Color.WHITE);
-        btnVolver.setFont(new Font("SansSerif", Font.BOLD, 12));
+        btnVolver.setFont(new Font("SansSerif", Font.PLAIN, 12));
         
         panelBotones.add(btnActualizar);
         panelBotones.add(btnVolver);

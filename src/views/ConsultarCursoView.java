@@ -29,24 +29,24 @@ public class ConsultarCursoView extends JFrame {
         // Panel de busqueda
         JPanel panelBusqueda = new JPanel(new BorderLayout(10, 10));
         panelBusqueda.setBorder(BorderFactory.createTitledBorder(
-            BorderFactory.createLineBorder(Color.GRAY, 2, true),
+            BorderFactory.createLineBorder(Color.GRAY, 1, true),
             "Buscar Curso",
             TitledBorder.LEFT,
             TitledBorder.TOP,
-            new Font("SansSerif", Font.BOLD, 14),
+            new Font("SansSerif", Font.PLAIN, 14),
             Color.GRAY
         ));
         
         JPanel inputPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         
         JLabel lblNombre = new JLabel("Nombre del Curso:");
-        lblNombre.setFont(new Font("SansSerif", Font.BOLD, 12));
+        lblNombre.setFont(new Font("SansSerif", Font.PLAIN, 12));
         
         txtNombreCursoBuscar = new JTextField(20);
         
         btnBuscar = new JButton("Buscar");
         btnBuscar.setForeground(Color.WHITE);
-        btnBuscar.setFont(new Font("SansSerif", Font.BOLD, 12));
+        btnBuscar.setFont(new Font("SansSerif", Font.PLAIN, 12));
         
         inputPanel.add(lblNombre);
         inputPanel.add(txtNombreCursoBuscar);
@@ -77,7 +77,7 @@ public class ConsultarCursoView extends JFrame {
         btnVolver = new JButton("Volver");
         btnVolver.setForeground(Color.WHITE);
         btnVolver.setFocusPainted(false);
-        btnVolver.setFont(new Font("SansSerif", Font.BOLD, 12));
+        btnVolver.setFont(new Font("SansSerif", Font.PLAIN, 12));
         
         panelBotones.add(btnVolver);
         
