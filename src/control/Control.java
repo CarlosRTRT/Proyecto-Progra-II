@@ -146,12 +146,6 @@ public class Control {
 
         // Crear el controlador para la gestion de cursos
         cursoController = new CursoController(logic, schoolsView, view);
-        schoolsView.getBtnVolver().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //schoolsView.dispose();
-            }
-        });
         
     }
     

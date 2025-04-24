@@ -73,6 +73,14 @@ public class UniversityMenuView extends JFrame {
 	    add(panelCentral, BorderLayout.CENTER);
 	}
 	public void cambiarPanelCentral(JPanel nuevoPanel) {
+	    // Check if panelCentral is null before attempting to use it
+	    if (panelCentral == null) {
+	        panelCentral = new JPanel();
+	        panelCentral.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 200)); 
+	        panelCentral.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+	        add(panelCentral, BorderLayout.CENTER);
+	    }
+	    
 	    panelCentral.removeAll();
 	    panelCentral.add(nuevoPanel);
 	    panelCentral.revalidate();

@@ -111,7 +111,7 @@ public class Logic {
     	                         .append(", Sigla: ").append(curso.getSigla()).append("\n");
     	            }
     	        }
-    	        resultado.append("\n"); // Salto de línea para separar las escuelas
+    	        resultado.append("\n");
     	    }
 
     	    return resultado.toString();
