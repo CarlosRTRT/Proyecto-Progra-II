@@ -5,7 +5,7 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import models.Escuela;
 
-public class IncluirCursoView extends JFrame {
+public class IncluirCursoView extends JPanel{
     private static final long serialVersionUID = 1L;
     
     private JTextField txtSigla, txtNombreCurso;
@@ -19,11 +19,8 @@ public class IncluirCursoView extends JFrame {
     
     private void init() {
         // Configuración basica de la ventana
-        setTitle("Incluir Nuevo Curso - " + escuelaActual.getNombre());
         setLayout(new BorderLayout(15, 15));
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(400, 230);
-        setLocationRelativeTo(null);
         
         // Panel de formulario
         JPanel panelFormulario = new JPanel(new GridLayout(2, 2, 10, 10));

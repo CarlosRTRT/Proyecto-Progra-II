@@ -5,7 +5,7 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import models.Escuela;
 
-public class ModificarCursoView extends JFrame {
+public class ModificarCursoView extends JPanel {
     private static final long serialVersionUID = 1L;
     
     private JTextField txtNombreCursoBuscar, txtNuevoNombre;
@@ -19,11 +19,8 @@ public class ModificarCursoView extends JFrame {
     
     private void init() {
         // Configuracion basica de la ventana
-        setTitle("Modificar Curso - " + escuelaActual.getNombre());
         setLayout(new BorderLayout(15, 15));
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(500, 210);
-        setLocationRelativeTo(null);
         
         // Panel de busqueda
         JPanel panelBusqueda = new JPanel(new GridLayout(1, 3, 10, 0));

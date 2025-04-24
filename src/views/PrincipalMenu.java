@@ -6,7 +6,7 @@ import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
 
-public class PrincipalMenu extends JFrame {
+public class PrincipalMenu extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	public JTextField nombre, direccion, telefono;
@@ -18,17 +18,13 @@ public class PrincipalMenu extends JFrame {
 
 	private void init() {
 		//Ventana Principal
-		setTitle("Registro de Universidad");
 		setLayout(new BorderLayout(15, 15));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(600, 240);
-		setLocationRelativeTo(null);
-
 
 		//Panel Formulario
-		JPanel panelFormulario = new JPanel(new GridLayout(4, 2, 25, 2));
+		JPanel panelFormulario = new JPanel(new GridLayout(4, 2));
 		panelFormulario.setBorder(BorderFactory.createTitledBorder(
-			BorderFactory.createLineBorder(Color.GRAY, 1, true),
+			BorderFactory.createLineBorder(Color.DARK_GRAY, 1, true),
 			"Datos de la Universidad",
 			TitledBorder.CENTER,
 			TitledBorder.TOP,

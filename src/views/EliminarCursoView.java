@@ -5,7 +5,7 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import models.Escuela;
 
-public class EliminarCursoView extends JFrame {
+public class EliminarCursoView extends JPanel {
     private static final long serialVersionUID = 1L;
     
     private JTextField txtNombreCurso;
@@ -18,12 +18,9 @@ public class EliminarCursoView extends JFrame {
     }
     
     private void init() {
-        // Configuración de la ventana
-        setTitle("Eliminar Curso - " + escuelaActual.getNombre());
+        // Configuracion de la ventana
         setLayout(new BorderLayout(15, 15));
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(400, 200);
-        setLocationRelativeTo(null);
         
         // Panel principal
         JPanel panelPrincipal = new JPanel(new BorderLayout(10, 10));

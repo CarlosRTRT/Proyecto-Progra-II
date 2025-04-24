@@ -5,7 +5,7 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import models.Universidad;
 
-public class ListarTodosCursosView extends JFrame {
+public class ListarTodosCursosView extends JPanel {
     private static final long serialVersionUID = 1L;
     
     private JTextArea txtListaCursos;
@@ -18,12 +18,9 @@ public class ListarTodosCursosView extends JFrame {
     }
     
     private void init() {
-        // Configuración básica de la ventana
-        setTitle("Todos los Cursos - " + universidad.getNombreU());
+        // Configuracion básica de la ventana
         setLayout(new BorderLayout(15, 15));
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(600, 500);
-        setLocationRelativeTo(null);
         
         // Panel principal
         JPanel panelPrincipal = new JPanel(new BorderLayout(10, 10));

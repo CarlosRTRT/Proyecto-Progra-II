@@ -5,7 +5,7 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import models.Escuela;
 
-public class ConsultarCursoView extends JFrame {
+public class ConsultarCursoView extends JPanel {
     private static final long serialVersionUID = 1L;
     
     private JTextField txtNombreCursoBuscar;
@@ -20,11 +20,8 @@ public class ConsultarCursoView extends JFrame {
     
     private void init() {
         // Configuracion de la ventana
-        setTitle("Consultar Curso - " + escuelaActual.getNombre());
         setLayout(new BorderLayout(15, 15));
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(500, 300);
-        setLocationRelativeTo(null);
         
         // Panel de busqueda
         JPanel panelBusqueda = new JPanel(new BorderLayout(10, 10));

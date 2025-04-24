@@ -1,4 +1,4 @@
-package init;
+package init;	
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 
@@ -13,9 +13,9 @@ public class Main {
             ex.printStackTrace();
         }
         // Crear instancia de View (GUI).
-        PrincipalMenu view = new PrincipalMenu();
-        // Crear instancia de la Controller que recibe a View.
-        Control controller = new Control(view);
+        PrincipalMenu pMenu = new PrincipalMenu();
+        UniversityMenuView universityView = new UniversityMenuView(pMenu);
+        Control controller = new Control(universityView, pMenu);
         // Iniciar la GUI por medio de la controller.
         controller.startGUI();
     }

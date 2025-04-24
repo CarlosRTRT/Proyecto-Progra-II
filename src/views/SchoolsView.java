@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import models.Escuela;
 import models.Universidad;
 
-public class SchoolsView extends JFrame {
+public class SchoolsView extends JPanel {
     private static final long serialVersionUID = 1L;
     
     private JComboBox<String> comboEscuelas;
@@ -21,11 +21,8 @@ public class SchoolsView extends JFrame {
     
     private void init() {
         // Configuracion de la ventana
-        setTitle("Gestion de Escuelas - " + universidad.getNombreU());
         setLayout(new BorderLayout(15, 15));
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(500, 200);
-        setLocationRelativeTo(null);
         
         // Panel principal
         JPanel panelPrincipal = new JPanel(new BorderLayout(10, 10));
@@ -65,12 +62,6 @@ public class SchoolsView extends JFrame {
         
         // Panel inferior con boton volver
         JPanel panelInferior = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        
-        btnVolver = new JButton("Volver");
-        btnVolver.setForeground(Color.WHITE);
-        btnVolver.setFont(new Font("SansSerif", Font.PLAIN, 12));
-        
-        panelInferior.add(btnVolver);
         
         // Añadir paneles a la ventana
         panelPrincipal.add(panelSeleccion, BorderLayout.NORTH);

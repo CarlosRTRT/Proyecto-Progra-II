@@ -11,16 +11,19 @@ public class CursoController {
     private Logic logic;
     private SchoolsView schoolsView;
     private CursoManagerView managerView;
+    private UniversityMenuView view;
     
-    public CursoController(Logic logic, SchoolsView schoolsView) {
+    public CursoController(Logic logic, SchoolsView schoolsView, UniversityMenuView pView) {
         this.logic = logic;
         this.schoolsView = schoolsView;
+        this.view = pView;
         
         // Configurar listener para el Boton de gestionar cursos
         this.schoolsView.getBtnGestionarCursos().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 abrirGestionCursos();
+                visibilidad();
             }
         });
     }
@@ -36,7 +39,7 @@ public class CursoController {
         
         managerView = new CursoManagerView(escuelaSeleccionada, logic.getUniversidad());
         configurarListenersManager();
-        managerView.setVisible(true);
+        
     }
     
     private void configurarListenersManager() {
@@ -87,12 +90,10 @@ public class CursoController {
                 abrirEliminarCurso();
             }
         });
-        
-        // Boton para volver
         managerView.getBtnVolver().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                managerView.dispose();
+            	view.cambiarPanelCentral(schoolsView);
             }
         });
     }
@@ -130,7 +131,7 @@ public class CursoController {
                     JOptionPane.showMessageDialog(incluirView, 
                         "Curso agregado exitosamente", 
                         "Exito", JOptionPane.INFORMATION_MESSAGE);
-                    incluirView.dispose();
+                    view.cambiarPanelCentral(managerView);
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(incluirView, 
                         "Error al agregar el curso: " + ex.getMessage(), 
@@ -142,11 +143,11 @@ public class CursoController {
         incluirView.getBtnCancelar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                incluirView.dispose();
+            	view.cambiarPanelCentral(managerView);
             }
         });
         
-        incluirView.setVisible(true);
+        view.cambiarPanelCentral(incluirView);
     }
     
     private void abrirConsultarCurso() {
@@ -177,11 +178,11 @@ public class CursoController {
         consultarView.getBtnVolver().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                consultarView.dispose();
+            	view.cambiarPanelCentral(managerView);
             }
         });
         
-        consultarView.setVisible(true);
+        view.cambiarPanelCentral(consultarView);
     }
     
     private void abrirListarCursosEscuela() {
@@ -200,11 +201,11 @@ public class CursoController {
         listarView.getBtnVolver().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                listarView.dispose();
+            	view.cambiarPanelCentral(managerView);
             }
         });
         
-        listarView.setVisible(true);
+        view.cambiarPanelCentral(listarView);
     }
     
     private void actualizarListaCursos(ListarCursosEscuelaView view) {
@@ -234,11 +235,11 @@ public class CursoController {
         listarView.getBtnVolver().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                listarView.dispose();
+            	view.cambiarPanelCentral(managerView);
             }
         });
         
-        listarView.setVisible(true);
+        view.cambiarPanelCentral(listarView);
     }
     
     private void actualizarListaTodosCursos(ListarTodosCursosView view) {
@@ -299,7 +300,7 @@ public class CursoController {
                         JOptionPane.showMessageDialog(modificarView, 
                             "Curso modificado exitosamente", 
                             "Exito", JOptionPane.INFORMATION_MESSAGE);
-                        modificarView.dispose();
+                        view.cambiarPanelCentral(managerView);
                     } else {
                         JOptionPane.showMessageDialog(modificarView, 
                             "No se encontro el curso", 
@@ -316,11 +317,11 @@ public class CursoController {
         modificarView.getBtnCancelar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                modificarView.dispose();
+            	view.cambiarPanelCentral(managerView);
             }
         });
         
-        modificarView.setVisible(true);
+        view.cambiarPanelCentral(modificarView);
     }
     
     private void abrirEliminarCurso() {
@@ -349,7 +350,7 @@ public class CursoController {
                             JOptionPane.showMessageDialog(eliminarView, 
                                 "Curso eliminado exitosamente", 
                                 "Exito", JOptionPane.INFORMATION_MESSAGE);
-                            eliminarView.dispose();
+                            view.cambiarPanelCentral(managerView);
                         } else {
                             JOptionPane.showMessageDialog(eliminarView, 
                                 "No se encontro el curso", 
@@ -367,10 +368,13 @@ public class CursoController {
         eliminarView.getBtnCancelar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                eliminarView.dispose();
+            	view.cambiarPanelCentral(managerView);
             }
         });
         
-        eliminarView.setVisible(true);
+        view.cambiarPanelCentral(eliminarView);
+    }
+    private void visibilidad() {
+    	view.cambiarPanelCentral(managerView);
     }
 }

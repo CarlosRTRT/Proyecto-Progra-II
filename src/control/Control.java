@@ -8,33 +8,39 @@ import models.*;
 import views.*;
 
 public class Control {
-    private PrincipalMenu view;
+    private PrincipalMenu pMenu;
+    private UniversityMenuView view;
     private Universidad universidad;
     private Logic logic;
     private SchoolsView schoolsView;
     private CursoController cursoController;
     
-    public Control(PrincipalMenu pView) {
-        view = pView;
+    public Control(UniversityMenuView pView, PrincipalMenu pMenu) {
+        this.view = pView;
+        this.pMenu = pMenu;
         configurarListeners();
     }
+
     
     private void configurarListeners() {
-        view.getButtonAgregar().addActionListener(new ActionListener() {
+        pMenu.getButtonAgregar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                crearUniversidad();
+                crearUniversidad(view);
             }
         });
     }
     
-    private void crearUniversidad() {
-        String nombre = view.getNombreView();
-        String direccion = view.getDireccionView();
-        String telefono = view.getTelefonoView();
+    private void crearUniversidad(UniversityMenuView view) {
+    	
+    	ActualizarU optionsView = new ActualizarU();
+    	AgregarEscuela agregarEscuela = new AgregarEscuela();
+        String nombre = pMenu.getNombreView();
+        String direccion = pMenu.getDireccionView();
+        String telefono = pMenu.getTelefonoView();
         
         if(nombre.isEmpty() || direccion.isEmpty() || telefono.isEmpty()) {
-            JOptionPane.showMessageDialog(view, "Por favor, complete todos los campos", 
+            JOptionPane.showMessageDialog(pMenu, "Por favor, complete todos los campos", 
                 "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -42,44 +48,67 @@ public class Control {
         universidad = new Universidad(nombre, direccion, telefono);
         logic = new Logic(universidad);
         
-        JOptionPane.showMessageDialog(view, "Universidad " + nombre + " creada exitosamente", 
-            "Información", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(pMenu, "Universidad " + nombre + " creada exitosamente", 
+            "Información", JOptionPane.INFORMATION_MESSAGE);  
         
-        // Abrir ventana de opciones
-        abrirVentanaOpciones();
+        view.getBtnActualizarU().addActionListener(new ActionListener() {
+        	@Override
+        		public void actionPerformed(ActionEvent e) {
+        	actualizarPUni(optionsView);        
+            }	
+            });
+         view.getBtnAgregarE().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                actualizarPEscuela(agregarEscuela);
+            }
+         });    	    
+         view.getBtnConsultarE().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                schoolsView = new SchoolsView(universidad);
+                ActualizarEsc(schoolsView);
+            }
+        });
     }
-    
-    private void abrirVentanaOpciones() {
-        // Nueva implementacion que pasa la universidad como parámetro
-        OptionsView optionsView = new OptionsView();
-        
-        // Configurar listeners para los botones
+    private void actualizarPUni(ActualizarU optionsView) {
+    	view.cambiarPanelCentral(optionsView);
+    	actualizarDUni(optionsView);
+    }
+    private void actualizarDUni(ActualizarU optionsView) {
         optionsView.getBtnModificar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 actualizarDatosUniversidad(optionsView);
             }
         });
-        
-        optionsView.getBtnAgregarEscuela().addActionListener(new ActionListener() {
+    }
+    private void actualizarPEscuela(AgregarEscuela agregarEscuela) {
+    	view.cambiarPanelCentral(agregarEscuela);
+    	agregarDEscuela(agregarEscuela);
+    }
+    private void agregarDEscuela(AgregarEscuela agregarEscuela) {
+        agregarEscuela.getBtnAgregarEscuela().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                agregarEscuela(optionsView);
+                agregarEscuela(agregarEscuela);
             }
         });
-        
-        optionsView.getBtnConsultarEscuelas().addActionListener(new ActionListener() {
+    }
+    private void ActualizarEsc(SchoolsView schoolsView) {
+    	view.cambiarPanelCentral(schoolsView);
+    	ConsultarEsc(schoolsView);
+    }
+    private void ConsultarEsc(SchoolsView schoolsView) {
+        schoolsView.getBtnGestionarCursos().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 abrirVentanaEscuelas();
             }
         });
-        
-        optionsView.setVisible(true);
-        view.setVisible(false);
     }
     
-    private void actualizarDatosUniversidad(OptionsView optionsView) {
+    private void actualizarDatosUniversidad(ActualizarU optionsView) {
         String nuevaDireccion = optionsView.getTxtDireccion().getText();
         String nuevoTelefono = optionsView.getTxtTelefono().getText();
         
@@ -95,11 +124,11 @@ public class Control {
             "Información", JOptionPane.INFORMATION_MESSAGE);
     }
     
-    private void agregarEscuela(OptionsView optionsView) {
-        String nombreEscuela = optionsView.getTxtNombreEscuela().getText();
+    private void agregarEscuela(AgregarEscuela agregarEscuela) {
+        String nombreEscuela = agregarEscuela.getTxtNombreEscuela().getText();
         
         if(nombreEscuela.isEmpty()) {
-            JOptionPane.showMessageDialog(optionsView, "Por favor, ingrese el nombre de la escuela", 
+            JOptionPane.showMessageDialog(agregarEscuela, "Por favor, ingrese el nombre de la escuela", 
                 "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -107,26 +136,23 @@ public class Control {
         Escuela nuevaEscuela = new Escuela(nombreEscuela);
         logic.agregarEscuela(nuevaEscuela);
         
-        JOptionPane.showMessageDialog(optionsView, "Escuela " + nombreEscuela + " agregada exitosamente", 
+        JOptionPane.showMessageDialog(agregarEscuela, "Escuela " + nombreEscuela + " agregada exitosamente", 
             "Información", JOptionPane.INFORMATION_MESSAGE);
         
-        optionsView.getTxtNombreEscuela().setText("");
+        agregarEscuela.getTxtNombreEscuela().setText("");
     }
     
     private void abrirVentanaEscuelas() {
-        schoolsView = new SchoolsView(universidad);
-        
+
         // Crear el controlador para la gestion de cursos
-        cursoController = new CursoController(logic, schoolsView);
-        
+        cursoController = new CursoController(logic, schoolsView, view);
         schoolsView.getBtnVolver().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                schoolsView.dispose();
+                //schoolsView.dispose();
             }
         });
         
-        schoolsView.setVisible(true);
     }
     
     public void startGUI() {

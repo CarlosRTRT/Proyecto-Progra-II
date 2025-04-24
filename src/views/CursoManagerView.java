@@ -6,7 +6,7 @@ import javax.swing.border.TitledBorder;
 import models.Escuela;
 import models.Universidad;
 
-public class CursoManagerView extends JFrame {
+public class CursoManagerView extends JPanel {
     private static final long serialVersionUID = 1L;
     
     private JButton btnIncluir, btnConsultarCurso, btnListarCursosEscuela;
@@ -18,35 +18,40 @@ public class CursoManagerView extends JFrame {
     public CursoManagerView(Escuela escuela, Universidad universidad) {
         this.escuelaActual = escuela;
         this.universidad = universidad;
-        init();
+        init();	
     }
     
     private void init() {
-        // Configuracion basica de la ventana
-        setTitle("Gestion de Cursos - " + escuelaActual.getNombre());
+        //Configuracion basica de la ventana
         setLayout(new BorderLayout(15, 15));
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600, 400);
-        setLocationRelativeTo(null);
-        
+        setSize(600, 350);
+
         // Panel principal con las opciones
-        JPanel panelOpciones = new JPanel(new GridLayout(6, 1, 10, 10));
+        JPanel panelOpciones = new JPanel();
+        panelOpciones.setLayout(new BoxLayout(panelOpciones, BoxLayout.Y_AXIS));
+        panelOpciones.setAlignmentX(Component.CENTER_ALIGNMENT); // Alinea el panel al centro
         panelOpciones.setBorder(BorderFactory.createTitledBorder(
             BorderFactory.createLineBorder(Color.GRAY, 1, true),
             "Opciones de Gestion de Cursos",
             TitledBorder.LEFT,
             TitledBorder.TOP,
             new Font("SansSerif", Font.PLAIN, 14),
-            Color.GRAY 	
+            Color.GRAY
         ));
         
-        // Crear botones con estilo similar al resto de la aplicacion
+        // Crear botones
         btnIncluir = createStyledButton("Agregar un Curso");
+        btnIncluir.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnConsultarCurso = createStyledButton("Datos De Curso");
+        btnConsultarCurso.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnListarCursosEscuela = createStyledButton("Lista de cursos de la escuela de " + escuelaActual.getNombre());
+        btnListarCursosEscuela.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnListarTodosCursos = createStyledButton("Lista de cursos impartidos por la Universidad " + universidad.getNombreU());
+        btnListarTodosCursos.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnModificarCurso = createStyledButton("Modificar los datos de un curso");
+        btnModificarCurso.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnEliminarCurso = createStyledButton("Eliminar un curso");
+        btnEliminarCurso.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         // Añadir botones al panel
         panelOpciones.add(btnIncluir);
@@ -57,9 +62,8 @@ public class CursoManagerView extends JFrame {
         panelOpciones.add(btnEliminarCurso);
         
         // Panel para el boton Volver
-        JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER));  // Alineación centrada
         btnVolver = new JButton("Volver");
-        btnVolver.setForeground(Color.WHITE);
         btnVolver.setFont(new Font("SansSerif", Font.PLAIN, 12));
         panelBotones.add(btnVolver);
         
@@ -70,13 +74,9 @@ public class CursoManagerView extends JFrame {
     
     private JButton createStyledButton(String text) {
         JButton button = new JButton(text);
-        button.setForeground(Color.WHITE);
         button.setFont(new Font("SansSerif", Font.PLAIN, 13));
-        button.setHorizontalAlignment(SwingConstants.LEFT);
-        button.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(200, 200, 200), 1),
-            BorderFactory.createEmptyBorder(8, 15, 8, 15)
-        ));
+        button.setHorizontalAlignment(SwingConstants.CENTER);
+        button.setPreferredSize(new Dimension(350, 36));
         return button;
     }
     
