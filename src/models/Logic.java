@@ -67,7 +67,7 @@ public class Logic {
         
         for (Curso curso : cursos) {
             if (curso.getNombreCurso().equalsIgnoreCase(nombreCurso)) {
-                return "Nombre: " + curso.getNombreCurso() + ", Sigla: " + curso.getSigla();
+            	 return curso.toString();
             }
         }
         
@@ -75,55 +75,94 @@ public class Logic {
     }
     
     public String consultarCursosDeEscuela(Escuela pEscuela) {
-        StringBuilder resultado = new StringBuilder();
-        
-        ArrayList<Curso> cursos = pEscuela.getVector(); // Obtienes el vector de cursos de la escuela
-        if (cursos.isEmpty()) {
-            return "La escuela " + pEscuela.getNombre() + " no tiene cursos registrados.";
-        }
+    	 String resultado = "";
+    	    
+    	    ArrayList<Curso> cursos = pEscuela.getVector();
+    	    if (cursos.isEmpty()) {
+    	        return "La escuela " + pEscuela.getNombre() + " no tiene cursos registrados.";
+    	    }
 
-        resultado.append("Escuela: ").append(pEscuela.getNombre()).append("\n");
-        for (Curso curso : cursos) {
-            resultado.append(" - Nombre: ").append(curso.getNombreCurso())
-                     .append(", Sigla: ").append(curso.getSigla()).append("\n");
-        }
+    	    resultado += "Escuela: " + pEscuela.getNombre() + "\n";
+    	    for (Curso curso : cursos) {
+    	        resultado += " - " + curso.toString() + "\n";
+    	    }
 
-        return resultado.toString();
+    	    return resultado;
     }
     
     
     public String consultarCursosUniversidad(Universidad pUniversidad) {
-    	StringBuilder resultado = new StringBuilder();
-    	
-    	ArrayList <Escuela> escuelas =pUniversidad.getVector();
-    	 if (escuelas.isEmpty()) {
+    	 String resultado = "";
+    	    
+    	    ArrayList<Escuela> escuelas = pUniversidad.getVector();
+    	    if (escuelas.isEmpty()) {
     	        return "No hay escuelas registradas.";
     	    }
-    	 
-    	 for (Escuela escuela : escuelas) {
-    	        ArrayList<Curso> cursos = escuela.getVector(); // Vector de cursos de la escuela actual
+    	    
+    	    for (Escuela escuela : escuelas) {
+    	        ArrayList<Curso> cursos = escuela.getVector();
     	        if (cursos.isEmpty()) {
-    	            resultado.append("Escuela: ").append(escuela.getNombre()).append(" no tiene cursos registrados.\n");
+    	            resultado += "Escuela: " + escuela.getNombre() + " no tiene cursos registrados.\n";
     	        } else {
-    	            resultado.append("Escuela: ").append(escuela.getNombre()).append("\n");
+    	            resultado += "Escuela: " + escuela.getNombre() + "\n";
     	            for (Curso curso : cursos) {
-    	                resultado.append(" - Nombre: ").append(curso.getNombreCurso())
-    	                         .append(", Sigla: ").append(curso.getSigla()).append("\n");
+    	                resultado += " - " + curso.toString() + "\n";
     	            }
     	        }
-    	        resultado.append("\n");
+    	        resultado += "\n";
     	    }
 
-    	    return resultado.toString();
+    	    return resultado;
+    }
+    //NUEVO!!
+    public String agregarNuevoProfesor(String pNombre,String pCedula,String pApellido1,String pApellido2, Escuela escuelaSeleccionada, Universidad u) {
+    	if (verificarProfesor(pCedula, u)) {
+            return "Ya existe un profesor con la cédula " + pCedula;
+        }
+
+        Profesor nuevoProfesor = new Profesor(pCedula, pNombre, pApellido1, pApellido2);
+        escuelaSeleccionada.getProfesores().add(nuevoProfesor);
+        
+        return "Profesor agregado exitosamente a la escuela " + escuelaSeleccionada.getNombre();
     }
     
-   
+    public boolean verificarProfesor(String cedula, Universidad universidad) {
+        ArrayList<Escuela> escuelas = universidad.getVector();
+
+        for (Escuela escuela : escuelas) {
+            ArrayList<Profesor> profesores = escuela.getProfesores();
+            for (Profesor profesor : profesores) {
+                if (profesor.getCedula().equals(cedula)) {
+                    return true; // Ya existe un profesor con esta cédula
+                }
+            }
+        }
+
+        return false; // No se encontró en ninguna escuela
+    }
     
-    
-    
-    
-    
-    
+    public Profesor buscarProfesor(String cedula, Universidad universidad) {
+        for (Escuela escuela : universidad.getVector()) {
+            for (Profesor profesor : escuela.getProfesores()) {
+                if (profesor.getCedula().equals(cedula)) {
+                    return profesor;
+                }
+            }
+        }
+        return null;
+        //No hice que imprimiera el toString del profesor ya que de esta forma solo retornando al profesor el metodo sirve para mas cosas
+    }
+    public void modificarDatosProfesor(Profesor profesor, String nuevoNombre, String nuevoApellido1, String nuevoApellido2) {
+        if (nuevoNombre != null && !nuevoNombre.isEmpty()) {
+            profesor.setNombre(nuevoNombre);
+        }
+        if (nuevoApellido1 != null && !nuevoApellido1.isEmpty()) {
+            profesor.setApellido1(nuevoApellido1);
+        }
+        if (nuevoApellido2 != null && !nuevoApellido2.isEmpty()) {
+            profesor.setApellido2(nuevoApellido2);
+        }
+    }
     
     
     

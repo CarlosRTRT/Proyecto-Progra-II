@@ -1,8 +1,11 @@
 package models;
 
+import java.util.ArrayList;
+
 public class Curso {
 	private String sigla;
 	private String nombreCurso;
+	private ArrayList <Profesor> profesoresDelCurso;
 	
 	public Curso(String pSigla,String pNombreCurso) {
 		sigla = pSigla;
@@ -23,5 +26,13 @@ public class Curso {
 
 	public void setNombreCurso(String pNombreCurso) {
 		this.nombreCurso = pNombreCurso;
+	}
+
+	public ArrayList<Profesor> getProfesoresDelCurso() {
+		return profesoresDelCurso;
+	}
+	public String toString() {
+		
+	    return "Nombre: " + nombreCurso + ", Sigla: " + sigla;
 	}
 }

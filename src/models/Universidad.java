@@ -33,9 +33,7 @@ public class Universidad {
 	public String getTelefonoU() {
 		return varTelefono;
 	}
-	public void setVector(ArrayList <Escuela> pVector) {
-		departamentos = pVector;
-	}
+
 	public ArrayList <Escuela> getVector() {
 		return departamentos;
 	}

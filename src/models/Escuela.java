@@ -4,11 +4,14 @@ import java.util.ArrayList;
 
 public class Escuela {
 	private String varNombre;
+	private Profesor director;
 	private ArrayList <Curso> cursos;
+	private ArrayList <Profesor> profesoresDeEscuela;
 	
 	public Escuela(String pNombre) {
 		varNombre = pNombre;
 		cursos = new ArrayList<>();
+		profesoresDeEscuela = new ArrayList<>();
 	}
 	public void setNombre(String pNombre) {
 		varNombre = pNombre;
@@ -22,4 +25,8 @@ public class Escuela {
 	public ArrayList <Curso> getVector(){	
 		return cursos;
 	}
+	public ArrayList<Profesor> getProfesores() {
+		return profesoresDeEscuela;
+	}
+	
 }
