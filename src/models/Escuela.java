@@ -22,7 +22,10 @@ public class Escuela {
 	public void setVector(ArrayList pArray) {
 		cursos = pArray;
 	}
-	public ArrayList <Curso> getVector(){	
+	public void setDirector(Profesor pDirector) {
+		this.director = pDirector;
+	}
+	public ArrayList <Curso> getCursos(){	
 		return cursos;
 	}
 	public ArrayList<Profesor> getProfesores() {

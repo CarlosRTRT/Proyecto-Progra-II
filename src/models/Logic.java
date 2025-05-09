@@ -37,11 +37,11 @@ public class Logic {
     // Metodos CRUD para cursos de escuelas
     
     public void agregarCurso(Curso pCurso, Escuela pEscuela) {
-    	pEscuela.getVector().add(pCurso);
+    	pEscuela.getCursos().add(pCurso);
     }
     
     public boolean eliminarCurso(String nombreCurso,Escuela pEscuela) {
-    	ArrayList <Curso> cursos =pEscuela.getVector();
+    	ArrayList <Curso> cursos =pEscuela.getCursos();
     	for(int i=0; i< cursos.size(); i++) {
     		if(cursos.get(i).getNombreCurso().equalsIgnoreCase(nombreCurso)) {
     			cursos.remove(i);
@@ -52,7 +52,7 @@ public class Logic {
     }
     
     public boolean modificarCurso(String nombreCurso,Escuela pEscuela, String nuevoNombreCurso) {
-    	ArrayList <Curso> cursos =pEscuela.getVector();
+    	ArrayList <Curso> cursos =pEscuela.getCursos();
     	for (Curso curso : cursos) {
             if (curso.getNombreCurso().equalsIgnoreCase(nombreCurso)) {
                 curso.setNombreCurso(nuevoNombreCurso);
@@ -63,7 +63,7 @@ public class Logic {
     }
     
     public String consultarCurso(Escuela pEscuela, String nombreCurso) {
-        ArrayList<Curso> cursos = pEscuela.getVector(); // Obtienes el vector de cursos de la escuela
+        ArrayList<Curso> cursos = pEscuela.getCursos(); // Obtienes el vector de cursos de la escuela
         
         for (Curso curso : cursos) {
             if (curso.getNombreCurso().equalsIgnoreCase(nombreCurso)) {
@@ -77,7 +77,7 @@ public class Logic {
     public String consultarCursosDeEscuela(Escuela pEscuela) {
     	 String resultado = "";
     	    
-    	    ArrayList<Curso> cursos = pEscuela.getVector();
+    	    ArrayList<Curso> cursos = pEscuela.getCursos();
     	    if (cursos.isEmpty()) {
     	        return "La escuela " + pEscuela.getNombre() + " no tiene cursos registrados.";
     	    }
@@ -100,7 +100,7 @@ public class Logic {
     	    }
     	    
     	    for (Escuela escuela : escuelas) {
-    	        ArrayList<Curso> cursos = escuela.getVector();
+    	        ArrayList<Curso> cursos = escuela.getCursos();
     	        if (cursos.isEmpty()) {
     	            resultado += "Escuela: " + escuela.getNombre() + " no tiene cursos registrados.\n";
     	        } else {
@@ -164,10 +164,46 @@ public class Logic {
         }
     }
     
+    public void agregarCursoProfesor(Profesor pProfesor, Curso pCurso) {
+    	if(pProfesor.getCursosDelProfesor().contains(pCurso) == false) {
+    		pProfesor.getCursosDelProfesor().add(pCurso);
+    	}
+    	if(pCurso.getProfesoresDelCurso().contains(pProfesor) == false) {
+    		pCurso.getProfesoresDelCurso().add(pProfesor);
+    	}
+    }
     
+    public void cambiarDirectorEscuela(Profesor pDirector, Escuela pEscuela) {
+    	Director nuevoDirector = new Director(pDirector, pEscuela);
+    	pEscuela.setDirector(nuevoDirector);
+    }
     
+    public String mostrarProfesores(Escuela pEscuela) {
+    	String txt = ""; int contador = 1;
+    	if(!pEscuela.getProfesores().isEmpty()) {
+    		txt += "Profesores \n";
+        	for(Profesor profesorAux : pEscuela.getProfesores()) {
+        		txt += contador++ + " | "+ profesorAux.getCedula() + " " + profesorAux.getNombre() +
+                        " " + profesorAux.getApellido1() + " " + profesorAux.getApellido2() + "\n";
+        	}
+    	}else {
+    		txt = "Error";
+    	}
+    	return txt;
+    }
     
-    
+    public String mostrarProfesoresDeCurso(Escuela pEscuela, String pNombreCurso) {
+    	String txt = "";
+    	for(Curso cursoAux : pEscuela.getCursos()) {
+    		if(cursoAux.getNombreCurso().equals(pNombreCurso)) {
+    			for(Profesor profeAux : cursoAux.getProfesoresDelCurso()) {
+        			txt += profeAux.toString() + "\n";
+    			}
+    			return txt;
+    		}
+    	}
+    	return "Error";
+    }
     
     
     
