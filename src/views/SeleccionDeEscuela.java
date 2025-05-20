@@ -1,83 +1,96 @@
 package views;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
-import java.util.ArrayList;
 import models.Escuela;
 import models.Universidad;
 
 public class SchoolsView extends JPanel {
     private static final long serialVersionUID = 1L;
-    
+
     private JComboBox<String> comboEscuelas;
     private JButton btnConsultar, btnGestionarCursos, btnVolver;
     private Universidad universidad;
-    
+
     public SchoolsView(Universidad universidad) {
         this.universidad = universidad;
         init();
     }
-    
+
     private void init() {
-        // Configuracion de la ventana
-        setLayout(new BorderLayout(15, 15));
-        setSize(500, 200);
-        
+
+        setLayout(new BorderLayout());
+        setPreferredSize(new Dimension(650, 300));
+
         // Panel principal
         JPanel panelPrincipal = new JPanel(new BorderLayout(10, 10));
         panelPrincipal.setBorder(BorderFactory.createTitledBorder(
-            BorderFactory.createLineBorder(Color.GRAY, 1, true),
-            "Seleccion de Escuela",
-            TitledBorder.LEFT,
-            TitledBorder.TOP,
-            new Font("SansSerif", Font.PLAIN, 14),
-            Color.GRAY
+                BorderFactory.createLineBorder(Color.DARK_GRAY, 1, true),
+                "Seleccion de Escuela",
+                TitledBorder.CENTER,
+                TitledBorder.TOP,
+                new Font("SansSerif", Font.PLAIN, 14),
+                Color.GRAY
         ));
-        
-        // Panel de seleccion
-        JPanel panelSeleccion = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        
+
+        JPanel panelSeleccion = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
+        panelSeleccion.setBorder(BorderFactory.createEmptyBorder(10, 60, 10, 0));
+
         JLabel lblEscuela = new JLabel("Escuela:");
-        lblEscuela.setFont(new Font("SansSerif", Font.PLAIN, 12));
-        
-        // Llenar el combo box con las escuelas
+        lblEscuela.setFont(new Font("SansSerif", Font.PLAIN, 13));
+
         comboEscuelas = new JComboBox<>();
+        comboEscuelas.setPreferredSize(new Dimension(300, 40));
+        comboEscuelas.setFont(new Font("SansSerif", Font.PLAIN, 13));
         actualizarListaEscuelas();
-        
+
         panelSeleccion.add(lblEscuela);
         panelSeleccion.add(comboEscuelas);
-        
-        // Panel de botones
-        JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
-        
-        
+
+        JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 20));
+
         btnGestionarCursos = new JButton("Gestionar Cursos");
         btnGestionarCursos.setBackground(Color.BLUE);
         btnGestionarCursos.setForeground(Color.WHITE);
-        btnGestionarCursos.setFont(new Font("SansSerif", Font.PLAIN, 12));
-        
-        
+        btnGestionarCursos.setFocusPainted(false);
+        btnGestionarCursos.setFont(new Font("SansSerif", Font.PLAIN, 13));
+        btnGestionarCursos.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+
+        btnVolver = new JButton("Volver");
+        btnVolver.setFont(new Font("SansSerif", Font.PLAIN, 13));
+        btnVolver.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+
         panelBotones.add(btnGestionarCursos);
-        
-        // Panel inferior con boton volver
-        JPanel panelInferior = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        
-        // Añadir paneles a la ventana
+
         panelPrincipal.add(panelSeleccion, BorderLayout.NORTH);
         panelPrincipal.add(panelBotones, BorderLayout.CENTER);
-        
+
+        JPanel panelInferior = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        if (btnVolver != null) {
+            panelInferior.add(btnVolver);
+        }
+
         add(panelPrincipal, BorderLayout.CENTER);
         add(panelInferior, BorderLayout.SOUTH);
     }
-    
+
     public void actualizarListaEscuelas() {
         comboEscuelas.removeAllItems();
         for(Escuela escuela : universidad.getVector()) {
             comboEscuelas.addItem(escuela.getNombre());
         }
     }
-    
+
     public Escuela getEscuelaSeleccionada() {
         int index = comboEscuelas.getSelectedIndex();
         if(index >= 0) {
@@ -85,20 +98,19 @@ public class SchoolsView extends JPanel {
         }
         return null;
     }
-    
-    // Getters para los botones
+
     public JButton getBtnConsultar() {
         return btnConsultar;
     }
-    
+
     public JButton getBtnGestionarCursos() {
         return btnGestionarCursos;
     }
-    
+
     public JButton getBtnVolver() {
         return btnVolver;
     }
-    
+
     public Universidad getUniversidad() {
         return universidad;
     }

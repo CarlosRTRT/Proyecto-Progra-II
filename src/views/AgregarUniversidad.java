@@ -16,25 +16,25 @@ import javax.swing.JPanel;
 public class UniversityMenuView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private JPanel panelSuperior, panelCentral;
-	private JButton boton1, boton2, boton3;
+	private JButton boton1, boton2, boton3, boton4;
 	private JLabel etiqueta1;
 	private JPanel panel;
-	
-    public UniversityMenuView(JPanel panel) {
-    	this.panel = panel;
+
+	public UniversityMenuView(JPanel panel) {
+		this.panel = panel;
 		init();
 	}
-	
+
 	private void init() {
 		setTitle("Menu De Opciones");
 		setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(800, 800);
 		setLocation(0, 0);
-		
-		
+
+
 		panelSuperior();
 		panelCentral();
 	}
@@ -45,46 +45,48 @@ public class UniversityMenuView extends JFrame {
 		panelSuperior.setLayout(new FlowLayout());
 		panelSuperior.setPreferredSize(new Dimension(getWidth(), 50));
 		panelSuperior.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-		
+
 		boton1 = new JButton("Actualizar Datos");
 		boton2 = new JButton("Agregar Escuela");
 		boton3 = new JButton("Consultar Escuelas");
-		
-		Dimension botonSize = new Dimension(180, 37); 
+		boton4 = new JButton("Administrar Profesores");
+
+		Dimension botonSize = new Dimension(180, 37);
 
 		boton1.setPreferredSize(botonSize);
 		boton2.setPreferredSize(botonSize);
 		boton3.setPreferredSize(botonSize);
+		boton4.setPreferredSize(botonSize);
 
-		
+
 		panelSuperior.add(boton1);
 		panelSuperior.add(boton2);
 		panelSuperior.add(boton3);
-		
+		panelSuperior.add(boton4);
+
 		add(panelSuperior, BorderLayout.NORTH);
-		
+
 	}
 	public void panelCentral() {
-	    panelCentral = new JPanel();
-	    panelCentral.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 200)); 
-	    panelCentral.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+		panelCentral = new JPanel();
+		panelCentral.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 200));
+		panelCentral.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 
-	    panelCentral.add(panel);
-	    add(panelCentral, BorderLayout.CENTER);
+		panelCentral.add(panel);
+		add(panelCentral, BorderLayout.CENTER);
 	}
 	public void cambiarPanelCentral(JPanel nuevoPanel) {
-	    // Check if panelCentral is null before attempting to use it
-	    if (panelCentral == null) {
-	        panelCentral = new JPanel();
-	        panelCentral.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 200)); 
-	        panelCentral.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-	        add(panelCentral, BorderLayout.CENTER);
-	    }
-	    
-	    panelCentral.removeAll();
-	    panelCentral.add(nuevoPanel);
-	    panelCentral.revalidate();
-	    panelCentral.repaint();
+		if (panelCentral == null) {
+			panelCentral = new JPanel();
+			panelCentral.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 200));
+			panelCentral.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+			add(panelCentral, BorderLayout.CENTER);
+		}
+
+		panelCentral.removeAll();
+		panelCentral.add(nuevoPanel);
+		panelCentral.revalidate();
+		panelCentral.repaint();
 	}
 
 	public void setLabelText(String text) {
@@ -99,8 +101,11 @@ public class UniversityMenuView extends JFrame {
 	public JButton getBtnConsultarE() {
 		return boton3;
 	}
+	public JButton getBtnAdministrarP() {
+		return boton4;
+	}
 	public JPanel getPanelCentral() {
-	    return panelCentral;
+		return panelCentral;
 	}
 
 	public void addButton1Listener(ActionListener listener) {
@@ -111,5 +116,8 @@ public class UniversityMenuView extends JFrame {
 	}
 	public void addButton3Listener(ActionListener listener) {
 		boton3.addActionListener(listener);
+	}
+	public void addButton4Listener(ActionListener listener) {
+		boton4.addActionListener(listener);
 	}
 }

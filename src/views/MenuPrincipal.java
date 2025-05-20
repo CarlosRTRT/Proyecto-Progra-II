@@ -18,11 +18,11 @@ public class PrincipalMenu extends JPanel {
 
 	private void init() {
 		//Ventana Principal
-		setLayout(new BorderLayout(15, 15));
-		setSize(600, 240);
+		setLayout(new BorderLayout());
+	    setPreferredSize(new Dimension(650, 300));
 
 		//Panel Formulario
-		JPanel panelFormulario = new JPanel(new GridLayout(4, 2));
+		JPanel panelFormulario = new JPanel(new GridLayout(3, 2));
 		panelFormulario.setBorder(BorderFactory.createTitledBorder(
 			BorderFactory.createLineBorder(Color.DARK_GRAY, 1, true),
 			"Datos de la Universidad",
@@ -31,17 +31,16 @@ public class PrincipalMenu extends JPanel {
 			new Font("SansSerif", Font.PLAIN, 14),
 			Color.GRAY
 		));
-		
-		panelFormulario.setPreferredSize(new Dimension(500, 170));
 
 
 		Font labelFont = new Font("SansSerif", Font.PLAIN, 13);
-		Border leftPadding = BorderFactory.createEmptyBorder(0, 5, 0, 0);
+		Border leftPadding = BorderFactory.createEmptyBorder(0, 80, 0, 0);
 
 		JLabel lblNombre = new JLabel("Nombre");
 		lblNombre.setFont(labelFont);
 		lblNombre.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNombre.setBorder(leftPadding);
+
 
 		JLabel lblDireccion = new JLabel("Direccion");
 		lblDireccion.setFont(labelFont);
@@ -59,19 +58,23 @@ public class PrincipalMenu extends JPanel {
 		telefono = new JTextField();
 
 		//Ajustar altura de los campos
-		nombre.setPreferredSize(new Dimension(200, 25));
-		direccion.setPreferredSize(new Dimension(200, 25));
-		telefono.setPreferredSize(new Dimension(200, 25));
+		nombre.setPreferredSize(new Dimension(300, 40));
+		direccion.setPreferredSize(new Dimension(300, 40));
+		telefono.setPreferredSize(new Dimension(300, 40));
+		
 
 		//Crear paneles para envolver cada campo
-		JPanel panelNombre = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		JPanel panelNombre = new JPanel(new FlowLayout());
 		panelNombre.add(nombre);
+		panelNombre.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
 
-		JPanel panelDireccion = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		JPanel panelDireccion = new JPanel(new FlowLayout());
 		panelDireccion.add(direccion);
+		panelDireccion.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
 
-		JPanel panelTelefono = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		JPanel panelTelefono = new JPanel(new FlowLayout());
 		panelTelefono.add(telefono);
+		panelTelefono.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
 
 		//Agregar al formulario
 		panelFormulario.add(lblNombre);
