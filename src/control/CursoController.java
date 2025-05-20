@@ -6,14 +6,14 @@ import javax.swing.JOptionPane;
 
 import models.*;
 import views.*;
-import com.formdev.flatlaf.FlatDarkLaf;
+
 public class CursoController {
     private Logic logic;
-    private SchoolsView schoolsView;
-    private CursoManagerView managerView;
-    private UniversityMenuView view;
+    private SeleccionDeEscuela schoolsView;
+    private GestionDeCursos managerView;
+    private AgregarUniversidad view;
     
-    public CursoController(Logic logic, SchoolsView schoolsView, UniversityMenuView pView) {
+    public CursoController(Logic logic, SeleccionDeEscuela schoolsView, AgregarUniversidad pView) {
         this.logic = logic;
         this.schoolsView = schoolsView;
         this.view = pView;
@@ -37,7 +37,7 @@ public class CursoController {
             return;
         }
         
-        managerView = new CursoManagerView(escuelaSeleccionada, logic.getUniversidad());
+        managerView = new GestionDeCursos(escuelaSeleccionada, logic.getUniversidad());
         configurarListenersManager();
         
     }
@@ -276,7 +276,7 @@ public class CursoController {
                 } else {
                     JOptionPane.showMessageDialog(modificarView, 
                         "Curso encontrado. Ahora puede modificar su nombre.", 
-                        "Información", JOptionPane.INFORMATION_MESSAGE);
+                        "Informaciï¿½n", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });
@@ -341,7 +341,7 @@ public class CursoController {
                     
                     // Confirmar antes de eliminar
                     int respuesta = JOptionPane.showConfirmDialog(eliminarView, 
-                        "¿Esta seguro que desea eliminar el curso \"" + nombreCurso + "\"?", 
+                        "ï¿½Esta seguro que desea eliminar el curso \"" + nombreCurso + "\"?", 
                         "Confirmar eliminacion", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                     
                     if (respuesta == JOptionPane.YES_OPTION) {

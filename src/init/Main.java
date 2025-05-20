@@ -13,8 +13,8 @@ public class Main {
             ex.printStackTrace();
         }
         // Crear instancia de View (GUI).
-        PrincipalMenu pMenu = new PrincipalMenu();
-        UniversityMenuView universityView = new UniversityMenuView(pMenu);
+        MenuPrincipal pMenu = new MenuPrincipal();
+        AgregarUniversidad universityView = new AgregarUniversidad(pMenu);
         Control controller = new Control(universityView, pMenu);
         // Iniciar la GUI por medio de la controller.
         controller.startGUI();

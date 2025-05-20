@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-public class UniversityMenuView extends JFrame {
+public class AgregarUniversidad extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
@@ -22,7 +22,7 @@ public class UniversityMenuView extends JFrame {
 	private JLabel etiqueta1;
 	private JPanel panel;
 
-	public UniversityMenuView(JPanel panel) {
+	public AgregarUniversidad(JPanel panel) {
 		this.panel = panel;
 		init();
 	}

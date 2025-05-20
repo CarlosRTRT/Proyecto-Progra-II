@@ -2,7 +2,6 @@ package views;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -16,7 +15,7 @@ import javax.swing.border.TitledBorder;
 import models.Escuela;
 import models.Universidad;
 
-public class CursoManagerView extends JPanel {
+public class GestionDeCursos extends JPanel {
     private static final long serialVersionUID = 1L;
 
     private JButton btnIncluir, btnConsultarCurso, btnListarCursosEscuela;
@@ -25,7 +24,7 @@ public class CursoManagerView extends JPanel {
     private Escuela escuelaActual;
     private Universidad universidad;
 
-    public CursoManagerView(Escuela escuela, Universidad universidad) {
+    public GestionDeCursos(Escuela escuela, Universidad universidad) {
         this.escuelaActual = escuela;
         this.universidad = universidad;
         init();

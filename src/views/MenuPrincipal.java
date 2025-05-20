@@ -6,13 +6,13 @@ import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
 
-public class PrincipalMenu extends JPanel {
+public class MenuPrincipal extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	public JTextField nombre, direccion, telefono;
 	public JButton btnAgregar;
 
-	public PrincipalMenu() {
+	public MenuPrincipal() {
 		init();		
 	}
 

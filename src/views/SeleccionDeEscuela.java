@@ -2,7 +2,6 @@ package views;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -15,14 +14,14 @@ import javax.swing.border.TitledBorder;
 import models.Escuela;
 import models.Universidad;
 
-public class SchoolsView extends JPanel {
+public class SeleccionDeEscuela extends JPanel {
     private static final long serialVersionUID = 1L;
 
     private JComboBox<String> comboEscuelas;
     private JButton btnConsultar, btnGestionarCursos, btnVolver;
     private Universidad universidad;
 
-    public SchoolsView(Universidad universidad) {
+    public SeleccionDeEscuela(Universidad universidad) {
         this.universidad = universidad;
         init();
     }

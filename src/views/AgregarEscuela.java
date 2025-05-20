@@ -1,60 +1,87 @@
 package views;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.TitledBorder;
 
 public class AgregarEscuela extends JPanel {
-    
+
     private static final long serialVersionUID = 1L;
-    
-    // Componentes para escuelas
+
     private JTextField txtNombreEscuela;
     private JButton btnAgregarEscuela;
-    
+
     public AgregarEscuela() {
         init();
     }
+
     private void init() {
-    	// Configuracion de la ventana
-    	setLayout(new BorderLayout());
-    	setSize(600, 325);
-        JPanel mainPanel = new JPanel(new GridLayout(2, 1, 10, 10));
-        JPanel panelEscuelas = new JPanel(new GridLayout(3, 2, 10, 10));
 
-    	PAgregar(mainPanel, panelEscuelas);
-    } 
+        setLayout(new BorderLayout());
+        setPreferredSize(new Dimension(650, 300));
 
-    public void PAgregar(JPanel mainPanel, JPanel panelEscuelas) {
-    	// Panel para gestionar escuelas
-        
-        panelEscuelas.setBorder(BorderFactory.createTitledBorder("Gestion de Escuelas"));
-        
+        // Panel para gestionar escuelas
+        JPanel panelEscuelas = new JPanel(new GridLayout(1, 2));
+        panelEscuelas.setBorder(BorderFactory.createTitledBorder(
+                BorderFactory.createLineBorder(Color.DARK_GRAY, 1, true),
+                "Agregar Escuelas",
+                TitledBorder.CENTER,
+                TitledBorder.TOP,
+                new Font("SansSerif", Font.PLAIN, 14),
+                Color.GRAY
+        ));
+
+        // Label para el nombre de la escuela
+        Font labelFont = new Font("SansSerif", Font.PLAIN, 13);
+        JLabel lblNombreEscuela = new JLabel("Nombre de Escuela:");
+        lblNombreEscuela.setFont(labelFont);
+        lblNombreEscuela.setHorizontalAlignment(SwingConstants.LEFT);
+        lblNombreEscuela.setBorder(BorderFactory.createEmptyBorder(0, 80, 0, 0));
+
         txtNombreEscuela = new JTextField();
-        panelEscuelas.add(new JLabel("Nombre de Escuela:"));
-        panelEscuelas.add(txtNombreEscuela);
-        
+        txtNombreEscuela.setPreferredSize(new Dimension(300, 40));
+
+        // Panel para envolver el campo de texto
+        JPanel panelTextField = new JPanel(new FlowLayout());
+        panelTextField.add(txtNombreEscuela);
+        panelTextField.setBorder(BorderFactory.createEmptyBorder(90, 0, 0, 0));
+
+        // Agregar componentes al panel de escuelas
+        panelEscuelas.add(lblNombreEscuela);
+        panelEscuelas.add(panelTextField);
+
+        // Boton
         btnAgregarEscuela = new JButton("Agregar Escuela");
-        panelEscuelas.add(new JLabel(""));
-        panelEscuelas.add(btnAgregarEscuela);        
+        btnAgregarEscuela.setBackground(Color.BLUE);
+        btnAgregarEscuela.setForeground(Color.WHITE);
+        btnAgregarEscuela.setFocusPainted(false);
+        btnAgregarEscuela.setFont(new Font("SansSerif", Font.PLAIN, 13));
+        btnAgregarEscuela.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+
+        // Panel para el boton
+        JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        panelBoton.add(btnAgregarEscuela);
+
+        // Agregar paneles al panel principal
         add(panelEscuelas, BorderLayout.CENTER);
+        add(panelBoton, BorderLayout.SOUTH);
     }
 
-
-    
-    // Getters para los componentes
-    
     public JTextField getTxtNombreEscuela() {
         return txtNombreEscuela;
     }
-    
+
     public JButton getBtnAgregarEscuela() {
         return btnAgregarEscuela;
     }
-
 }

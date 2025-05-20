@@ -1,6 +1,5 @@
 package views;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -8,13 +7,12 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
-public class ActualizarU extends JPanel {
+public class ModificarUniversidad extends JPanel {
     
     private static final long serialVersionUID = 1L;
     
@@ -23,7 +21,7 @@ public class ActualizarU extends JPanel {
     private JButton btnModificar;
     
 
-    public ActualizarU() {
+    public ModificarUniversidad() {
         init();
     }
     private void init() {

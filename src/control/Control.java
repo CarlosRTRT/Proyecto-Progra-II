@@ -8,20 +8,21 @@ import models.*;
 import views.*;
 
 public class Control {
-    private PrincipalMenu pMenu;
-    private UniversityMenuView view;
+    private MenuPrincipal pMenu;
+    private AgregarUniversidad view;
     private Universidad universidad;
     private Logic logic;
-    private SchoolsView schoolsView;
+    private SeleccionDeEscuela schoolsView;
     private CursoController cursoController;
-    
-    public Control(UniversityMenuView pView, PrincipalMenu pMenu) {
+    private GestionDeProfesores profesoresPanel;
+
+    public Control(AgregarUniversidad pView, MenuPrincipal pMenu) {
         this.view = pView;
         this.pMenu = pMenu;
         configurarListeners();
     }
 
-    
+
     private void configurarListeners() {
         pMenu.getButtonAgregar().addActionListener(new ActionListener() {
             @Override
@@ -30,52 +31,106 @@ public class Control {
             }
         });
     }
-    
-    private void crearUniversidad(UniversityMenuView view) {
-    	
-    	ActualizarU optionsView = new ActualizarU();
-    	AgregarEscuela agregarEscuela = new AgregarEscuela();
+
+    private void crearUniversidad(AgregarUniversidad view) {
+
+        ModificarUniversidad optionsView = new ModificarUniversidad();
+        AgregarEscuela agregarEscuela = new AgregarEscuela();
         String nombre = pMenu.getNombreView();
         String direccion = pMenu.getDireccionView();
         String telefono = pMenu.getTelefonoView();
-        
+
         if(nombre.isEmpty() || direccion.isEmpty() || telefono.isEmpty()) {
-            JOptionPane.showMessageDialog(pMenu, "Por favor, complete todos los campos", 
-                "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(pMenu, "Por favor, complete todos los campos",
+                    "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         universidad = new Universidad(nombre, direccion, telefono);
         logic = new Logic(universidad);
-        
-        JOptionPane.showMessageDialog(pMenu, "Universidad " + nombre + " creada exitosamente", 
-            "Informaci髇", JOptionPane.INFORMATION_MESSAGE);  
-        
+
+        JOptionPane.showMessageDialog(pMenu, "Universidad " + nombre + " creada exitosamente",
+                "Informacion", JOptionPane.INFORMATION_MESSAGE);
+
         view.getBtnActualizarU().addActionListener(new ActionListener() {
-        	@Override
-        		public void actionPerformed(ActionEvent e) {
-        	actualizarPUni(optionsView);        
-            }	
-            });
-         view.getBtnAgregarE().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                actualizarPUni(optionsView);
+            }
+        });
+        view.getBtnAgregarE().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 actualizarPEscuela(agregarEscuela);
             }
-         });    	    
-         view.getBtnConsultarE().addActionListener(new ActionListener() {
+        });
+        view.getBtnConsultarE().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                schoolsView = new SchoolsView(universidad);
+                schoolsView = new SeleccionDeEscuela(universidad);
                 ActualizarEsc(schoolsView);
             }
         });
+        view.getBtnAdministrarP().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                abrirPanelProfesores();
+            }
+        });
     }
-    private void actualizarPUni(ActualizarU optionsView) {
-    	view.cambiarPanelCentral(optionsView);
-    	actualizarDUni(optionsView);
+
+    private void abrirPanelProfesores() {
+        profesoresPanel = new GestionDeProfesores();
+        view.cambiarPanelCentral(profesoresPanel);
+
+        // Configurar listeners para los botones del panel de profesores
+        configurarListenersProfesores();
     }
-    private void actualizarDUni(ActualizarU optionsView) {
+
+    private void configurarListenersProfesores() {
+        // Aqu铆 puedes configurar los listeners para cada bot贸n del panel de profesores
+        profesoresPanel.getBtnAgregarProfesor().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Implementar l贸gica para agregar profesor
+                JOptionPane.showMessageDialog(profesoresPanel, "Funcionalidad para agregar profesor",
+                        "Informaci贸n", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+
+        profesoresPanel.getBtnAdministrarProfesor().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Implementar l贸gica para administrar profesor
+                JOptionPane.showMessageDialog(profesoresPanel, "Funcionalidad para administrar profesor",
+                        "Informaci贸n", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+
+        profesoresPanel.getBtnConsultarEscuelas().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Implementar l贸gica para consultar escuelas
+                schoolsView = new SeleccionDeEscuela(universidad);
+                ActualizarEsc(schoolsView);
+            }
+        });
+
+        profesoresPanel.getBtnConsultarProfesorPorCurso().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Implementar l贸gica para consultar profesor por curso
+                JOptionPane.showMessageDialog(profesoresPanel, "Funcionalidad para consultar profesor por curso",
+                        "Informaci贸n", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+    }
+
+    private void actualizarPUni(ModificarUniversidad optionsView) {
+        view.cambiarPanelCentral(optionsView);
+        actualizarDUni(optionsView);
+    }
+    private void actualizarDUni(ModificarUniversidad optionsView) {
         optionsView.getBtnModificar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -84,8 +139,8 @@ public class Control {
         });
     }
     private void actualizarPEscuela(AgregarEscuela agregarEscuela) {
-    	view.cambiarPanelCentral(agregarEscuela);
-    	agregarDEscuela(agregarEscuela);
+        view.cambiarPanelCentral(agregarEscuela);
+        agregarDEscuela(agregarEscuela);
     }
     private void agregarDEscuela(AgregarEscuela agregarEscuela) {
         agregarEscuela.getBtnAgregarEscuela().addActionListener(new ActionListener() {
@@ -95,11 +150,11 @@ public class Control {
             }
         });
     }
-    private void ActualizarEsc(SchoolsView schoolsView) {
-    	view.cambiarPanelCentral(schoolsView);
-    	ConsultarEsc(schoolsView);
+    private void ActualizarEsc(SeleccionDeEscuela schoolsView) {
+        view.cambiarPanelCentral(schoolsView);
+        ConsultarEsc(schoolsView);
     }
-    private void ConsultarEsc(SchoolsView schoolsView) {
+    private void ConsultarEsc(SeleccionDeEscuela schoolsView) {
         schoolsView.getBtnGestionarCursos().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -107,48 +162,46 @@ public class Control {
             }
         });
     }
-    
-    private void actualizarDatosUniversidad(ActualizarU optionsView) {
+
+    private void actualizarDatosUniversidad(ModificarUniversidad optionsView) {
         String nuevaDireccion = optionsView.getTxtDireccion().getText();
         String nuevoTelefono = optionsView.getTxtTelefono().getText();
-        
+
         if(!nuevaDireccion.isEmpty()) {
             logic.actualizarDireccion(nuevaDireccion);
         }
-        
+
         if(!nuevoTelefono.isEmpty()) {
             logic.actualizarTelefono(nuevoTelefono);
         }
-        
-        JOptionPane.showMessageDialog(optionsView, "Datos de la universidad actualizados", 
-            "Informaci髇", JOptionPane.INFORMATION_MESSAGE);
+
+        JOptionPane.showMessageDialog(optionsView, "Datos de la universidad actualizados",
+                "Informaci贸n", JOptionPane.INFORMATION_MESSAGE);
     }
-    
+
     private void agregarEscuela(AgregarEscuela agregarEscuela) {
         String nombreEscuela = agregarEscuela.getTxtNombreEscuela().getText();
-        
+
         if(nombreEscuela.isEmpty()) {
-            JOptionPane.showMessageDialog(agregarEscuela, "Por favor, ingrese el nombre de la escuela", 
-                "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(agregarEscuela, "Por favor, ingrese el nombre de la escuela",
+                    "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         Escuela nuevaEscuela = new Escuela(nombreEscuela);
         logic.agregarEscuela(nuevaEscuela);
-        
-        JOptionPane.showMessageDialog(agregarEscuela, "Escuela " + nombreEscuela + " agregada exitosamente", 
-            "Informaci髇", JOptionPane.INFORMATION_MESSAGE);
-        
+
+        JOptionPane.showMessageDialog(agregarEscuela, "Escuela " + nombreEscuela + " agregada exitosamente",
+                "Informacion", JOptionPane.INFORMATION_MESSAGE);
+
         agregarEscuela.getTxtNombreEscuela().setText("");
     }
-    
-    private void abrirVentanaEscuelas() {
 
+    private void abrirVentanaEscuelas() {
         // Crear el controlador para la gestion de cursos
         cursoController = new CursoController(logic, schoolsView, view);
-        
     }
-    
+
     public void startGUI() {
         view.setVisible(true);
     }
