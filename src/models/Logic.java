@@ -43,7 +43,7 @@ public class Logic {
     public boolean eliminarCurso(String nombreCurso,Escuela pEscuela) {
     	ArrayList <Curso> cursos =pEscuela.getCursos();
     	for(int i=0; i< cursos.size(); i++) {
-    		if(cursos.get(i).getNombreCurso().equalsIgnoreCase(nombreCurso)) {
+    		if(cursos.get(i).getNombre().equalsIgnoreCase(nombreCurso)) {
     			cursos.remove(i);
     			return true;
     		}
@@ -54,7 +54,7 @@ public class Logic {
     public boolean modificarCurso(String nombreCurso,Escuela pEscuela, String nuevoNombreCurso) {
     	ArrayList <Curso> cursos =pEscuela.getCursos();
     	for (Curso curso : cursos) {
-            if (curso.getNombreCurso().equalsIgnoreCase(nombreCurso)) {
+            if (curso.getNombre().equalsIgnoreCase(nombreCurso)) {
                 curso.setNombreCurso(nuevoNombreCurso);
                 return true;
             }
@@ -66,7 +66,7 @@ public class Logic {
         ArrayList<Curso> cursos = pEscuela.getCursos(); // Obtienes el vector de cursos de la escuela
         
         for (Curso curso : cursos) {
-            if (curso.getNombreCurso().equalsIgnoreCase(nombreCurso)) {
+            if (curso.getNombre().equalsIgnoreCase(nombreCurso)) {
             	 return curso.toString();
             }
         }
@@ -115,14 +115,22 @@ public class Logic {
     	    return resultado;
     }
     //NUEVO!!
-    public String agregarNuevoProfesor(String pNombre,String pCedula,String pApellido1,String pApellido2, Escuela escuelaSeleccionada, Universidad u) {
-    	if (verificarProfesor(pCedula, u)) {
+    public String agregarNuevoProfesor(String pNombre, String pCedula, String pApellidos, Escuela escuelaSeleccionada, Universidad u) {
+        if (verificarProfesor(pCedula, u)) {
             return "Ya existe un profesor con la cédula " + pCedula;
         }
 
-        Profesor nuevoProfesor = new Profesor(pCedula, pNombre, pApellido1, pApellido2);
+        // Dividir apellidos en caso de que vengan juntos
+        String apellido1 = "";
+        String apellido2 = "";
+
+        if (pApellidos != null && !pApellidos.trim().isEmpty()) {
+            String[] apellidos = pApellidos.trim().split("\\s+", 2);
+        }
+
+        Profesor nuevoProfesor = new Profesor(pCedula, pNombre, pApellidos);
         escuelaSeleccionada.getProfesores().add(nuevoProfesor);
-        
+
         return "Profesor agregado exitosamente a la escuela " + escuelaSeleccionada.getNombre();
     }
     
@@ -152,15 +160,12 @@ public class Logic {
         return null;
         //No hice que imprimiera el toString del profesor ya que de esta forma solo retornando al profesor el metodo sirve para mas cosas
     }
-    public void modificarDatosProfesor(Profesor profesor, String nuevoNombre, String nuevoApellido1, String nuevoApellido2) {
+    public void modificarDatosProfesor(Profesor profesor, String nuevoNombre, String nuevosApellidos) {
         if (nuevoNombre != null && !nuevoNombre.isEmpty()) {
             profesor.setNombre(nuevoNombre);
         }
-        if (nuevoApellido1 != null && !nuevoApellido1.isEmpty()) {
-            profesor.setApellido1(nuevoApellido1);
-        }
-        if (nuevoApellido2 != null && !nuevoApellido2.isEmpty()) {
-            profesor.setApellido2(nuevoApellido2);
+        if (nuevosApellidos != null && !nuevosApellidos.isEmpty()) {
+            profesor.setApellidos(nuevosApellidos);
         }
     }
     
@@ -184,7 +189,7 @@ public class Logic {
     		txt += "Profesores \n";
         	for(Profesor profesorAux : pEscuela.getProfesores()) {
         		txt += contador++ + " | "+ profesorAux.getCedula() + " " + profesorAux.getNombre() +
-                        " " + profesorAux.getApellido1() + " " + profesorAux.getApellido2() + "\n";
+                        " " + profesorAux.getApellidos() + "\n";
         	}
     	}else {
     		txt = "Error";
@@ -195,7 +200,7 @@ public class Logic {
     public String mostrarProfesoresDeCurso(Escuela pEscuela, String pNombreCurso) {
     	String txt = "";
     	for(Curso cursoAux : pEscuela.getCursos()) {
-    		if(cursoAux.getNombreCurso().equals(pNombreCurso)) {
+    		if(cursoAux.getNombre().equals(pNombreCurso)) {
     			for(Profesor profeAux : cursoAux.getProfesoresDelCurso()) {
         			txt += profeAux.toString() + "\n";
     			}

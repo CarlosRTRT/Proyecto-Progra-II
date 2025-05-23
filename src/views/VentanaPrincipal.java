@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-public class AgregarUniversidad extends JFrame {
+public class VentanaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
@@ -22,7 +22,7 @@ public class AgregarUniversidad extends JFrame {
 	private JLabel etiqueta1;
 	private JPanel panel;
 
-	public AgregarUniversidad(JPanel panel) {
+	public VentanaPrincipal(JPanel panel) {
 		this.panel = panel;
 		init();
 	}
@@ -31,9 +31,8 @@ public class AgregarUniversidad extends JFrame {
 		setTitle("Menu De Opciones");
 		setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(800, 800);
-		setLocation(0, 0);
-
+		setSize(800, 700);
+		setLocationRelativeTo(null);
 
 		panelSuperior();
 		panelCentral();
@@ -69,7 +68,7 @@ public class AgregarUniversidad extends JFrame {
 	}
 	public void panelCentral() {
 		panelCentral = new JPanel();
-		panelCentral.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 200));
+		panelCentral.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 20));
 		panelCentral.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 
 		panelCentral.add(panel);

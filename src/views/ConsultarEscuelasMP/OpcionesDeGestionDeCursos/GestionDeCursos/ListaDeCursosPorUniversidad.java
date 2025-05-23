@@ -1,39 +1,39 @@
-package views;
+package views.ConsultarEscuelasMP.OpcionesDeGestionDeCursos.GestionDeCursos;
 
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import models.Escuela;
+import models.Universidad;
 
-public class ListarCursosEscuelaView extends JPanel {
+public class ListaDeCursosPorUniversidad extends JPanel {
     private static final long serialVersionUID = 1L;
     
     private JTextArea txtListaCursos;
     private JButton btnActualizar, btnVolver;
-    private Escuela escuelaActual;
+    private Universidad universidad;
     
-    public ListarCursosEscuelaView(Escuela escuela) {
-        this.escuelaActual = escuela;
+    public ListaDeCursosPorUniversidad(Universidad universidad) {
+        this.universidad = universidad;
         init();
     }
     
     private void init() {
-        // Configuracion basica de la ventana
+        // Configuracion básica de la ventana
         setLayout(new BorderLayout(15, 15));
-        setSize(550, 400);
+        setSize(600, 500);
         
         // Panel principal
         JPanel panelPrincipal = new JPanel(new BorderLayout(10, 10));
         panelPrincipal.setBorder(BorderFactory.createTitledBorder(
             BorderFactory.createLineBorder(Color.GRAY, 1, true),
-            "Cursos de " + escuelaActual.getNombre(),
+            "Todos los Cursos",
             TitledBorder.LEFT,
             TitledBorder.TOP,
             new Font("SansSerif", Font.PLAIN, 14),
             Color.GRAY
         ));
         
-        // Area de texto para mostrar los cursos
+        //Area de texto para mostrar los cursos
         txtListaCursos = new JTextArea();
         txtListaCursos.setEditable(false);
         txtListaCursos.setFont(new Font("Monospaced", Font.PLAIN, 12));
@@ -76,7 +76,7 @@ public class ListarCursosEscuelaView extends JPanel {
         return btnVolver;
     }
     
-    public Escuela getEscuelaActual() {
-        return escuelaActual;
+    public Universidad getUniversidad() {
+        return universidad;
     }
 }

@@ -1,11 +1,11 @@
-package views;
+package views.ConsultarEscuelasMP.OpcionesDeGestionDeCursos.GestionDeCursos;
 
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import models.Escuela;
 
-public class ConsultarCursoView extends JPanel {
+public class DatosDeCurso extends JPanel {
     private static final long serialVersionUID = 1L;
     
     private JTextField txtNombreCursoBuscar;
@@ -13,7 +13,7 @@ public class ConsultarCursoView extends JPanel {
     private JButton btnBuscar, btnVolver;
     private Escuela escuelaActual;
     
-    public ConsultarCursoView(Escuela escuela) {
+    public DatosDeCurso(Escuela escuela) {
         this.escuelaActual = escuela;
         init();
     }

@@ -1,4 +1,4 @@
-package views;
+package views.ConsultarEscuelasMP;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -33,14 +33,18 @@ public class SeleccionDeEscuela extends JPanel {
 
         // Panel principal
         JPanel panelPrincipal = new JPanel(new BorderLayout(10, 10));
-        panelPrincipal.setBorder(BorderFactory.createTitledBorder(
-                BorderFactory.createLineBorder(Color.DARK_GRAY, 1, true),
-                "Seleccion de Escuela",
-                TitledBorder.CENTER,
-                TitledBorder.TOP,
-                new Font("SansSerif", Font.PLAIN, 14),
-                Color.GRAY
+        panelPrincipal.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createEmptyBorder(50, 0, 0, 0), // 50px de espacio en la parte superior
+                BorderFactory.createTitledBorder(
+                        BorderFactory.createLineBorder(Color.DARK_GRAY, 1, true),
+                        "Seleccion de Escuela",
+                        TitledBorder.CENTER,
+                        TitledBorder.TOP,
+                        new Font("SansSerif", Font.PLAIN, 14),
+                        Color.GRAY
+                )
         ));
+
 
         JPanel panelSeleccion = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
         panelSeleccion.setBorder(BorderFactory.createEmptyBorder(10, 60, 10, 0));

@@ -1,4 +1,4 @@
-package views;
+package views.ModificarUniversidad;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -27,7 +27,7 @@ public class ModificarUniversidad extends JPanel {
     private void init() {
     	
         JPanel mainPanel = new JPanel(new GridLayout(2, 1));
-        mainPanel.setPreferredSize(new Dimension(650, 350));
+        mainPanel.setPreferredSize(new Dimension(650, 450));
 
 
     	PModificar(mainPanel);
@@ -35,14 +35,18 @@ public class ModificarUniversidad extends JPanel {
     public void PModificar(JPanel mainPanel) {
     	// Panel para modificar datos de universidad
         JPanel panelModificar = new JPanel(new GridLayout(3, 2));
-		panelModificar.setBorder(BorderFactory.createTitledBorder(
-				BorderFactory.createLineBorder(Color.DARK_GRAY, 1, true),
-				"Modificar Universidad",
-				TitledBorder.CENTER,
-				TitledBorder.TOP,
-				new Font("SansSerif", Font.PLAIN, 14),
-				Color.GRAY
-			));        
+        panelModificar.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createEmptyBorder(50, 0, 0, 0), // gap de 50px arriba
+                BorderFactory.createTitledBorder(
+                        BorderFactory.createLineBorder(Color.DARK_GRAY, 1, true),
+                        "Modificar Universidad",
+                        TitledBorder.CENTER,
+                        TitledBorder.TOP,
+                        new Font("SansSerif", Font.PLAIN, 14),
+                        Color.GRAY
+                )
+        ));
+
         //Labels
         JLabel lblDireccion = new JLabel("Nueva Direccion:");
         lblDireccion.setBorder(BorderFactory.createEmptyBorder(0,80,0,0));

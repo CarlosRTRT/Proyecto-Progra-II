@@ -1,4 +1,4 @@
-package views;
+package views.AgregarEscuela;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -32,14 +32,18 @@ public class AgregarEscuela extends JPanel {
 
         // Panel para gestionar escuelas
         JPanel panelEscuelas = new JPanel(new GridLayout(1, 2));
-        panelEscuelas.setBorder(BorderFactory.createTitledBorder(
-                BorderFactory.createLineBorder(Color.DARK_GRAY, 1, true),
-                "Agregar Escuelas",
-                TitledBorder.CENTER,
-                TitledBorder.TOP,
-                new Font("SansSerif", Font.PLAIN, 14),
-                Color.GRAY
+        panelEscuelas.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createEmptyBorder(50, 0, 0, 0), // gap de 50px en la parte superior
+                BorderFactory.createTitledBorder(
+                        BorderFactory.createLineBorder(Color.DARK_GRAY, 1, true),
+                        "Agregar Escuelas",
+                        TitledBorder.CENTER,
+                        TitledBorder.TOP,
+                        new Font("SansSerif", Font.PLAIN, 14),
+                        Color.GRAY
+                )
         ));
+
 
         // Label para el nombre de la escuela
         Font labelFont = new Font("SansSerif", Font.PLAIN, 13);
@@ -54,7 +58,7 @@ public class AgregarEscuela extends JPanel {
         // Panel para envolver el campo de texto
         JPanel panelTextField = new JPanel(new FlowLayout());
         panelTextField.add(txtNombreEscuela);
-        panelTextField.setBorder(BorderFactory.createEmptyBorder(90, 0, 0, 0));
+        panelTextField.setBorder(BorderFactory.createEmptyBorder(65, 0, 0, 0));
 
         // Agregar componentes al panel de escuelas
         panelEscuelas.add(lblNombreEscuela);

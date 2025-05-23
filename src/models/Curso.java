@@ -6,10 +6,11 @@ public class Curso {
 	private String sigla;
 	private String nombreCurso;
 	private ArrayList <Profesor> profesoresDelCurso;
-	
+
 	public Curso(String pSigla,String pNombreCurso) {
 		sigla = pSigla;
 		nombreCurso = pNombreCurso;
+		profesoresDelCurso = new ArrayList<>();  // ← LÍNEA NUEVA
 	}
 
 	public String getSigla() {
@@ -20,7 +21,7 @@ public class Curso {
 		this.sigla = pSigla;
 	}
 
-	public String getNombreCurso() {
+	public String getNombre() {
 		return nombreCurso;
 	}
 

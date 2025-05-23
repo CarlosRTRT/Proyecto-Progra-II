@@ -1,18 +1,18 @@
-package views;
+package views.ConsultarEscuelasMP.OpcionesDeGestionDeCursos.GestionDeCursos;
 
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import models.Escuela;
 
-public class EliminarCursoView extends JPanel {
+public class EliminarUnCurso extends JPanel {
     private static final long serialVersionUID = 1L;
     
     private JTextField txtNombreCurso;
     private JButton btnEliminar, btnCancelar;
     private Escuela escuelaActual;
     
-    public EliminarCursoView(Escuela escuela) {
+    public EliminarUnCurso(Escuela escuela) {
         this.escuelaActual = escuela;
         init();
     }

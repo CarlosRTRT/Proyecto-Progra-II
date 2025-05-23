@@ -2,18 +2,23 @@ package control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import models.*;
 import views.*;
+import views.ConsultarEscuelasMP.OpcionesDeGestionDeCursos.GestionDeCursos.*;
+import views.ConsultarEscuelasMP.OpcionesDeGestionDeCursos.OpcionesDeGestionDeCursos;
+import views.ConsultarEscuelasMP.SeleccionDeEscuela;
+import views.ConsultarEscuelasMP.OpcionesDeGestionDeCursos.GestionDeCursos.ProfesoresDeEscuela;
 
-public class CursoController {
+public class ConsultarEscuelasController {
     private Logic logic;
     private SeleccionDeEscuela schoolsView;
-    private GestionDeCursos managerView;
-    private AgregarUniversidad view;
+    private OpcionesDeGestionDeCursos managerView;
+    private VentanaPrincipal view;
     
-    public CursoController(Logic logic, SeleccionDeEscuela schoolsView, AgregarUniversidad pView) {
+    public ConsultarEscuelasController(Logic logic, SeleccionDeEscuela schoolsView, VentanaPrincipal pView) {
         this.logic = logic;
         this.schoolsView = schoolsView;
         this.view = pView;
@@ -27,7 +32,115 @@ public class CursoController {
             }
         });
     }
-    
+
+    private void abrirProfesoresDeEscuela() {
+        // Obtener todas las escuelas de la universidad
+        ArrayList<Escuela> escuelas = logic.getUniversidad().getVector();
+
+        if (escuelas.isEmpty()) {
+            JOptionPane.showMessageDialog(managerView,
+                    "No hay escuelas registradas en la universidad",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Crear array de nombres de escuelas para el combo box
+        String[] nombresEscuelas = new String[escuelas.size()];
+        for (int i = 0; i < escuelas.size(); i++) {
+            nombresEscuelas[i] = escuelas.get(i).getNombre();
+        }
+
+        // Mostrar dialog con combo box
+        String escuelaSeleccionada = (String) JOptionPane.showInputDialog(
+                managerView,
+                "Seleccione la escuela para ver sus profesores:",
+                "Seleccionar Escuela",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                nombresEscuelas,
+                nombresEscuelas[0]
+        );
+
+        // Si el usuario seleccionó una escuela
+        if (escuelaSeleccionada != null) {
+            // Buscar la escuela seleccionada
+            Escuela escuela = null;
+            for (Escuela e : escuelas) {
+                if (e.getNombre().equals(escuelaSeleccionada)) {
+                    escuela = e;
+                    break;
+                }
+            }
+
+            if (escuela != null) {
+                // Crear y mostrar el panel de profesores
+                ProfesoresDeEscuela profesoresView = new ProfesoresDeEscuela(escuela, logic.getUniversidad());
+
+                // Configurar listeners para el panel de profesores
+                configurarListenersProfesores   (profesoresView);
+
+                // Cambiar al panel de profesores
+                view.cambiarPanelCentral(profesoresView);
+            }
+        }
+    }
+    private void configurarListenersProfesores(ProfesoresDeEscuela profesoresView) {
+        // Listener para el botón Volver
+        profesoresView.getBtnVolver().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                view.cambiarPanelCentral(managerView);
+            }
+        });
+
+        // Listener para el botón Cambiar Director
+        profesoresView.getBtnCambiarDirector().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cambiarDirectorEscuela(profesoresView);
+            }
+        });
+    }
+
+    private void cambiarDirectorEscuela(ProfesoresDeEscuela profesoresView) {
+        Profesor profesorSeleccionado = profesoresView.getProfesorSeleccionado();
+
+        if (profesorSeleccionado == null) {
+            JOptionPane.showMessageDialog(profesoresView,
+                    "Por favor, seleccione un profesor de la tabla",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Confirmar el cambio
+        int respuesta = JOptionPane.showConfirmDialog(profesoresView,
+                "¿Está seguro que desea asignar a " + profesorSeleccionado.getNombre() +
+                        " " + profesorSeleccionado.getApellidos() + " como director de la escuela?",
+                "Confirmar Cambio de Director",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+
+        if (respuesta == JOptionPane.YES_OPTION) {
+            try {
+                // Cambiar el director usando el método de Logic
+                logic.cambiarDirectorEscuela(profesorSeleccionado, profesoresView.getEscuelaSeleccionada());
+
+                // Actualizar la vista
+                profesoresView.actualizarDatos();
+
+                JOptionPane.showMessageDialog(profesoresView,
+                        "Director cambiado exitosamente",
+                        "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(profesoresView,
+                        "Error al cambiar el director: " + ex.getMessage(),
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+
     private void abrirGestionCursos() {
         Escuela escuelaSeleccionada = schoolsView.getEscuelaSeleccionada();
         if (escuelaSeleccionada == null) {
@@ -37,7 +150,7 @@ public class CursoController {
             return;
         }
         
-        managerView = new GestionDeCursos(escuelaSeleccionada, logic.getUniversidad());
+        managerView = new OpcionesDeGestionDeCursos(escuelaSeleccionada, logic.getUniversidad());
         configurarListenersManager();
         
     }
@@ -90,6 +203,14 @@ public class CursoController {
                 abrirEliminarCurso();
             }
         });
+
+        // *** AGREGAR ESTE LISTENER PARA EL BOTÓN PROFESORES DE ESCUELA ***
+        managerView.getBtnProfesoresDeEscuela().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                abrirProfesoresDeEscuela();
+            }
+        });
         managerView.getBtnVolver().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -101,7 +222,7 @@ public class CursoController {
     // Metodos para abrir las distintas vistas
     
     private void abrirIncluirCurso() {
-        IncluirCursoView incluirView = new IncluirCursoView(managerView.getEscuelaActual());
+        AgregarUnCurso incluirView = new AgregarUnCurso(managerView.getEscuelaActual());
         
         incluirView.getBtnGuardar().addActionListener(new ActionListener() {
             @Override
@@ -151,7 +272,7 @@ public class CursoController {
     }
     
     private void abrirConsultarCurso() {
-        final ConsultarCursoView consultarView = new ConsultarCursoView(managerView.getEscuelaActual());
+        final DatosDeCurso consultarView = new DatosDeCurso(managerView.getEscuelaActual());
         
         consultarView.getBtnBuscar().addActionListener(new ActionListener() {
             @Override
@@ -186,7 +307,7 @@ public class CursoController {
     }
     
     private void abrirListarCursosEscuela() {
-        final ListarCursosEscuelaView listarView = new ListarCursosEscuelaView(managerView.getEscuelaActual());
+        final ListaDeCursosPorEscuela listarView = new ListaDeCursosPorEscuela(managerView.getEscuelaActual());
         
         // Mostrar la lista inicial de cursos
         actualizarListaCursos(listarView);
@@ -208,7 +329,7 @@ public class CursoController {
         view.cambiarPanelCentral(listarView);
     }
     
-    private void actualizarListaCursos(ListarCursosEscuelaView view) {
+    private void actualizarListaCursos(ListaDeCursosPorEscuela view) {
         try {
             String listaCursos = logic.consultarCursosDeEscuela(view.getEscuelaActual());
             view.setListaCursos(listaCursos);
@@ -220,7 +341,7 @@ public class CursoController {
     }
     
     private void abrirListarTodosCursos() {
-        final ListarTodosCursosView listarView = new ListarTodosCursosView(logic.getUniversidad());
+        final ListaDeCursosPorUniversidad listarView = new ListaDeCursosPorUniversidad(logic.getUniversidad());
         
         // Mostrar la lista inicial de todos los cursos
         actualizarListaTodosCursos(listarView);
@@ -242,7 +363,7 @@ public class CursoController {
         view.cambiarPanelCentral(listarView);
     }
     
-    private void actualizarListaTodosCursos(ListarTodosCursosView view) {
+    private void actualizarListaTodosCursos(ListaDeCursosPorUniversidad view) {
         try {
             String listaCursos = logic.consultarCursosUniversidad(view.getUniversidad());
             view.setListaCursos(listaCursos);
@@ -254,7 +375,7 @@ public class CursoController {
     }
     
     private void abrirModificarCurso() {
-        final ModificarCursoView modificarView = new ModificarCursoView(managerView.getEscuelaActual());
+        final ModificarDatosDeUnCurso modificarView = new ModificarDatosDeUnCurso(managerView.getEscuelaActual());
         
         modificarView.getBtnBuscar().addActionListener(new ActionListener() {
             @Override
@@ -276,7 +397,7 @@ public class CursoController {
                 } else {
                     JOptionPane.showMessageDialog(modificarView, 
                         "Curso encontrado. Ahora puede modificar su nombre.", 
-                        "Informaci�n", JOptionPane.INFORMATION_MESSAGE);
+                        "Informacion", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });
@@ -325,7 +446,7 @@ public class CursoController {
     }
     
     private void abrirEliminarCurso() {
-        EliminarCursoView eliminarView = new EliminarCursoView(managerView.getEscuelaActual());
+        EliminarUnCurso eliminarView = new EliminarUnCurso(managerView.getEscuelaActual());
         
         eliminarView.getBtnEliminar().addActionListener(new ActionListener() {
             @Override

@@ -1,18 +1,18 @@
-package views;
+package views.ConsultarEscuelasMP.OpcionesDeGestionDeCursos.GestionDeCursos;
 
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import models.Escuela;
 
-public class IncluirCursoView extends JPanel{
+public class AgregarUnCurso extends JPanel{
     private static final long serialVersionUID = 1L;
     
     private JTextField txtSigla, txtNombreCurso;
     private JButton btnGuardar, btnCancelar;
     private Escuela escuelaActual;
     
-    public IncluirCursoView(Escuela escuela) {
+    public AgregarUnCurso(Escuela escuela) {
         this.escuelaActual = escuela;
         init();
     }

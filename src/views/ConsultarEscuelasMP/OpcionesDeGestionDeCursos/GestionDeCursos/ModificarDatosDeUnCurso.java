@@ -1,18 +1,18 @@
-package views;
+package views.ConsultarEscuelasMP.OpcionesDeGestionDeCursos.GestionDeCursos;
 
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import models.Escuela;
 
-public class ModificarCursoView extends JPanel {
+public class ModificarDatosDeUnCurso extends JPanel {
     private static final long serialVersionUID = 1L;
     
     private JTextField txtNombreCursoBuscar, txtNuevoNombre;
     private JButton btnBuscar, btnGuardar, btnCancelar;
     private Escuela escuelaActual;
     
-    public ModificarCursoView(Escuela escuela) {
+    public ModificarDatosDeUnCurso(Escuela escuela) {
         this.escuelaActual = escuela;
         init();
     }

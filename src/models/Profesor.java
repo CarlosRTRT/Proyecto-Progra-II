@@ -5,16 +5,13 @@ import java.util.ArrayList;
 public class Profesor {
 	protected String cedula;
 	protected String nombre;
-	protected String apellido1;
-	protected String apellido2;
-	protected ArrayList <Curso> cursosDelProfesor;
+	protected String apellidos;
+	protected ArrayList <Curso> cursos;
 	
-	public Profesor(String cedula, String nombre, String apellido1, String apellido2) {
+	public Profesor(String cedula, String nombre, String apellidos) {
 		this.cedula = cedula;
 		this.nombre = nombre;
-		this.apellido1 = apellido1;
-		this.apellido2 = apellido2;
-		this.cursosDelProfesor = new ArrayList <>();
+		this.apellidos = apellidos;		this.cursos = new ArrayList <>();
 	}
 
 	public String getCedula() {
@@ -29,41 +26,52 @@ public class Profesor {
 		this.nombre = nombre;
 	}
 
-	public String getApellido1() {
-		return apellido1;
+	public String getApellidos() {
+		return apellidos;
 	}
 
-	public void setApellido1(String apellido1) {
-		this.apellido1 = apellido1;
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
 	}
 
-	public String getApellido2() {
-		return apellido2;
+	public void agregarCurso(Curso curso) {
+		if (!cursos.contains(curso)) {
+			cursos.add(curso);
+		}
 	}
 
-	public void setApellido2(String apellido2) {
-		this.apellido2 = apellido2;
+	public void eliminarCurso(Curso curso) {
+		cursos.remove(curso);
 	}
 
 	public ArrayList<Curso> getCursosDelProfesor() {
-		return cursosDelProfesor;
+		return cursos;
 	}
 	
 	public String toString() {
 		  String resultado = "Profesor:\n";
-		    resultado += "Cédula: " + cedula + "\n";
-		    resultado += "Nombre completo: " + nombre + " " + apellido1 + " " + apellido2 + "\n";
+		    resultado += "Cedula: " + cedula + "\n";
+		    resultado += "Nombre completo: " + nombre + " " + apellidos + "\n";
 		    resultado += "Cursos asignados:\n";
 
-		    if (cursosDelProfesor == null || cursosDelProfesor.isEmpty()) {
+		    if (cursos == null || cursos.isEmpty()) {
 		        resultado += "  No tiene cursos asignados.\n";
 		    } else {
-		        for (Curso curso : cursosDelProfesor) {
+		        for (Curso curso : cursos) {
 		            resultado += "  - " + curso.toString() + "\n";
 		        }
 		    }
 		    return resultado;
 		
 	}
+
+	/*ToString alternativo para probar
+
+	@Override
+    public String toString() {
+        return nombre + " " + apellido;
+    }
+
+	 */
 	
 }

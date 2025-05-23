@@ -4,6 +4,7 @@ import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 
 import control.*;
 import views.*;
+import views.MenuPrincipal.MenuPrincipal;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,8 +15,8 @@ public class Main {
         }
         // Crear instancia de View (GUI).
         MenuPrincipal pMenu = new MenuPrincipal();
-        AgregarUniversidad universityView = new AgregarUniversidad(pMenu);
-        Control controller = new Control(universityView, pMenu);
+        VentanaPrincipal universityView = new VentanaPrincipal(pMenu);
+        Controller controller = new Controller(universityView, pMenu);
         // Iniciar la GUI por medio de la controller.
         controller.startGUI();
     }

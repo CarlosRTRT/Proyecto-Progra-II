@@ -8,8 +8,7 @@ public class Director extends Profesor {
 		    super(
 		        profesorBase.getCedula(),
 		        profesorBase.getNombre(),
-		        profesorBase.getApellido1(),
-		        profesorBase.getApellido2()
+		        profesorBase.getApellidos()
 		    );
 		    this.escuelaDelDirector=escuela;
 	 }
@@ -22,7 +21,7 @@ public class Director extends Profesor {
 	 public String toString() {
 	     String resultado = "Director:\n";
 	     resultado += "Cédula: " + cedula + "\n";
-	     resultado += "Nombre completo: " + nombre + " " + apellido1 + " " + apellido2 + "\n";
+	     resultado += "Nombre completo: " + nombre + " " + apellidos + "\n";
 	     resultado += "Escuela que dirige: " + escuelaDelDirector.getNombre() + "\n";
 
 	     // Ya no tiene cursos asignados, no se incluye la sección de cursos

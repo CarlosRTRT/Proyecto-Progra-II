@@ -1,4 +1,4 @@
-package views;
+package views.ConsultarEscuelasMP.OpcionesDeGestionDeCursos;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -15,16 +15,16 @@ import javax.swing.border.TitledBorder;
 import models.Escuela;
 import models.Universidad;
 
-public class GestionDeCursos extends JPanel {
+public class OpcionesDeGestionDeCursos extends JPanel {
     private static final long serialVersionUID = 1L;
 
     private JButton btnIncluir, btnConsultarCurso, btnListarCursosEscuela;
     private JButton btnListarTodosCursos, btnModificarCurso, btnEliminarCurso;
-    private JButton btnVolver;
+    private JButton btnProfesoresDeEscuela, btnVolver;
     private Escuela escuelaActual;
     private Universidad universidad;
 
-    public GestionDeCursos(Escuela escuela, Universidad universidad) {
+    public OpcionesDeGestionDeCursos(Escuela escuela, Universidad universidad) {
         this.escuelaActual = escuela;
         this.universidad = universidad;
         init();
@@ -32,7 +32,7 @@ public class GestionDeCursos extends JPanel {
 
     private void init() {
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(650, 400));
+        setPreferredSize(new Dimension(650, 450));
 
         JPanel panelOpciones = new JPanel();
         panelOpciones.setLayout(new BoxLayout(panelOpciones, BoxLayout.Y_AXIS));
@@ -51,6 +51,7 @@ public class GestionDeCursos extends JPanel {
         btnListarTodosCursos = createStyledButton("Lista de cursos impartidos por la Universidad " + universidad.getNombreU());
         btnModificarCurso = createStyledButton("Modificar los datos de un curso");
         btnEliminarCurso = createStyledButton("Eliminar un curso");
+        btnProfesoresDeEscuela = createStyledButton("Profesores De Escuela");
 
         // Añadir botones al panel con espaciado
         panelOpciones.add(Box.createVerticalStrut(10));
@@ -60,6 +61,7 @@ public class GestionDeCursos extends JPanel {
         addButtonWithSpacing(panelOpciones, btnListarTodosCursos);
         addButtonWithSpacing(panelOpciones, btnModificarCurso);
         addButtonWithSpacing(panelOpciones, btnEliminarCurso);
+        addButtonWithSpacing(panelOpciones, btnProfesoresDeEscuela);
         panelOpciones.add(Box.createVerticalStrut(10));
 
         // Panel para el boton Volver
@@ -118,6 +120,10 @@ public class GestionDeCursos extends JPanel {
 
     public JButton getBtnEliminarCurso() {
         return btnEliminarCurso;
+    }
+
+    public JButton getBtnProfesoresDeEscuela() {
+        return btnProfesoresDeEscuela;
     }
 
     public JButton getBtnVolver() {

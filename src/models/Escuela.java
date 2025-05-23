@@ -31,5 +31,5 @@ public class Escuela {
 	public ArrayList<Profesor> getProfesores() {
 		return profesoresDeEscuela;
 	}
-	
+	public Profesor getDirector() {return director;}
 }

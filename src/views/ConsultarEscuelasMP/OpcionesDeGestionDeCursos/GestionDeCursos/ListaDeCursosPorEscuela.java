@@ -1,39 +1,39 @@
-package views;
+package views.ConsultarEscuelasMP.OpcionesDeGestionDeCursos.GestionDeCursos;
 
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import models.Universidad;
+import models.Escuela;
 
-public class ListarTodosCursosView extends JPanel {
+public class ListaDeCursosPorEscuela extends JPanel {
     private static final long serialVersionUID = 1L;
     
     private JTextArea txtListaCursos;
     private JButton btnActualizar, btnVolver;
-    private Universidad universidad;
+    private Escuela escuelaActual;
     
-    public ListarTodosCursosView(Universidad universidad) {
-        this.universidad = universidad;
+    public ListaDeCursosPorEscuela(Escuela escuela) {
+        this.escuelaActual = escuela;
         init();
     }
     
     private void init() {
-        // Configuracion básica de la ventana
+        // Configuracion basica de la ventana
         setLayout(new BorderLayout(15, 15));
-        setSize(600, 500);
+        setSize(550, 400);
         
         // Panel principal
         JPanel panelPrincipal = new JPanel(new BorderLayout(10, 10));
         panelPrincipal.setBorder(BorderFactory.createTitledBorder(
             BorderFactory.createLineBorder(Color.GRAY, 1, true),
-            "Todos los Cursos",
+            "Cursos de " + escuelaActual.getNombre(),
             TitledBorder.LEFT,
             TitledBorder.TOP,
             new Font("SansSerif", Font.PLAIN, 14),
             Color.GRAY
         ));
         
-        //Area de texto para mostrar los cursos
+        // Area de texto para mostrar los cursos
         txtListaCursos = new JTextArea();
         txtListaCursos.setEditable(false);
         txtListaCursos.setFont(new Font("Monospaced", Font.PLAIN, 12));
@@ -76,7 +76,7 @@ public class ListarTodosCursosView extends JPanel {
         return btnVolver;
     }
     
-    public Universidad getUniversidad() {
-        return universidad;
+    public Escuela getEscuelaActual() {
+        return escuelaActual;
     }
 }

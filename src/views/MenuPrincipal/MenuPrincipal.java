@@ -1,4 +1,4 @@
-package views;
+package views.MenuPrincipal;
 
 import java.awt.*;
 import javax.swing.*;
@@ -23,13 +23,16 @@ public class MenuPrincipal extends JPanel {
 
 		//Panel Formulario
 		JPanel panelFormulario = new JPanel(new GridLayout(3, 2));
-		panelFormulario.setBorder(BorderFactory.createTitledBorder(
-			BorderFactory.createLineBorder(Color.DARK_GRAY, 1, true),
-			"Datos de la Universidad",
-			TitledBorder.CENTER,
-			TitledBorder.TOP,
-			new Font("SansSerif", Font.PLAIN, 14),
-			Color.GRAY
+		panelFormulario.setBorder(BorderFactory.createCompoundBorder(
+				BorderFactory.createEmptyBorder(50, 0, 0, 0),
+				BorderFactory.createTitledBorder(
+						BorderFactory.createLineBorder(Color.DARK_GRAY, 1, true),
+						"Datos de la Universidad",
+						TitledBorder.CENTER,
+						TitledBorder.TOP,
+						new Font("SansSerif", Font.PLAIN, 14),
+						Color.GRAY
+				)
 		));
 
 
