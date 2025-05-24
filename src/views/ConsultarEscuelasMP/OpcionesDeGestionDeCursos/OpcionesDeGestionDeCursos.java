@@ -32,7 +32,7 @@ public class OpcionesDeGestionDeCursos extends JPanel {
 
     private void init() {
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(650, 450));
+        setPreferredSize(new Dimension(600, 450));
 
         JPanel panelOpciones = new JPanel();
         panelOpciones.setLayout(new BoxLayout(panelOpciones, BoxLayout.Y_AXIS));
@@ -69,7 +69,6 @@ public class OpcionesDeGestionDeCursos extends JPanel {
         btnVolver = new JButton("Volver");
         btnVolver.setFont(new Font("SansSerif", Font.PLAIN, 13));
         btnVolver.setFocusPainted(false);
-        btnVolver.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         panelBotones.add(btnVolver);
 
         // Añadir paneles al panel principal
@@ -90,10 +89,6 @@ public class OpcionesDeGestionDeCursos extends JPanel {
         button.setFocusPainted(false);
         button.setHorizontalAlignment(SwingConstants.CENTER);
         button.setPreferredSize(new Dimension(450, 40));
-        button.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(Color.DARK_GRAY),
-                BorderFactory.createEmptyBorder(5, 15, 5, 15)
-        ));
 
         return button;
     }

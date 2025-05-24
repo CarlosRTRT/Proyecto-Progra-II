@@ -70,7 +70,6 @@ public class AgregarEscuela extends JPanel {
         btnAgregarEscuela.setForeground(Color.WHITE);
         btnAgregarEscuela.setFocusPainted(false);
         btnAgregarEscuela.setFont(new Font("SansSerif", Font.PLAIN, 13));
-        btnAgregarEscuela.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
         // Panel para el boton
         JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));

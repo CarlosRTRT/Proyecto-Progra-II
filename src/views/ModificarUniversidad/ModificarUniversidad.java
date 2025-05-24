@@ -70,8 +70,7 @@ public class ModificarUniversidad extends JPanel {
         
         btnModificar = new JButton("Actualizar Datos");
         //btnModificar.setPreferredSize(new Dimension());
-		JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));		
-		btnModificar.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+		JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		panelBoton.add(btnModificar);
         
         // Organizar panels en la ventana

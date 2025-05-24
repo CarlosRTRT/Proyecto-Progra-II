@@ -116,12 +116,10 @@ public class ProfesoresDeEscuela extends JPanel {
         btnCambiarDirector.setFocusPainted(false);
         btnCambiarDirector.setBackground(new Color(70, 130, 180));
         btnCambiarDirector.setForeground(Color.WHITE);
-        btnCambiarDirector.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
         btnVolver = new JButton("Volver");
         btnVolver.setFont(new Font("SansSerif", Font.PLAIN, 14));
         btnVolver.setFocusPainted(false);
-        btnVolver.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
         panel.add(btnCambiarDirector);
         panel.add(btnVolver);

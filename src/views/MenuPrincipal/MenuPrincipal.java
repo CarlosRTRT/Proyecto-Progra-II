@@ -96,7 +96,6 @@ public class MenuPrincipal extends JPanel {
 		btnAgregar.setForeground(Color.WHITE);
 		btnAgregar.setFocusPainted(false);
 		btnAgregar.setFont(new Font("SansSerif", Font.PLAIN, 13));
-		btnAgregar.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
 		JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		panelBoton.add(btnAgregar);

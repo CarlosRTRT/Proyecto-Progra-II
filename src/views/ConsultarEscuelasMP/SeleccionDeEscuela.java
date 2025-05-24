@@ -67,11 +67,9 @@ public class SeleccionDeEscuela extends JPanel {
         btnGestionarCursos.setForeground(Color.WHITE);
         btnGestionarCursos.setFocusPainted(false);
         btnGestionarCursos.setFont(new Font("SansSerif", Font.PLAIN, 13));
-        btnGestionarCursos.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
         btnVolver = new JButton("Volver");
         btnVolver.setFont(new Font("SansSerif", Font.PLAIN, 13));
-        btnVolver.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
         panelBotones.add(btnGestionarCursos);
 
