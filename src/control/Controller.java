@@ -60,9 +60,16 @@ public class Controller {
         universidad = new Universidad(nombre, direccion, telefono);
         logic = new Logic(universidad);
 
+        // Habilitar la visualización del título en la ventana principal
+        view.setNombreUniversidad("Bienvenido a " + nombre);
+
         JOptionPane.showMessageDialog(pMenu, "Universidad " + nombre + " creada exitosamente",
                 "Informacion", JOptionPane.INFORMATION_MESSAGE);
 
+        // CAMBIO PRINCIPAL: Automáticamente abrir el panel de actualizar universidad
+        actualizarPUni(optionsView);
+
+        // Configurar listeners para todos los botones
         view.getBtnActualizarU().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

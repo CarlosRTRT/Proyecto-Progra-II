@@ -20,7 +20,7 @@ public class ListaDeCursosPorEscuela extends JPanel {
     private void init() {
         // Configuración básica de la ventana - TAMAÑO AUMENTADO
         setLayout(new BorderLayout(20, 20));
-        setPreferredSize(new Dimension(650, 500));
+        setPreferredSize(new Dimension(650, 450));
 
         // Panel principal con más espacio
         JPanel panelPrincipal = new JPanel(new BorderLayout(15, 15));
@@ -55,12 +55,14 @@ public class ListaDeCursosPorEscuela extends JPanel {
         btnActualizar.setBackground(Color.BLUE);
         btnActualizar.setForeground(Color.WHITE);
         btnActualizar.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        btnActualizar.setPreferredSize(new Dimension(250, 40));
         btnActualizar.setFocusPainted(false);
 
         btnVolver = new JButton("Volver");
         btnVolver.setBackground(new Color(108, 117, 125));
         btnVolver.setForeground(Color.WHITE);
         btnVolver.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        btnVolver.setPreferredSize(new Dimension(250, 40));
         btnVolver.setFocusPainted(false);
 
         panelBotones.add(btnActualizar);

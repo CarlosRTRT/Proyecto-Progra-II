@@ -18,10 +18,10 @@ public class GestionDeProfesores extends JPanel {
 
     private void init() {
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(650, 300));
+        setPreferredSize(new Dimension(650, 350));
 
         // Panel principal con los botones
-        JPanel panelOpciones = new JPanel(new GridLayout(4, 1, 0, 10));
+        JPanel panelOpciones = new JPanel(new GridLayout(4, 1, 20, 20));
         panelOpciones.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createLineBorder(Color.DARK_GRAY, 1, true),
                 "Gestion de Profesores",
@@ -52,7 +52,7 @@ public class GestionDeProfesores extends JPanel {
 
     private JButton crearBoton(String texto) {
         JButton boton = new JButton(texto);
-        boton.setPreferredSize(new Dimension(250, 40));
+        boton.setPreferredSize(new Dimension(450, 40));
         boton.setFocusPainted(false);
         boton.setFont(new Font("SansSerif", Font.PLAIN, 13));
         return boton;

@@ -120,12 +120,12 @@ public class AgregarProfesor extends JPanel {
         btnGuardar.setForeground(Color.WHITE);
         btnGuardar.setFocusPainted(false);
         btnGuardar.setFont(new Font("SansSerif", Font.PLAIN, 13));
-        btnGuardar.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        btnGuardar.setPreferredSize(new Dimension(250, 40));
 
         btnVolver = new JButton("Volver");
         btnVolver.setFont(new Font("SansSerif", Font.PLAIN, 13));
         btnVolver.setFocusPainted(false);
-        btnVolver.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        btnVolver.setPreferredSize(new Dimension(250, 40));
 
         panelBotones.add(btnGuardar);
         panelBotones.add(btnVolver);

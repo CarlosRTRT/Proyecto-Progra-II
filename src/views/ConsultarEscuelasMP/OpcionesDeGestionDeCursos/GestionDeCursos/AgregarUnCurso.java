@@ -77,12 +77,14 @@ public class AgregarUnCurso extends JPanel{
         btnGuardar.setForeground(Color.WHITE);
         btnGuardar.setFocusPainted(false);
         btnGuardar.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        btnGuardar.setPreferredSize(new Dimension(250, 40));
 
         btnCancelar = new JButton("Cancelar");
         btnCancelar.setBackground(new Color(108, 117, 125));
         btnCancelar.setForeground(Color.WHITE);
         btnCancelar.setFocusPainted(false);
         btnCancelar.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        btnCancelar.setPreferredSize(new Dimension(250, 40));
 
         panelBotones.add(btnGuardar);
         panelBotones.add(btnCancelar);

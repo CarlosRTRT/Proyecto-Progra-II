@@ -26,7 +26,7 @@ public class ProfesoresDeEscuela extends JPanel {
 
     private void init() {
         setLayout(new BorderLayout(10, 10));
-        setPreferredSize(new Dimension(800, 600));
+        setPreferredSize(new Dimension(650, 450));
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         // Panel superior con información de la escuela
@@ -91,17 +91,17 @@ public class ProfesoresDeEscuela extends JPanel {
         tablaProfesores = new JTable(modeloTabla);
         tablaProfesores.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tablaProfesores.setRowHeight(25);
-        tablaProfesores.getTableHeader().setFont(new Font("SansSerif", Font.PLAIN, 12));
+        tablaProfesores.getTableHeader().setFont(new Font("SansSerif", Font.PLAIN, 13));
 
         // Configurar ancho de columnas
         tablaProfesores.getColumnModel().getColumn(0).setPreferredWidth(100); // Cédula
         tablaProfesores.getColumnModel().getColumn(1).setPreferredWidth(120); // Nombre
         tablaProfesores.getColumnModel().getColumn(2).setPreferredWidth(120); // Apellidos
-        tablaProfesores.getColumnModel().getColumn(3).setPreferredWidth(300); // Cursos
+        tablaProfesores.getColumnModel().getColumn(3).setPreferredWidth(200); // Cursos
         tablaProfesores.getColumnModel().getColumn(4).setPreferredWidth(80);  // Es Director
 
         JScrollPane scrollPane = new JScrollPane(tablaProfesores);
-        scrollPane.setPreferredSize(new Dimension(750, 350));
+        scrollPane.setPreferredSize(new Dimension(750, 390));
 
         panel.add(scrollPane, BorderLayout.CENTER);
 
@@ -113,12 +113,14 @@ public class ProfesoresDeEscuela extends JPanel {
 
         btnCambiarDirector = new JButton("Cambiar Director");
         btnCambiarDirector.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        btnCambiarDirector.setPreferredSize(new Dimension(250, 40));
         btnCambiarDirector.setFocusPainted(false);
         btnCambiarDirector.setBackground(new Color(70, 130, 180));
         btnCambiarDirector.setForeground(Color.WHITE);
 
         btnVolver = new JButton("Volver");
         btnVolver.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        btnVolver.setPreferredSize(new Dimension(250, 40));
         btnVolver.setFocusPainted(false);
 
         panel.add(btnCambiarDirector);

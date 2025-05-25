@@ -46,7 +46,7 @@ public class ConsultarProfesorPorCurso extends JPanel {
 
     private void init() {
         setLayout(new BorderLayout(15, 15));
-        setPreferredSize(new Dimension(600, 500));
+        setPreferredSize(new Dimension(650, 450));
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         // Panel superior con título
@@ -93,14 +93,19 @@ public class ConsultarProfesorPorCurso extends JPanel {
 
         btnSeleccionar = new JButton("Seleccionar");
         btnSeleccionar.setFont(new Font("SansSerif", Font.PLAIN, 13));
+        btnSeleccionar.setPreferredSize(new Dimension(250, 40));
         btnSeleccionar.setFocusPainted(false);
 
         btnAtras = new JButton("Atrás");
         btnAtras.setFont(new Font("SansSerif", Font.PLAIN, 13));
+        btnAtras.setPreferredSize(new Dimension(250, 40));
+
         btnAtras.setFocusPainted(false);
         btnAtras.setVisible(false);
 
         btnVolver = new JButton("Volver");
+        btnVolver.setPreferredSize(new Dimension(250, 40));
+
         btnVolver.setFont(new Font("SansSerif", Font.PLAIN, 13));
         btnVolver.setFocusPainted(false);
 

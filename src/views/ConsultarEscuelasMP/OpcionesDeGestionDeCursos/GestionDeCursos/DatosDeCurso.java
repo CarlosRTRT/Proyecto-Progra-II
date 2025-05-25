@@ -51,6 +51,7 @@ public class DatosDeCurso extends JPanel {
         btnBuscar.setBackground(Color.BLUE);
         btnBuscar.setForeground(Color.WHITE);
         btnBuscar.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        btnBuscar.setPreferredSize(new Dimension(200, 40));
         btnBuscar.setFocusPainted(false);
 
         inputPanel.add(lblNombre);
@@ -90,7 +91,7 @@ public class DatosDeCurso extends JPanel {
         btnVolver.setForeground(Color.WHITE);
         btnVolver.setFocusPainted(false);
         btnVolver.setFont(new Font("SansSerif", Font.PLAIN, 14));
-        btnVolver.setBorder(BorderFactory.createEmptyBorder(12, 25, 12, 25));
+        btnVolver.setPreferredSize(new Dimension(250, 40));
 
         panelBotones.add(btnVolver);
 

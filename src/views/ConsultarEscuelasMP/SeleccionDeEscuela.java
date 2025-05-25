@@ -29,7 +29,7 @@ public class SeleccionDeEscuela extends JPanel {
     private void init() {
 
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(650, 300));
+        setPreferredSize(new Dimension(650, 350));
 
         // Panel principal
         JPanel panelPrincipal = new JPanel(new BorderLayout(10, 10));
@@ -63,13 +63,12 @@ public class SeleccionDeEscuela extends JPanel {
         JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 20));
 
         btnGestionarCursos = new JButton("Gestionar Cursos");
+        btnGestionarCursos.setPreferredSize(new Dimension(250, 40));
         btnGestionarCursos.setBackground(Color.BLUE);
         btnGestionarCursos.setForeground(Color.WHITE);
         btnGestionarCursos.setFocusPainted(false);
         btnGestionarCursos.setFont(new Font("SansSerif", Font.PLAIN, 13));
 
-        btnVolver = new JButton("Volver");
-        btnVolver.setFont(new Font("SansSerif", Font.PLAIN, 13));
 
         panelBotones.add(btnGestionarCursos);
 

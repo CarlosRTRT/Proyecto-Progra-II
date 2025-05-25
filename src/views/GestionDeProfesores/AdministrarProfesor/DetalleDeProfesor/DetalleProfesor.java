@@ -73,16 +73,20 @@ public class DetalleProfesor extends JPanel {
         panelCursosProfesor.add(scrollPane, BorderLayout.CENTER);
 
         // Panel para botones
-        JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));
+        JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        panelBotones.setPreferredSize(new Dimension(650, 50));
 
         btnModificarDatos = new JButton("Modificar los datos");
         btnModificarDatos.setFont(new Font("SansSerif", Font.PLAIN, 12));
+        btnModificarDatos.setPreferredSize(new Dimension(200, 40));
 
         btnModificarCurso = new JButton("Modificar curso");
         btnModificarCurso.setFont(new Font("SansSerif", Font.PLAIN, 12));
+        btnModificarCurso.setPreferredSize(new Dimension(200, 40));
 
         btnVolver = new JButton("Volver");
         btnVolver.setFont(new Font("SansSerif", Font.PLAIN, 12));
+        btnVolver.setPreferredSize(new Dimension(150, 40));
 
         panelBotones.add(btnModificarDatos);
         panelBotones.add(btnModificarCurso);

@@ -66,12 +66,14 @@ public class EliminarUnCurso extends JPanel {
         btnEliminar.setForeground(Color.WHITE);
         btnEliminar.setFont(new Font("SansSerif", Font.PLAIN, 14));
         btnEliminar.setFocusPainted(false);
+        btnEliminar.setPreferredSize(new Dimension(150, 40));
 
         btnCancelar = new JButton("Cancelar");
         btnCancelar.setBackground(new Color(108, 117, 125));
         btnCancelar.setForeground(Color.WHITE);
         btnCancelar.setFont(new Font("SansSerif", Font.PLAIN, 14));
         btnCancelar.setFocusPainted(false);
+        btnCancelar.setPreferredSize(new Dimension(150, 40));
 
         panelBotones.add(btnEliminar);
         panelBotones.add(btnCancelar);

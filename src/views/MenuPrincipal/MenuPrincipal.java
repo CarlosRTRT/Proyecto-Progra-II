@@ -19,7 +19,7 @@ public class MenuPrincipal extends JPanel {
 	private void init() {
 		//Ventana Principal
 		setLayout(new BorderLayout());
-	    setPreferredSize(new Dimension(650, 300));
+	    setPreferredSize(new Dimension(650, 400));
 
 		//Panel Formulario
 		JPanel panelFormulario = new JPanel(new GridLayout(3, 2));
@@ -92,6 +92,7 @@ public class MenuPrincipal extends JPanel {
 
 		//Boton
 		btnAgregar = new JButton("Agregar Universidad");
+		btnAgregar.setPreferredSize(new Dimension(250, 40));
 		btnAgregar.setBackground(Color.BLUE);
 		btnAgregar.setForeground(Color.WHITE);
 		btnAgregar.setFocusPainted(false);

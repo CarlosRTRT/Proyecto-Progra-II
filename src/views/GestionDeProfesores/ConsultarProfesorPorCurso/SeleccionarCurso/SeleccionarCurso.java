@@ -59,10 +59,13 @@ public class SeleccionarCurso extends JPanel {
 
         btnSeleccionar = new JButton("Seleccionar");
         btnSeleccionar.setFont(new Font("SansSerif", Font.PLAIN, 13));
+        btnSeleccionar.setPreferredSize(new Dimension(250, 40));
         btnSeleccionar.setFocusPainted(false);
 
         btnVolver = new JButton("Volver");
         btnVolver.setFont(new Font("SansSerif", Font.PLAIN, 13));
+        btnVolver.setPreferredSize(new Dimension(250, 40));
+
         btnVolver.setFocusPainted(false);
 
         panelBotones.add(btnSeleccionar);

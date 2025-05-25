@@ -28,7 +28,7 @@ public class AgregarEscuela extends JPanel {
     private void init() {
 
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(650, 300));
+        setPreferredSize(new Dimension(650, 350));
 
         // Panel para gestionar escuelas
         JPanel panelEscuelas = new JPanel(new GridLayout(1, 2));
@@ -58,7 +58,7 @@ public class AgregarEscuela extends JPanel {
         // Panel para envolver el campo de texto
         JPanel panelTextField = new JPanel(new FlowLayout());
         panelTextField.add(txtNombreEscuela);
-        panelTextField.setBorder(BorderFactory.createEmptyBorder(65, 0, 0, 0));
+        panelTextField.setBorder(BorderFactory.createEmptyBorder(85, 0, 0, 0));
 
         // Agregar componentes al panel de escuelas
         panelEscuelas.add(lblNombreEscuela);
@@ -66,6 +66,7 @@ public class AgregarEscuela extends JPanel {
 
         // Boton
         btnAgregarEscuela = new JButton("Agregar Escuela");
+        btnAgregarEscuela.setPreferredSize(new Dimension(250, 40));
         btnAgregarEscuela.setBackground(Color.BLUE);
         btnAgregarEscuela.setForeground(Color.WHITE);
         btnAgregarEscuela.setFocusPainted(false);
