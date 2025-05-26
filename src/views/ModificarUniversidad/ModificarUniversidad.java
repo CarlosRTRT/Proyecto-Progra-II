@@ -71,6 +71,10 @@ public class ModificarUniversidad extends JPanel {
         // Botón centrado
         btnModificar = new JButton("Actualizar Datos");
         btnModificar.setBounds(200, 150, 150, 40);
+		btnModificar.setBackground(Color.BLUE);
+		btnModificar.setForeground(Color.WHITE);
+		btnModificar.setFocusPainted(false);
+		btnModificar.setFont(new Font("SansSerif", Font.PLAIN, 13));
         panelModificar.add(btnModificar);
 
         mainPanel.add(panelModificar);
