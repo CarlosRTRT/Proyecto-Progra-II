@@ -238,13 +238,38 @@ public class ConsultarEscuelasController {
                         return;
                     }
                     
-                    if (siglasStr.length() > 3) {
-                        JOptionPane.showMessageDialog(incluirView, 
-                            "Las siglas deben deben de tener 3 caracteres ", 
+                    // Validar que el nombre del curso solo contenga letras y espacios
+                    if(!nombreCurso.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
+                        JOptionPane.showMessageDialog(incluirView,
+                            "El nombre del curso solo debe contener letras y espacios",
+                            "Error de validación", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    
+                    // Validar que las siglas tengan exactamente 3 caracteres
+                    if (siglasStr.length() != 3) {
+                        JOptionPane.showMessageDialog(incluirView,
+                            "Las siglas deben tener exactamente 3 caracteres",
                             "Error", JOptionPane.ERROR_MESSAGE);
                         return;
                     }
                     
+                    // Verificar si ya existe un curso con ese nombre en la escuela
+                    boolean cursoExiste = false;
+                    for(Curso curso : incluirView.getEscuelaActual().getCursos()) {
+                        if(curso.getNombre().equalsIgnoreCase(nombreCurso)) {
+                            cursoExiste = true;
+                            break;
+                        }
+                    }
+
+                    if(cursoExiste) {
+                        JOptionPane.showMessageDialog(incluirView,
+                            "Ya existe un curso con ese nombre en esta escuela",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
                     String siglas = siglasStr ;
                     Curso nuevoCurso = new Curso(siglas, nombreCurso);
                     logic.agregarCurso(nuevoCurso, incluirView.getEscuelaActual());
@@ -412,6 +437,31 @@ public class ConsultarEscuelasController {
                     if (nombreCurso.isEmpty() || nuevoNombre.isEmpty()) {
                         JOptionPane.showMessageDialog(modificarView, 
                             "Por favor, complete todos los campos", 
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    
+                 // Validar que el nuevo nombre solo contenga letras y espacios
+                    if(!nuevoNombre.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
+                        JOptionPane.showMessageDialog(modificarView,
+                            "El nuevo nombre del curso solo debe contener letras y espacios",
+                            "Error de validación", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+                    // Verificar si ya existe un curso con el nuevo nombre en la escuela
+                    boolean nuevoNombreExiste = false;
+                    for(Curso curso : modificarView.getEscuelaActual().getCursos()) {
+                        if(!curso.getNombre().equalsIgnoreCase(nombreCurso) && 
+                           curso.getNombre().equalsIgnoreCase(nuevoNombre)) {
+                            nuevoNombreExiste = true;
+                            break;
+                        }
+                    }
+
+                    if(nuevoNombreExiste) {
+                        JOptionPane.showMessageDialog(modificarView,
+                            "Ya existe un curso con ese nombre en esta escuela",
                             "Error", JOptionPane.ERROR_MESSAGE);
                         return;
                     }

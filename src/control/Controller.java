@@ -50,10 +50,22 @@ public class Controller {
         String nombre = pMenu.getNombreView();
         String direccion = pMenu.getDireccionView();
         String telefono = pMenu.getTelefonoView();
-
+        //Validar si los campos estan vacios
         if(nombre.isEmpty() || direccion.isEmpty() || telefono.isEmpty()) {
             JOptionPane.showMessageDialog(pMenu, "Por favor, complete todos los campos",
                     "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        // Validar que el nombre solo contenga letras y espacios
+        if(!nombre.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
+            JOptionPane.showMessageDialog(pMenu, "El nombre de la universidad solo debe contener letras y espacios",
+                "Error de validación", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        //Validar que el telefono sean numeros
+        if(!telefono.matches("^[0-9]+$")) {
+            JOptionPane.showMessageDialog(pMenu, "El teléfono solo debe contener números",
+                "Error de validación", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
@@ -533,58 +545,97 @@ public class Controller {
     }
     // Método para asignar un nuevo curso al profesor
     private void asignarCursoAProfesor(Profesor profesor, DetalleProfesor detalleProfesor) {
-        // Obtener todos los cursos disponibles en la universidad
+    	  // Determinar la escuela del profesor basándose en sus cursos actuales
+        Escuela escuelaDelProfesor = null;
+        
+        if (!profesor.getCursosDelProfesor().isEmpty()) {
+            // El profesor ya tiene cursos, encontrar su escuela
+            Curso primerCurso = profesor.getCursosDelProfesor().get(0);
+            
+            for (Escuela escuela : universidad.getVector()) {
+                if (escuela.getCursos().contains(primerCurso)) {
+                    escuelaDelProfesor = escuela;
+                    break;
+                }
+            }
+        }
+        
+        // Obtener cursos disponibles según la situación del profesor
         JComboBox<String> comboCursos = new JComboBox<>();
         ArrayList<Curso> cursosDisponibles = new ArrayList<>();
-
-        for (Escuela escuela : universidad.getVector()) {
-            for (Curso curso : escuela.getCursos()) {
-                // Solo agregar cursos que el profesor no tenga asignados ya
+        
+        if (escuelaDelProfesor != null) {
+            // El profesor ya pertenece a una escuela, solo mostrar cursos de esa escuela
+            for (Curso curso : escuelaDelProfesor.getCursos()) {
                 if (!profesor.getCursosDelProfesor().contains(curso)) {
+                    comboCursos.addItem(escuelaDelProfesor.getNombre() + " - " + curso.getNombre() + " (" + curso.getSigla() + ")");
+                    cursosDisponibles.add(curso);
+                }
+            }
+        } else {
+            // El profesor no tiene cursos asignados, puede elegir de cualquier escuela
+            for (Escuela escuela : universidad.getVector()) {
+                for (Curso curso : escuela.getCursos()) {
                     comboCursos.addItem(escuela.getNombre() + " - " + curso.getNombre() + " (" + curso.getSigla() + ")");
                     cursosDisponibles.add(curso);
                 }
             }
         }
-
+        
         if (comboCursos.getItemCount() == 0) {
-            JOptionPane.showMessageDialog(view,
-                    "No hay cursos disponibles para asignar al profesor.\n" +
-                            "El profesor ya tiene todos los cursos disponibles asignados.",
-                    "Sin cursos disponibles", JOptionPane.INFORMATION_MESSAGE);
+            String mensaje;
+            if (escuelaDelProfesor != null) {
+                mensaje = "No hay cursos disponibles para asignar al profesor.\n" +
+                         "El profesor ya tiene todos los cursos de la escuela \"" + 
+                         escuelaDelProfesor.getNombre() + "\" asignados.";
+            } else {
+                mensaje = "No hay cursos disponibles para asignar al profesor.";
+            }
+            
+            JOptionPane.showMessageDialog(view, mensaje,
+                "Sin cursos disponibles", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-
+        
         // Crear panel personalizado con el ComboBox
         JPanel panel = new JPanel(new BorderLayout(10, 10));
-        panel.add(new JLabel("Seleccione el curso a asignar:"), BorderLayout.NORTH);
+        
+        String tituloPanel;
+        if (escuelaDelProfesor != null) {
+            tituloPanel = "Seleccione el curso a asignar (Solo escuela: " + escuelaDelProfesor.getNombre() + "):";
+        } else {
+            tituloPanel = "Seleccione el curso a asignar (Primera asignación - puede elegir cualquier escuela):";
+        }
+        
+        panel.add(new JLabel(tituloPanel), BorderLayout.NORTH);
         panel.add(comboCursos, BorderLayout.CENTER);
-
+        
         int resultado = JOptionPane.showConfirmDialog(
-                view,
-                panel,
-                "Asignar Curso",
-                JOptionPane.OK_CANCEL_OPTION,
-                JOptionPane.PLAIN_MESSAGE
+            view,
+            panel,
+            "Asignar Curso",
+            JOptionPane.OK_CANCEL_OPTION,
+            JOptionPane.PLAIN_MESSAGE
         );
-
+        
         if (resultado == JOptionPane.OK_OPTION) {
             int indiceSeleccionado = comboCursos.getSelectedIndex();
             if (indiceSeleccionado >= 0) {
                 Curso cursoSeleccionado = cursosDisponibles.get(indiceSeleccionado);
-
+                
                 // Usar el método existente de la lógica
                 logic.agregarCursoProfesor(profesor, cursoSeleccionado);
-
+                
                 JOptionPane.showMessageDialog(view,
-                        "Curso asignado exitosamente al profesor",
-                        "Éxito", JOptionPane.INFORMATION_MESSAGE);
-
+                    "Curso asignado exitosamente al profesor",
+                    "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                
                 // Actualizar la vista
                 mostrarDetalleProfesor(profesor);
             }
         }
     }
+    
     // Método para quitar un curso del profesor
     private void quitarCursoAProfesor(Profesor profesor, DetalleProfesor detalleProfesor) {
         ArrayList<Curso> cursosProfesor = profesor.getCursosDelProfesor();
@@ -649,17 +700,42 @@ public class Controller {
 
         String nuevosApellidos = JOptionPane.showInputDialog(view,
                 "Ingrese los nuevos apellidos:", profesor.getApellidos());
-
-        if (nuevoNombre != null || nuevosApellidos != null) {
-            logic.modificarDatosProfesor(profesor, nuevoNombre, nuevosApellidos);
-
+        
+        // Verificar si el usuario canceló algún diálogo
+        if (nuevoNombre == null || nuevosApellidos == null) {
+            return; // El usuario canceló, no hacer nada
+        }
+        
+     // Validar que los campos no estén vacíos
+        if (nuevoNombre.isEmpty() || nuevosApellidos.isEmpty()) {
             JOptionPane.showMessageDialog(view,
-                    "Datos del profesor actualizados exitosamente",
-                    "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                "Por favor, complete todos los campos",
+                "Error de validación", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validación: El nombre debe contener solo letras (incluyendo espacios y acentos)
+        if (!nuevoNombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            JOptionPane.showMessageDialog(view,
+                "El nombre debe contener únicamente letras",
+                "Error de validación", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validación: Los apellidos deben contener solo letras (incluyendo espacios y acentos)
+        if (!nuevosApellidos.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            JOptionPane.showMessageDialog(view,
+                "Los apellidos deben contener únicamente letras",
+                "Error de validación", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Si todas las validaciones pasan, proceder con la modificación
+        logic.modificarDatosProfesor(profesor, nuevoNombre, nuevosApellidos);
+        JOptionPane.showMessageDialog(view,"Datos del profesor actualizados exitosamente","Éxito", JOptionPane.INFORMATION_MESSAGE);
 
             // Actualizar la vista con los nuevos datos
             mostrarDetalleProfesor(profesor);
-        }
     }
     // Método para procesar y guardar el nuevo profesor
     private void guardarNuevoProfesor(AgregarProfesor agregarProfesor) {
@@ -673,6 +749,29 @@ public class Controller {
             JOptionPane.showMessageDialog(agregarProfesor,
                     "Por favor, complete todos los campos obligatorios",
                     "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if (!cedula.matches("\\d+")) {
+            JOptionPane.showMessageDialog(agregarProfesor,
+                "La cédula debe contener únicamente números",
+                "Error de validación", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        // Validación: El nombre debe contener solo letras (incluyendo espacios y acentos)
+        if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            JOptionPane.showMessageDialog(agregarProfesor,
+                "El nombre debe contener únicamente letras",
+                "Error de validación", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validación: El apellido debe contener solo letras (incluyendo espacios y acentos)
+        if (!apellido.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            JOptionPane.showMessageDialog(agregarProfesor,
+                "El apellido debe contener únicamente letras",
+                "Error de validación", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
@@ -761,33 +860,72 @@ public class Controller {
     private void actualizarDatosUniversidad(ModificarUniversidad optionsView) {
         String nuevaDireccion = optionsView.getTxtDireccion().getText();
         String nuevoTelefono = optionsView.getTxtTelefono().getText();
+        boolean datosActualizados = false;
 
         if(!nuevaDireccion.isEmpty()) {
             logic.actualizarDireccion(nuevaDireccion);
+            datosActualizados = true;
         }
 
         if(!nuevoTelefono.isEmpty()) {
+        	// Validar que el teléfono solo contenga números
+            if(!nuevoTelefono.matches("^[0-9]+$")) {
+                JOptionPane.showMessageDialog(optionsView, "El telefono solo debe contener numeros",
+                    "Error de validacion", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             logic.actualizarTelefono(nuevoTelefono);
+            datosActualizados = true;
         }
 
-        JOptionPane.showMessageDialog(optionsView, "Datos de la universidad actualizados",
+     // Solo mostrar mensaje de éxito si se actualizó algo
+        if(datosActualizados) {
+            JOptionPane.showMessageDialog(optionsView, "Datos de la universidad actualizados",
                 "Información", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(optionsView, "No se ingresaron datos para actualizar",
+                "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     private void agregarEscuela(AgregarEscuela agregarEscuela) {
         String nombreEscuela = agregarEscuela.getTxtNombreEscuela().getText();
-
+       //Verificar si el espacio esta vacio
         if(nombreEscuela.isEmpty()) {
             JOptionPane.showMessageDialog(agregarEscuela, "Por favor, ingrese el nombre de la escuela",
                     "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        
+        // Validar que el nombre solo contenga letras y espacios
+        if(!nombreEscuela.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
+            JOptionPane.showMessageDialog(agregarEscuela, "El nombre de la escuela solo debe contener letras y espacios",
+                "Error de validación", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        //Verificar si la escuela ya existe
+        boolean escuelaExiste = false;
+        for(Escuela escuela : universidad.getVector()) {
+            if(escuela.getNombre().equalsIgnoreCase(nombreEscuela)) {
+                escuelaExiste = true;
+                break;
+            }
+        }
+        
+        if(escuelaExiste) {
+            JOptionPane.showMessageDialog(agregarEscuela, "Esta escuela ya existe dentro de la universidad",
+                "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         Escuela nuevaEscuela = new Escuela(nombreEscuela);
         logic.agregarEscuela(nuevaEscuela);
-
-        JOptionPane.showMessageDialog(agregarEscuela, "Escuela " + nombreEscuela + " agregada exitosamente",
-                "Informacion", JOptionPane.INFORMATION_MESSAGE);
+       
+     
+        	JOptionPane.showMessageDialog(agregarEscuela, "Escuela " + nombreEscuela + " agregada exitosamente",
+                     "Informacion", JOptionPane.INFORMATION_MESSAGE);
+        	 
 
         agregarEscuela.getTxtNombreEscuela().setText("");
     }
