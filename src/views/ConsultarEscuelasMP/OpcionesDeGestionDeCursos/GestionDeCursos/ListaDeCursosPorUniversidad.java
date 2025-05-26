@@ -9,7 +9,8 @@ public class ListaDeCursosPorUniversidad extends JPanel {
     private static final long serialVersionUID = 1L;
 
     private JTextArea txtListaCursos;
-    private JButton btnActualizar, btnVolver;
+    //private JButton btnActualizar; 
+    private JButton btnVolver;
     private Universidad universidad;
 
     public ListaDeCursosPorUniversidad(Universidad universidad) {
@@ -51,12 +52,12 @@ public class ListaDeCursosPorUniversidad extends JPanel {
         // Panel de botones con más espacio
         JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 20));
 
-        btnActualizar = new JButton("Actualizar");
-        btnActualizar.setBackground(Color.BLUE);
-        btnActualizar.setForeground(Color.WHITE);
-        btnActualizar.setFont(new Font("SansSerif", Font.PLAIN, 14));
-        btnActualizar.setPreferredSize(new Dimension(250, 40));
-        btnActualizar.setFocusPainted(false);
+//        btnActualizar = new JButton("Actualizar");
+//        btnActualizar.setBackground(Color.BLUE);
+//        btnActualizar.setForeground(Color.WHITE);
+//        btnActualizar.setFont(new Font("SansSerif", Font.PLAIN, 14));
+//        btnActualizar.setPreferredSize(new Dimension(250, 40));
+//        btnActualizar.setFocusPainted(false);
 
         btnVolver = new JButton("Volver");
         btnVolver.setBackground(new Color(108, 117, 125));
@@ -65,7 +66,7 @@ public class ListaDeCursosPorUniversidad extends JPanel {
         btnVolver.setPreferredSize(new Dimension(250, 40));
         btnVolver.setFocusPainted(false);
 
-        panelBotones.add(btnActualizar);
+//        panelBotones.add(btnActualizar);
         panelBotones.add(btnVolver);
 
         // Añadir paneles a la ventana
@@ -78,9 +79,9 @@ public class ListaDeCursosPorUniversidad extends JPanel {
         txtListaCursos.setText(texto);
     }
 
-    public JButton getBtnActualizar() {
-        return btnActualizar;
-    }
+//    public JButton getBtnActualizar() {
+//        return btnActualizar;
+//    }
 
     public JButton getBtnVolver() {
         return btnVolver;

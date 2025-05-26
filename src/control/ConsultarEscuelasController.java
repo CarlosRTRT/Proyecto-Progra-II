@@ -337,12 +337,12 @@ public class ConsultarEscuelasController {
         // Mostrar la lista inicial de cursos
         actualizarListaCursos(listarView);
         
-        listarView.getBtnActualizar().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                actualizarListaCursos(listarView);
-            }
-        });
+//        listarView.getBtnActualizar().addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                actualizarListaCursos(listarView);
+//            }
+//        });
         
         listarView.getBtnVolver().addActionListener(new ActionListener() {
             @Override
@@ -371,12 +371,12 @@ public class ConsultarEscuelasController {
         // Mostrar la lista inicial de todos los cursos
         actualizarListaTodosCursos(listarView);
         
-        listarView.getBtnActualizar().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                actualizarListaTodosCursos(listarView);
-            }
-        });
+//        listarView.getBtnActualizar().addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                actualizarListaTodosCursos(listarView);
+//            }
+//        });
         
         listarView.getBtnVolver().addActionListener(new ActionListener() {
             @Override

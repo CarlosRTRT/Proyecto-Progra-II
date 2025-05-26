@@ -825,6 +825,12 @@ public class Controller {
         actualizarDUni(optionsView);
     }
     private void actualizarDUni(ModificarUniversidad optionsView) {
+    	//Eliminar los "pop-ups" 
+    	JButton btnAux = optionsView.getBtnModificar();
+    	for(ActionListener auxListener : btnAux.getActionListeners()) {
+    		btnAux.removeActionListener(auxListener);
+    	}
+    	
         optionsView.getBtnModificar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -837,6 +843,12 @@ public class Controller {
         agregarDEscuela(agregarEscuela);
     }
     private void agregarDEscuela(AgregarEscuela agregarEscuela) {
+    	//Eliminar los "pop-ups"
+    	JButton btnAux = agregarEscuela.getBtnAgregarEscuela();
+    	for(ActionListener auxListener : btnAux.getActionListeners()) {
+    		btnAux.removeActionListener(auxListener);
+    	}
+    	
         agregarEscuela.getBtnAgregarEscuela().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -886,6 +898,7 @@ public class Controller {
             JOptionPane.showMessageDialog(optionsView, "No se ingresaron datos para actualizar",
                 "Información", JOptionPane.INFORMATION_MESSAGE);
         }
+        optionsView.setBlanks();
     }
 
     private void agregarEscuela(AgregarEscuela agregarEscuela) {

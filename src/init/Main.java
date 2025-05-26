@@ -1,7 +1,6 @@
 package init;	
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
-
 import control.*;
 import views.*;
 import views.MenuPrincipal.MenuPrincipal;

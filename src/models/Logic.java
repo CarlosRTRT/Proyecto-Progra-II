@@ -119,7 +119,9 @@ public class Logic {
         if (verificarProfesor(pCedula, u)) {
             return "Ya existe un profesor con la cédula " + pCedula;
         }
-
+        if(pCedula.length() != 9) {
+        	return "El formato de cédula no es válido. Ingrese correctamente el ID.";
+        }
         // Dividir apellidos en caso de que vengan juntos
         String apellido1 = "";
         String apellido2 = "";

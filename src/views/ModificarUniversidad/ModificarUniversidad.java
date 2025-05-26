@@ -88,4 +88,8 @@ public class ModificarUniversidad extends JPanel {
     public JButton getBtnModificar() {
         return btnModificar;
     }
+    public void setBlanks() {
+    	txtDireccion.setText("");
+    	txtTelefono.setText("");
+    }
 }
