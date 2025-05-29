@@ -7,6 +7,7 @@ public class Universidad {
 	private String varNombre;
 	private String varDireccion;
 	private String varTelefono;
+	private ArrayList<Estudiante> estudiantes;
 	private ArrayList <Escuela> departamentos;
 	
 	//Constructor completo. Crea la clase.
@@ -15,6 +16,7 @@ public class Universidad {
 		varDireccion = pDireccion;
 		varTelefono = pTelefono;
 		departamentos = new ArrayList<>();
+		estudiantes = new ArrayList<Estudiante>();
 	}
 	
 	//Setters y getters.
@@ -32,6 +34,10 @@ public class Universidad {
 	}
 	public String getTelefonoU() {
 		return varTelefono;
+	}
+
+	public ArrayList<Estudiante> getEstudiantes() {
+		return estudiantes;
 	}
 
 	public ArrayList <Escuela> getVector() {

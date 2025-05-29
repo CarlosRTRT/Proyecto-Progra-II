@@ -5,11 +5,13 @@ import java.util.ArrayList;
 public class Curso {
 	private String sigla;
 	private String nombreCurso;
+	private int varCreditos;
 	private ArrayList <Profesor> profesoresDelCurso;
 
 	public Curso(String pSigla,String pNombreCurso) {
 		sigla = pSigla;
 		nombreCurso = pNombreCurso;
+		varCreditos = 3;
 		profesoresDelCurso = new ArrayList<>();  // ← LÍNEA NUEVA
 	}
 
@@ -32,6 +34,11 @@ public class Curso {
 	public ArrayList<Profesor> getProfesoresDelCurso() {
 		return profesoresDelCurso;
 	}
+
+	public int getVarCreditos() {
+		return varCreditos;
+	}
+
 	public String toString() {
 		
 	    return "Nombre: " + nombreCurso + ", Sigla: " + sigla;

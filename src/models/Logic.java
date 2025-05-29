@@ -212,10 +212,59 @@ public class Logic {
     	return "Error";
     }
     
-    
-    
-    
-    
+    //LÓGICA DE ESTUDIANTES
+    public void agregarEstudiante(Estudiante pEstudiante) {
+        u.getEstudiantes().add(pEstudiante);
+    }
+    public String recuperarDatosEstudiante(String pCedulaVCarnet){
+        String aux = "";
+        for (Estudiante auxEx : u.getEstudiantes()) {
+            if(auxEx.getCedula().equalsIgnoreCase(pCedulaVCarnet) || auxEx.getVarCarnet().equalsIgnoreCase(pCedulaVCarnet)){
+                aux += "\nNombre: " + auxEx.getVarNombre() + "\nApellido: " + auxEx.getVarApellido() +
+                        "\nCédula: " + auxEx.getCedula() + "\nCarnet estudiantil: " + auxEx.getVarCarnet() +
+                        "\nNacionalidad: " + auxEx.getVarNacionalidad();
+            }
+        }
+        return aux;
+    }
+    public void modificarDatosEstudiante(String pCedulaVCarnet, String pNuevoNombre, String pNuevoApellido, String pNuevaNacionalidad){
+        for(Estudiante auxEx : u.getEstudiantes()){
+            if(auxEx.getCedula().equalsIgnoreCase(pCedulaVCarnet) || auxEx.getVarCarnet().equalsIgnoreCase(pCedulaVCarnet)){
+                auxEx.setVarNombre(pNuevoNombre);
+                auxEx.setVarApellido(pNuevoApellido);
+                auxEx.setVarNacionalidad(pNuevaNacionalidad);
+            }
+        }
+
+    }
+    public void matricularCursosEstudiante(Curso pCurso, String pCedulaVCarnet){
+        for(Estudiante auxEx : u.getEstudiantes()){
+            if(auxEx.getCedula().equalsIgnoreCase(pCedulaVCarnet) || auxEx.getVarCarnet().equalsIgnoreCase(pCedulaVCarnet)){
+                if(!auxEx.getVectorCursos().contains(pCurso)){
+                    auxEx.getVectorCursos().add(pCurso);
+                }
+            }
+            return;
+        }
+    }
+    public void quitarCursoEstudiante(String pCedulaVCarnet, Curso pCurso){
+        for(Estudiante auxEx : u.getEstudiantes()){
+            if(auxEx.getCedula().equalsIgnoreCase(pCedulaVCarnet) || auxEx.getVarCarnet().equalsIgnoreCase(pCedulaVCarnet)){
+                if(auxEx.getVectorCursos().contains(pCurso)){
+                    auxEx.getVectorCursos().remove(pCurso);
+                    return;
+                }
+            }
+        }
+    }
+    public void mostrarCalculoArancelesEstudiante(String pCedulaVCarnet){
+        for(Estudiante auxEx : u.getEstudiantes()){
+            if(auxEx.getCedula().equalsIgnoreCase(pCedulaVCarnet) || auxEx.getVarCarnet().equalsIgnoreCase(pCedulaVCarnet)){
+                auxEx.calcularAranceles();
+            }
+            return;
+        }
+    }
     
     
     
