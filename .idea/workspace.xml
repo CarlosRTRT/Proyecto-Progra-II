@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="419b16e5-9bf7-4b2b-b0a9-8ba7041237e1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Progra II.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Progra II.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/init/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/init/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/models/Curso.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/models/Curso.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/models/Director.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/models/Director.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/models/Escuela.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/models/Escuela.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/models/Logic.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/models/Logic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/models/Profesor.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/models/Profesor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/models/Universidad.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/models/Universidad.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/AgregarEscuela/AgregarEscuela.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/AgregarEscuela/AgregarEscuela.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/ConsultarEscuelasMP/OpcionesDeGestionDeCursos/GestionDeCursos/AgregarUnCurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/ConsultarEscuelasMP/OpcionesDeGestionDeCursos/GestionDeCursos/AgregarUnCurso.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/ConsultarEscuelasMP/OpcionesDeGestionDeCursos/GestionDeCursos/DatosDeCurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/ConsultarEscuelasMP/OpcionesDeGestionDeCursos/GestionDeCursos/DatosDeCurso.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/ConsultarEscuelasMP/OpcionesDeGestionDeCursos/GestionDeCursos/EliminarUnCurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/ConsultarEscuelasMP/OpcionesDeGestionDeCursos/GestionDeCursos/EliminarUnCurso.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/ConsultarEscuelasMP/OpcionesDeGestionDeCursos/GestionDeCursos/ListaDeCursosPorEscuela.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/ConsultarEscuelasMP/OpcionesDeGestionDeCursos/GestionDeCursos/ListaDeCursosPorEscuela.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/ConsultarEscuelasMP/OpcionesDeGestionDeCursos/GestionDeCursos/ListaDeCursosPorUniversidad.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/ConsultarEscuelasMP/OpcionesDeGestionDeCursos/GestionDeCursos/ListaDeCursosPorUniversidad.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/ConsultarEscuelasMP/OpcionesDeGestionDeCursos/GestionDeCursos/ModificarDatosDeUnCurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/ConsultarEscuelasMP/OpcionesDeGestionDeCursos/GestionDeCursos/ModificarDatosDeUnCurso.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/ConsultarEscuelasMP/OpcionesDeGestionDeCursos/GestionDeCursos/ProfesoresDeEscuela$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/ConsultarEscuelasMP/OpcionesDeGestionDeCursos/GestionDeCursos/ProfesoresDeEscuela$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/ConsultarEscuelasMP/OpcionesDeGestionDeCursos/GestionDeCursos/ProfesoresDeEscuela.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/ConsultarEscuelasMP/OpcionesDeGestionDeCursos/GestionDeCursos/ProfesoresDeEscuela.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/ConsultarEscuelasMP/OpcionesDeGestionDeCursos/OpcionesDeGestionDeCursos.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/ConsultarEscuelasMP/OpcionesDeGestionDeCursos/OpcionesDeGestionDeCursos.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/ConsultarEscuelasMP/SeleccionDeEscuela.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/ConsultarEscuelasMP/SeleccionDeEscuela.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/GestionDeProfesores/AdministrarProfesor/ConsultarProfesor.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/GestionDeProfesores/AdministrarProfesor/ConsultarProfesor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/GestionDeProfesores/AdministrarProfesor/DetalleDeProfesor/DetalleProfesor.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/GestionDeProfesores/AdministrarProfesor/DetalleDeProfesor/DetalleProfesor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/GestionDeProfesores/AgregarProfesor/AgregarProfesor.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/GestionDeProfesores/AgregarProfesor/AgregarProfesor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/GestionDeProfesores/ConsultarProfesorPorCurso/ConsultarProfesorPorCurso$Estado.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/GestionDeProfesores/ConsultarProfesorPorCurso/ConsultarProfesorPorCurso$Estado.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/GestionDeProfesores/ConsultarProfesorPorCurso/ConsultarProfesorPorCurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/GestionDeProfesores/ConsultarProfesorPorCurso/ConsultarProfesorPorCurso.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/GestionDeProfesores/ConsultarProfesorPorCurso/SeleccionarCurso/ProfesorPorCurso/ProfesoresPorCurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/GestionDeProfesores/ConsultarProfesorPorCurso/SeleccionarCurso/ProfesorPorCurso/ProfesoresPorCurso.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/GestionDeProfesores/ConsultarProfesorPorCurso/SeleccionarCurso/SeleccionarCurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/GestionDeProfesores/ConsultarProfesorPorCurso/SeleccionarCurso/SeleccionarCurso.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/GestionDeProfesores/GestionDeProfesores.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/GestionDeProfesores/GestionDeProfesores.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/MenuPrincipal/MenuPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/MenuPrincipal/MenuPrincipal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/ModificarUniversidad/ModificarUniversidad.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/ModificarUniversidad/ModificarUniversidad.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/VentanaPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/VentanaPrincipal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/control/ConsultarEscuelasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/ConsultarEscuelasController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/control/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Curso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Curso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Estudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Estudiante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/EstudianteExtranjero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/EstudianteExtranjero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/EstudianteNacional.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/EstudianteNacional.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Logic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Profesor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Profesor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Universidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Universidad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/VentanaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/VentanaPrincipal.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2xnZcB5r9i2IrhI9eLAiiAjNItx" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.editor"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="init.Main" />
+      <module name="Proyecto Progra II" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="init.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="419b16e5-9bf7-4b2b-b0a9-8ba7041237e1" name="Changes" comment="" />
+      <created>1748575877556</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1748575877556</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/models/EstudianteNacional.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/views/VentanaPrincipal.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/views/VentanaPrincipal.java</url>
+          <line>138</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

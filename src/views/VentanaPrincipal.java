@@ -16,11 +16,10 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class VentanaPrincipal extends JFrame {
-
 	private static final long serialVersionUID = 1L;
 
 	private JPanel panelSuperior, panelCentral;
-	private JButton boton1, boton2, boton3, boton4;
+	private JButton boton1, boton2, boton3, boton4, boton5;
 	private JLabel etiquetaNombreUniversidad;
 	private JPanel panel;
 	private boolean mostrarTitulo; // Nueva variable para controlar si mostrar el título
@@ -35,7 +34,7 @@ public class VentanaPrincipal extends JFrame {
 		setTitle("Menu De Opciones");
 		setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(800, 600);
+		setSize(1050, 600);
 		setLocationRelativeTo(null);
 
 		panelSuperior();
@@ -52,18 +51,21 @@ public class VentanaPrincipal extends JFrame {
 		boton2 = new JButton("Agregar Escuela");
 		boton3 = new JButton("Consultar Escuelas");
 		boton4 = new JButton("Administrar Profesores");
+		boton5 = new JButton("Administrar Estudiantes");
 
-		Dimension botonSize = new Dimension(180, 37);
+		Dimension botonSize = new Dimension(200, 37);
 
 		boton1.setPreferredSize(botonSize);
 		boton2.setPreferredSize(botonSize);
 		boton3.setPreferredSize(botonSize);
 		boton4.setPreferredSize(botonSize);
+		boton5.setPreferredSize(botonSize);
 
 		panelSuperior.add(boton1);
 		panelSuperior.add(boton2);
 		panelSuperior.add(boton3);
 		panelSuperior.add(boton4);
+		panelSuperior.add(boton5);
 
 		add(panelSuperior, BorderLayout.NORTH);
 	}
@@ -177,6 +179,7 @@ public class VentanaPrincipal extends JFrame {
 	public JButton getBtnAdministrarP() {
 		return boton4;
 	}
+	public JButton getButton5(){ return boton5; };
 
 	public JPanel getPanelCentral() {
 		return panelCentral;
@@ -197,4 +200,5 @@ public class VentanaPrincipal extends JFrame {
 	public void addButton4Listener(ActionListener listener) {
 		boton4.addActionListener(listener);
 	}
+	public void addButton5Listener(ActionListener listener){ boton5.addActionListener(listener); }
 }

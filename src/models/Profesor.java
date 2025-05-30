@@ -11,7 +11,8 @@ public class Profesor {
 	public Profesor(String cedula, String nombre, String apellidos) {
 		this.cedula = cedula;
 		this.nombre = nombre;
-		this.apellidos = apellidos;		this.cursos = new ArrayList <>();
+		this.apellidos = apellidos;
+		this.cursos = new ArrayList <>();
 	}
 
 	public String getCedula() {

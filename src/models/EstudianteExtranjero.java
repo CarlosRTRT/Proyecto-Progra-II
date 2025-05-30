@@ -6,9 +6,9 @@ public class EstudianteExtranjero extends Estudiante {
 
     public EstudianteExtranjero(String pCedula, String pCarnet, String pNombre, String pApellido , String pNacionalidad){
         super(pCedula, pCarnet, pNombre, pApellido, pNacionalidad);
+        varBeca = 0;
     }
 
-    @Override
     public double calcularAranceles() {
         int total = 0;
         if (cursos == null || cursos.isEmpty()) {
@@ -24,47 +24,9 @@ public class EstudianteExtranjero extends Estudiante {
     }
 
     @Override
-    public void setVarNacionalidad(String pNacionalidad) {
-        varNacionalidad = pNacionalidad;
-    }
-
-    @Override
-    public String getCedula() {
-        return varCedula;
-    }
-
-    @Override
-    public String getVarCarnet() {
-        return super.getVarCarnet();
-    }
-
-    @Override
-    public String getVarNombre() {
-        return super.getVarNombre();
-    }
-
-    @Override
-    public String getVarApellido() {
-        return super.getVarApellido();
-    }
-
-    @Override
-    public ArrayList<Curso> getVectorCursos() {
-        return super.getVectorCursos();
-    }
-
-    @Override
-    public String getVarNacionalidad() {
-        return varNacionalidad;
-    }
-
-    @Override
-    public void setVarApellido(String varApellido) {
-        super.setVarApellido(varApellido);
-    }
-
-    @Override
-    public void setVarNombre(String varNombre) {
-        super.setVarNombre(varNombre);
+    public String toString() {
+        return "\nNombre: " + varNombre + "\nApellido: " + varApellidos +
+                "\nCédula: " + varCedula + "\nCarnet estudiantil: " + varCarnet +
+                "\nNacionalidad: " + varNacionalidad + "\nEstado de beca: no aplicable." + "\n";
     }
 }

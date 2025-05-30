@@ -1,5 +1,7 @@
 package models;
 
+import views.GestionDeProfesores.ConsultarProfesorPorCurso.SeleccionarCurso.ProfesorPorCurso.ProfesoresPorCurso;
+
 import java.util.ArrayList;
 
 public class Logic {
@@ -213,61 +215,99 @@ public class Logic {
     }
     
     //LÓGICA DE ESTUDIANTES
-    public void agregarEstudiante(Estudiante pEstudiante) {
-        u.getEstudiantes().add(pEstudiante);
-    }
+    public void agregarEstudiante(Estudiante pEstudiante) {u.getEstudiantes().add(pEstudiante);}
     public String recuperarDatosEstudiante(String pCedulaVCarnet){
         String aux = "";
         for (Estudiante auxEx : u.getEstudiantes()) {
             if(auxEx.getCedula().equalsIgnoreCase(pCedulaVCarnet) || auxEx.getVarCarnet().equalsIgnoreCase(pCedulaVCarnet)){
-                aux += "\nNombre: " + auxEx.getVarNombre() + "\nApellido: " + auxEx.getVarApellido() +
-                        "\nCédula: " + auxEx.getCedula() + "\nCarnet estudiantil: " + auxEx.getVarCarnet() +
-                        "\nNacionalidad: " + auxEx.getVarNacionalidad();
+                return auxEx.toString();
             }
         }
-        return aux;
+        return "No se encontró el estudiante.";
     }
-    public void modificarDatosEstudiante(String pCedulaVCarnet, String pNuevoNombre, String pNuevoApellido, String pNuevaNacionalidad){
+    public boolean modificarDatosEstudiante(String pCedulaVCarnet, String pNuevoNombre, String pNuevoApellido, String pNuevaNacionalidad){
         for(Estudiante auxEx : u.getEstudiantes()){
             if(auxEx.getCedula().equalsIgnoreCase(pCedulaVCarnet) || auxEx.getVarCarnet().equalsIgnoreCase(pCedulaVCarnet)){
                 auxEx.setVarNombre(pNuevoNombre);
                 auxEx.setVarApellido(pNuevoApellido);
                 auxEx.setVarNacionalidad(pNuevaNacionalidad);
+                return true;
             }
         }
-
+        return false;
     }
-    public void matricularCursosEstudiante(Curso pCurso, String pCedulaVCarnet){
+    public boolean matricularCursosEstudiante(Curso pCurso, String pCedulaVCarnet){
         for(Estudiante auxEx : u.getEstudiantes()){
             if(auxEx.getCedula().equalsIgnoreCase(pCedulaVCarnet) || auxEx.getVarCarnet().equalsIgnoreCase(pCedulaVCarnet)){
                 if(!auxEx.getVectorCursos().contains(pCurso)){
                     auxEx.getVectorCursos().add(pCurso);
+                    pCurso.getVectorEstudiante().add(auxEx);
+                    return true;
                 }
             }
-            return;
         }
+        return false;
     }
-    public void quitarCursoEstudiante(String pCedulaVCarnet, Curso pCurso){
+    public boolean quitarCursoEstudiante(String pCedulaVCarnet, Curso pCurso){
         for(Estudiante auxEx : u.getEstudiantes()){
             if(auxEx.getCedula().equalsIgnoreCase(pCedulaVCarnet) || auxEx.getVarCarnet().equalsIgnoreCase(pCedulaVCarnet)){
                 if(auxEx.getVectorCursos().contains(pCurso)){
                     auxEx.getVectorCursos().remove(pCurso);
-                    return;
+                    pCurso.getVectorEstudiante().remove(auxEx);
+                    return true;
                 }
             }
         }
+        return false;
     }
-    public void mostrarCalculoArancelesEstudiante(String pCedulaVCarnet){
+    public String mostrarCalculoArancelesEstudiante(String pCedulaVCarnet){
+        String auxText = ""; int creditosTotales = 0;
         for(Estudiante auxEx : u.getEstudiantes()){
             if(auxEx.getCedula().equalsIgnoreCase(pCedulaVCarnet) || auxEx.getVarCarnet().equalsIgnoreCase(pCedulaVCarnet)){
-                auxEx.calcularAranceles();
+                auxText += auxEx.toString();
+
+                for(Curso auxCurso : auxEx.getVectorCursos()){
+                    auxText += "Curso: " + auxCurso.getNombre() +
+                               " | Créditos: " + auxCurso.getVarCreditos() + "\n";
+                    creditosTotales += auxCurso.getVarCreditos();
+                }
+
+                auxText += "\nCréditos totales: " + creditosTotales +
+                           "\nCosto por crédito: 10.000 colones\n" +
+                           "\nCosto de matrícula: 15.000 colones\n";
+
+                if(!auxEx.getVarNacionalidad().equalsIgnoreCase("Nacional")){
+                    auxText += "\nRecargo por nacionalidad extranjera al subtotal del: 40%" +
+                               "\nMonto total a cobrar: " + auxEx.calcularAranceles() + " colones.";
+                }else {
+                    auxText += "Porcentaje de beca: " + auxEx.getVarBeca() + "%";
+                    auxText += "\nMonto total: " + auxEx.calcularAranceles();
+                }
             }
-            return;
+            break;
         }
+        return auxText;
     }
-    
-    
-    
-    
-    
+    public String mostrarEstudiantesMatriculados(Curso pCurso){
+        String auxText = "";
+        if(pCurso.getVectorEstudiante().isEmpty() || pCurso.getVectorEstudiante() == null){
+            auxText += "No hay estudiantes matriculados!";
+        }
+        auxText += "Estudiantes matriculados en el curso: \n";
+        for(Estudiante auxEx : pCurso.getVectorEstudiante()){
+            auxText += auxEx.toString() + "\n";
+        }
+        return auxText;
+    }
+    public String mostrarCursoMatriculados(Estudiante pEstudiantes){
+        String auxText = "";
+        if(pEstudiantes.getVectorCursos().isEmpty() || pEstudiantes.getVectorCursos() == null){
+            auxText += "No hay cursos matriculados!";
+        }
+        auxText += "Cursos matriculados: \n";
+        for(Curso auxCurso : pEstudiantes.getVectorCursos()){
+            auxText += auxCurso.toString() + "\n";
+        }
+        return auxText;
+    }
 }

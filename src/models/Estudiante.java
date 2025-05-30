@@ -6,46 +6,43 @@ public abstract class Estudiante {
     protected String varCedula;
     protected String varCarnet;
     protected String varNombre;
-    protected String varApellido;
+    protected String varApellidos;
     protected String varNacionalidad;
+    protected double varBeca;
     protected ArrayList<Curso> cursos;
 
     public Estudiante(String pCedula, String pCarnet, String pNombre, String pApellido , String pNacionalidad){
         varCedula = pCedula;
         varCarnet = pCarnet;
         varNombre = pNombre;
-        varApellido = pApellido;
+        varApellidos = pApellido;
         varNacionalidad = pNacionalidad;
+        varBeca = 0;
         cursos = new ArrayList<Curso>();
 
     }
     public abstract double calcularAranceles();
-    public abstract void setVarNacionalidad(String pNacionalidad);
+    public abstract String toString();
 
-    public void setVarNombre(String varNombre) {
-        this.varNombre = varNombre;
-    }
+    public void setVarNacionalidad(String pNacionalidad){ varNacionalidad = pNacionalidad; }
 
-    public void setVarApellido(String varApellido) {
-        this.varApellido = varApellido;
-    }
+    public double getVarBeca() { return varBeca; };
 
-    public String getVarCarnet() {
-        return varCarnet;
-    }
+    public void setVarNombre(String varNombre) { this.varNombre = varNombre; }
 
-    public String getVarNombre() {
-        return varNombre;
-    }
+    public void setVarApellido(String pApellidos) { this.varApellidos = pApellidos;}
 
-    public String getVarApellido() {
-        return varApellido;
-    }
+    public String getCedula(){ return varCedula; };
 
-    public ArrayList<Curso> getVectorCursos() {
-        return cursos;
-    }
+    public String getVarNacionalidad(){ return varNacionalidad; };
 
-    public abstract String getCedula();
-    public abstract String getVarNacionalidad();
+    public String getVarCarnet() { return varCarnet; }
+
+    public String getVarNombre() { return varNombre; }
+
+    public String getVarApellido() { return varApellidos;}
+
+    public ArrayList<Curso> getVectorCursos() { return cursos; }
+
+
 }

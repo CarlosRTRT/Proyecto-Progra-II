@@ -5,11 +5,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
-
 import models.*;
 import views.*;
 import views.AgregarEscuela.AgregarEscuela;
 import views.ConsultarEscuelasMP.SeleccionDeEscuela;
+import views.Estudiantes.AdministrarEstudiantes;
 import views.GestionDeProfesores.AdministrarProfesor.ConsultarProfesor;
 import views.GestionDeProfesores.AgregarProfesor.AgregarProfesor;
 import views.GestionDeProfesores.ConsultarProfesorPorCurso.ConsultarProfesorPorCurso;
@@ -26,14 +26,13 @@ public class Controller {
     private SeleccionDeEscuela schoolsView;
     private ConsultarEscuelasController cursoController;
     private GestionDeProfesores profesoresPanel;
+    private AdministrarEstudiantes estudiantesMainPanel;
 
     public Controller(VentanaPrincipal pView, MenuPrincipal pMenu) {
         this.view = pView;
         this.pMenu = pMenu;
         configurarListeners();
     }
-
-
     private void configurarListeners() {
         pMenu.getButtonAgregar().addActionListener(new ActionListener() {
             @Override
@@ -42,7 +41,6 @@ public class Controller {
             }
         });
     }
-
     private void crearUniversidad(VentanaPrincipal view) {
 
         ModificarUniversidad optionsView = new ModificarUniversidad();
@@ -63,8 +61,8 @@ public class Controller {
             return;
         }
         //Validar que el telefono sean numeros
-        if(!telefono.matches("^[0-9]+$")) {
-            JOptionPane.showMessageDialog(pMenu, "El teléfono solo debe contener números",
+        if(!telefono.matches("^[0-9]+$") || telefono.length() != 8) {
+            JOptionPane.showMessageDialog(pMenu, "El teléfono solo debe contener números y 8 dígitos",
                 "Error de validación", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -107,8 +105,13 @@ public class Controller {
                 abrirPanelProfesores();
             }
         });
+        view.getButton5().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                abrirPanelEstudiantes();
+            }
+        });
     }
-
     private void abrirPanelProfesores() {
         profesoresPanel = new GestionDeProfesores();
         view.cambiarPanelCentral(profesoresPanel);
@@ -116,7 +119,6 @@ public class Controller {
         // Configurar listeners para los botones del panel de profesores
         configurarListenersProfesores();
     }
-
     private void configurarListenersProfesores() {
 
         // Aquí puedes configurar los listeners para cada botón del panel de profesores
@@ -163,7 +165,6 @@ public class Controller {
             }
         });
     }
-
     private void configurarListenersConsultarProfesorPorCurso(ConsultarProfesorPorCurso consultarView) {
         // Listener para el botón Seleccionar
         consultarView.getBtnSeleccionar().addActionListener(new ActionListener() {
@@ -189,7 +190,6 @@ public class Controller {
             }
         });
     }
-
     private void cargarEscuelasEnConsulta(ConsultarProfesorPorCurso consultarView) {
         // Limpiar y configurar para mostrar escuelas
         consultarView.limpiar();
@@ -206,7 +206,6 @@ public class Controller {
                     "Sin escuelas", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-
     private void manejarSeleccionConsultaProfesorCurso(ConsultarProfesorPorCurso consultarView) {
         String elementoSeleccionado = consultarView.getElementoSeleccionado();
 
@@ -234,7 +233,6 @@ public class Controller {
                 break;
         }
     }
-
     private void manejarSeleccionEscuela(ConsultarProfesorPorCurso consultarView, String nombreEscuela) {
         // Buscar la escuela seleccionada
         Escuela escuelaSeleccionada = null;
@@ -269,7 +267,6 @@ public class Controller {
             consultarView.agregarElemento(curso.getNombre() + " (" + curso.getSigla() + ")");
         }
     }
-
     private void manejarSeleccionCurso(ConsultarProfesorPorCurso consultarView, String cursoInfo) {
         // Extraer el nombre del curso (antes del paréntesis)
         String nombreCurso = cursoInfo.substring(0, cursoInfo.lastIndexOf(" (")).trim();
@@ -309,9 +306,7 @@ public class Controller {
         // Mostrar los profesores del curso
         mostrarProfesoresDelCurso(consultarView, cursoSeleccionado, cursoInfo);
     }
-
-    private void mostrarProfesoresDelCurso(ConsultarProfesorPorCurso consultarView,
-                                           Curso curso, String cursoInfo) {
+    private void mostrarProfesoresDelCurso(ConsultarProfesorPorCurso consultarView, Curso curso, String cursoInfo) {
         // Cambiar al estado de mostrar profesores
         consultarView.setCursoSeleccionado(cursoInfo);
         consultarView.setEstado(ConsultarProfesorPorCurso.Estado.MOSTRAR_PROFESORES);
@@ -355,7 +350,6 @@ public class Controller {
         // Mostrar el resultado en el área de texto
         consultarView.mostrarResultado(resultado.toString());
     }
-
     private void manejarAtrasConsultaProfesorCurso(ConsultarProfesorPorCurso consultarView) {
         switch (consultarView.getEstadoActual()) {
             case SELECCIONAR_CURSO:
@@ -385,7 +379,6 @@ public class Controller {
         }
     }
     // Método nuevo para manejar los listeners del formulario AgregarProfesor
-
     private void configurarListenersConsultarProfesor(ConsultarProfesor consultarProfesor) {
         // Listener para el botón Buscar
         consultarProfesor.getBtnBuscar().addActionListener(new ActionListener() {
@@ -403,7 +396,6 @@ public class Controller {
             }
         });
     }
-
     private void configurarListenersAgregarProfesor(AgregarProfesor agregarProfesor) {
         // Listener para el botón Guardar
         agregarProfesor.getBtnGuardar().addActionListener(new ActionListener() {
@@ -635,7 +627,6 @@ public class Controller {
             }
         }
     }
-    
     // Método para quitar un curso del profesor
     private void quitarCursoAProfesor(Profesor profesor, DetalleProfesor detalleProfesor) {
         ArrayList<Curso> cursosProfesor = profesor.getCursosDelProfesor();
@@ -868,7 +859,6 @@ public class Controller {
             }
         });
     }
-
     private void actualizarDatosUniversidad(ModificarUniversidad optionsView) {
         String nuevaDireccion = optionsView.getTxtDireccion().getText();
         String nuevoTelefono = optionsView.getTxtTelefono().getText();
@@ -900,7 +890,6 @@ public class Controller {
         }
         optionsView.setBlanks();
     }
-
     private void agregarEscuela(AgregarEscuela agregarEscuela) {
         String nombreEscuela = agregarEscuela.getTxtNombreEscuela().getText();
        //Verificar si el espacio esta vacio
@@ -942,13 +931,24 @@ public class Controller {
 
         agregarEscuela.getTxtNombreEscuela().setText("");
     }
-
     private void abrirVentanaEscuelas() {
         // Crear el controlador para la gestion de cursos
         cursoController = new ConsultarEscuelasController(logic, schoolsView, view);
     }
-
     public void startGUI() {
         view.setVisible(true);
+    }
+    //Métodos para estudiantes
+    public void abrirPanelEstudiantes(){
+        estudiantesMainPanel = new AdministrarEstudiantes();
+        cambiarPanelEstudiantes(estudiantesMainPanel);
+    }
+    public void cambiarPanelEstudiantes(AdministrarEstudiantes pView){
+        view.addButton5Listener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                view.cambiarPanelCentral(pView);
+            }
+        });
     }
 }

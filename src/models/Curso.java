@@ -6,12 +6,14 @@ public class Curso {
 	private String sigla;
 	private String nombreCurso;
 	private int varCreditos;
+	private ArrayList<Estudiante> estudiantes;
 	private ArrayList <Profesor> profesoresDelCurso;
 
 	public Curso(String pSigla,String pNombreCurso) {
 		sigla = pSigla;
 		nombreCurso = pNombreCurso;
-		varCreditos = 3;
+		varCreditos = 3; //Modificar el input
+		estudiantes = new ArrayList<>();
 		profesoresDelCurso = new ArrayList<>();  // ← LÍNEA NUEVA
 	}
 
@@ -39,8 +41,11 @@ public class Curso {
 		return varCreditos;
 	}
 
+	public ArrayList<Estudiante> getVectorEstudiante(){
+		return estudiantes;
+	}
+
 	public String toString() {
-		
-	    return "Nombre: " + nombreCurso + ", Sigla: " + sigla;
+	    return "Nombre: " + nombreCurso + "\nSigla: " + sigla;
 	}
 }

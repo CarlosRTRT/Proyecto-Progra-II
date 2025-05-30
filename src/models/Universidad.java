@@ -35,11 +35,9 @@ public class Universidad {
 	public String getTelefonoU() {
 		return varTelefono;
 	}
-
 	public ArrayList<Estudiante> getEstudiantes() {
 		return estudiantes;
 	}
-
 	public ArrayList <Escuela> getVector() {
 		return departamentos;
 	}
