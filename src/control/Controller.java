@@ -10,6 +10,7 @@ import views.*;
 import views.AgregarEscuela.AgregarEscuela;
 import views.ConsultarEscuelasMP.SeleccionDeEscuela;
 import views.Estudiantes.AdministrarEstudiantes;
+import views.Estudiantes.AgregarEstudiante;
 import views.GestionDeProfesores.AdministrarProfesor.ConsultarProfesor;
 import views.GestionDeProfesores.AgregarProfesor.AgregarProfesor;
 import views.GestionDeProfesores.ConsultarProfesorPorCurso.ConsultarProfesorPorCurso;
@@ -938,17 +939,28 @@ public class Controller {
     public void startGUI() {
         view.setVisible(true);
     }
+    
     //Métodos para estudiantes
     public void abrirPanelEstudiantes(){
         estudiantesMainPanel = new AdministrarEstudiantes();
-        cambiarPanelEstudiantes(estudiantesMainPanel);
+        view.cambiarPanelCentral(estudiantesMainPanel);
+        configurarListenersEstudiantes();
     }
-    public void cambiarPanelEstudiantes(AdministrarEstudiantes pView){
-        view.addButton5Listener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                view.cambiarPanelCentral(pView);
-            }
-        });
+    
+    public void configurarListenersEstudiantes() {
+    	 estudiantesMainPanel.getBtnAgregarEstudiante().addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+                 AgregarEstudiante agregarEstudiante = new AgregarEstudiante(universidad);
+                 view.cambiarPanelCentral(agregarEstudiante);
+
+                 // Configurar listeners para los botones del formulario
+                 configurarListenersAgregarEstudiante(agregarEstudiante);
+             }
+    	});
+    }
+    public void configurarListenersAgregarEstudiante(AgregarEstudiante agregarEstudiante) {
+    	
+    	
     }
 }

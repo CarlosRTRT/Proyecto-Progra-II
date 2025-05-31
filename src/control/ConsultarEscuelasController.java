@@ -229,8 +229,9 @@ public class ConsultarEscuelasController {
                 try {
                     String nombreCurso = incluirView.getNombreCurso();
                     String siglasStr = incluirView.getSigla();
-                    
-                    if (nombreCurso.isEmpty() || siglasStr.isEmpty()) {
+                    String creditosStr = incluirView.getCreditos(); // OBTENER CRÉDITOS
+                    //AHORA TAMBIEN VALIDA CREDITOS
+                    if (nombreCurso.isEmpty() || siglasStr.isEmpty() || creditosStr.isEmpty()) {
                         JOptionPane.showMessageDialog(incluirView, 
                             "Por favor, complete todos los campos", 
                             "Error", JOptionPane.ERROR_MESSAGE);
@@ -253,6 +254,29 @@ public class ConsultarEscuelasController {
                         return;
                     }
                     
+                    // VALIDAR QUE LOS CRÉDITOS SEAN UN NÚMERO VÁLIDO
+                    int creditos;
+                    try {
+                        creditos = Integer.parseInt(creditosStr);
+                        if (creditos <= 0) {
+                            JOptionPane.showMessageDialog(incluirView,
+                                    "Los créditos deben ser un número mayor a 0",
+                                    "Error de validación", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+                        if (creditos > 10) { // Límite razonable para créditos
+                            JOptionPane.showMessageDialog(incluirView,
+                                    "Los créditos no pueden ser mayores a 10",
+                                    "Error de validación", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(incluirView,
+                                "Los créditos deben ser un número válido",
+                                "Error de validación", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    
                     // Verificar si ya existe un curso con ese nombre en la escuela
                     boolean cursoExiste = false;
                     for(Curso curso : incluirView.getEscuelaActual().getCursos()) {
@@ -270,7 +294,7 @@ public class ConsultarEscuelasController {
                     }
 
                     String siglas = siglasStr ;
-                    Curso nuevoCurso = new Curso(siglas, nombreCurso);
+                    Curso nuevoCurso = new Curso(siglas, nombreCurso, creditos);
                     logic.agregarCurso(nuevoCurso, incluirView.getEscuelaActual());
                     
                     JOptionPane.showMessageDialog(incluirView, 

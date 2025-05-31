@@ -215,7 +215,9 @@ public class Logic {
     }
     
     //LÓGICA DE ESTUDIANTES
-    public void agregarEstudiante(Estudiante pEstudiante) {u.getEstudiantes().add(pEstudiante);}
+    public void agregarEstudiante(Estudiante pEstudiante) {
+    	u.getEstudiantes().add(pEstudiante);
+    	}
     public String recuperarDatosEstudiante(String pCedulaVCarnet){
         String aux = "";
         for (Estudiante auxEx : u.getEstudiantes()) {

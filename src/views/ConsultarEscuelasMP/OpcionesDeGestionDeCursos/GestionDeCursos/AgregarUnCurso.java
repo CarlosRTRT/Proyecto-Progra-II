@@ -8,7 +8,7 @@ import models.Escuela;
 public class AgregarUnCurso extends JPanel{
     private static final long serialVersionUID = 1L;
 
-    private JTextField txtSigla, txtNombreCurso;
+    private JTextField txtSigla, txtNombreCurso, txtCreditos;
     private JButton btnGuardar, btnCancelar;
     private Escuela escuelaActual;
 
@@ -23,7 +23,7 @@ public class AgregarUnCurso extends JPanel{
         setPreferredSize(new Dimension(650, 350));
 
         // Panel de formulario con más espacio
-        JPanel panelFormulario = new JPanel(new GridLayout(2, 2, 15, 15));
+        JPanel panelFormulario = new JPanel(new GridLayout(3, 2, 15, 20));
         panelFormulario.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createEmptyBorder(50, 40, 30, 40),
                 BorderFactory.createTitledBorder(
@@ -46,6 +46,11 @@ public class AgregarUnCurso extends JPanel{
         JLabel lblNombre = new JLabel("Nombre del Curso:");
         lblNombre.setFont(labelFont);
         lblNombre.setHorizontalAlignment(SwingConstants.LEFT);
+        
+        // NUEVO LABEL PARA CRÉDITOS
+        JLabel lblCreditos = new JLabel("Créditos del Curso:");
+        lblCreditos.setFont(labelFont);
+        lblCreditos.setHorizontalAlignment(SwingConstants.LEFT);
 
         txtSigla = new JTextField();
         txtSigla.setPreferredSize(new Dimension(200, 40));
@@ -54,20 +59,34 @@ public class AgregarUnCurso extends JPanel{
         txtNombreCurso = new JTextField();
         txtNombreCurso.setPreferredSize(new Dimension(200, 40));
         txtNombreCurso.setFont(new Font("SansSerif", Font.PLAIN, 13));
+        
+        // NUEVO CAMPO PARA CRÉDITOS
+        txtCreditos = new JTextField();
+        txtCreditos.setPreferredSize(new Dimension(200, 40));
+        txtCreditos.setFont(new Font("SansSerif", Font.PLAIN, 13));
 
         // Crear paneles para envolver cada campo
-        JPanel panelSigla = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JPanel panelSigla = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 5));
         panelSigla.add(txtSigla);
-        panelSigla.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
+        panelSigla.setBorder(BorderFactory.createEmptyBorder(5, 0, 10, 0));
 
-        JPanel panelNombreCurso = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JPanel panelNombreCurso = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 5));
         panelNombreCurso.add(txtNombreCurso);
-        panelNombreCurso.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
+        panelNombreCurso.setBorder(BorderFactory.createEmptyBorder(5, 0, 10, 0));
+       
+        // NUEVO PANEL PARA CRÉDITOS
+        JPanel panelCreditos = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 5));
+        panelCreditos.add(txtCreditos);
+        panelCreditos.setBorder(BorderFactory.createEmptyBorder(5, 0, 10, 0));
+
 
         panelFormulario.add(lblSigla);
         panelFormulario.add(panelSigla);
         panelFormulario.add(lblNombre);
         panelFormulario.add(panelNombreCurso);
+        // AGREGAR LOS NUEVOS COMPONENTES DE CRÉDITOS
+        panelFormulario.add(lblCreditos);
+        panelFormulario.add(panelCreditos);
 
         // Panel de botones con más espacio
         JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 20));
@@ -102,7 +121,12 @@ public class AgregarUnCurso extends JPanel{
     public String getNombreCurso() {
         return txtNombreCurso.getText();
     }
-
+    
+    // NUEVO GETTER PARA CRÉDITOS
+    public String getCreditos() {
+        return txtCreditos.getText();
+    }
+    
     public JButton getBtnGuardar() {
         return btnGuardar;
     }

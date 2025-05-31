@@ -9,10 +9,10 @@ public class Curso {
 	private ArrayList<Estudiante> estudiantes;
 	private ArrayList <Profesor> profesoresDelCurso;
 
-	public Curso(String pSigla,String pNombreCurso) {
+	public Curso(String pSigla, String pNombreCurso, int pCreditos) {
 		sigla = pSigla;
 		nombreCurso = pNombreCurso;
-		varCreditos = 3; //Modificar el input
+		varCreditos = pCreditos; //Modificar el input
 		estudiantes = new ArrayList<>();
 		profesoresDelCurso = new ArrayList<>();  // ← LÍNEA NUEVA
 	}
@@ -46,6 +46,6 @@ public class Curso {
 	}
 
 	public String toString() {
-	    return "Nombre: " + nombreCurso + "\nSigla: " + sigla;
+	    return "Nombre: " + nombreCurso + "\nSiglas: " + sigla +"\nCreditos: "+ varCreditos;  
 	}
 }
