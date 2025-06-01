@@ -940,7 +940,7 @@ public class Controller {
         view.setVisible(true);
     }
     
-    //Métodos para estudiantes
+    //CONTROLLER DE ESTUDIANTES
     public void abrirPanelEstudiantes(){
         estudiantesMainPanel = new AdministrarEstudiantes();
         view.cambiarPanelCentral(estudiantesMainPanel);
