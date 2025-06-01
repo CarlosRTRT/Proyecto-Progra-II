@@ -34,7 +34,7 @@ public class VentanaPrincipal extends JFrame {
 		setTitle("Menu De Opciones");
 		setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(1050, 600);
+		setSize(1050, 650);
 		setLocationRelativeTo(null);
 
 		panelSuperior();

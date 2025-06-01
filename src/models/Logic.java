@@ -230,10 +230,19 @@ public class Logic {
     public boolean modificarDatosEstudiante(String pCedulaVCarnet, String pNuevoNombre, String pNuevoApellido, String pNuevaNacionalidad){
         for(Estudiante auxEx : u.getEstudiantes()){
             if(auxEx.getCedula().equalsIgnoreCase(pCedulaVCarnet) || auxEx.getVarCarnet().equalsIgnoreCase(pCedulaVCarnet)){
-                auxEx.setVarNombre(pNuevoNombre);
-                auxEx.setVarApellido(pNuevoApellido);
-                auxEx.setVarNacionalidad(pNuevaNacionalidad);
-                return true;
+                if(!auxEx.getVarNacionalidad().equalsIgnoreCase(pNuevaNacionalidad)){
+                    String cedula = auxEx.getCedula();
+                    String carnet = auxEx.getVarCarnet();
+                    EstudianteExtranjero EstuNew = new EstudianteExtranjero(cedula, carnet, pNuevoNombre, pNuevoApellido, pNuevaNacionalidad);
+                    EstuNew.setVectorCursos(auxEx.getVectorCursos());
+                    u.getEstudiantes().add(EstuNew);
+                    u.getEstudiantes().remove(auxEx);
+                    return true;
+                }else{
+                    auxEx.setVarNombre(pNuevoNombre);
+                    auxEx.setVarApellido(pNuevoApellido);
+                    return true;
+                }
             }
         }
         return false;

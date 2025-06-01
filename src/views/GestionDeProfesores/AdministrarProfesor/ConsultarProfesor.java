@@ -51,8 +51,6 @@ public class ConsultarProfesor extends JPanel {
         txtCedula.setPreferredSize(new Dimension(200, 25));
         txtCedula.setBorder(BorderFactory.createEmptyBorder(2, 5, 2, 5));
 
-
-
         panelCedula.add(lblCedula, BorderLayout.NORTH);
         panelCedula.add(txtCedula, BorderLayout.CENTER);
 

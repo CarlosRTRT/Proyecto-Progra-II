@@ -31,7 +31,7 @@ public class AgregarEstudiante extends JPanel {
 
     private void init() {
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(650, 350));
+        setPreferredSize(new Dimension(650, 420));
 
         // Panel para datos del estudiante
         JPanel panelDatos = new JPanel(new GridLayout(6, 2, 10, 15));

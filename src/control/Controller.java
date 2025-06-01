@@ -9,10 +9,7 @@ import models.*;
 import views.*;
 import views.AgregarEscuela.AgregarEscuela;
 import views.ConsultarEscuelasMP.SeleccionDeEscuela;
-import views.Estudiantes.AdministrarEstudiantes;
-import views.Estudiantes.AgregarEstudiante;
-import views.Estudiantes.BuscarEstudiante;
-import views.Estudiantes.DetalleEstudiante;
+import views.Estudiantes.*;
 import views.GestionDeProfesores.AdministrarProfesor.ConsultarProfesor;
 import views.GestionDeProfesores.AgregarProfesor.AgregarProfesor;
 import views.GestionDeProfesores.ConsultarProfesorPorCurso.ConsultarProfesorPorCurso;
@@ -1188,7 +1185,7 @@ public class Controller {
             	// Si no se encontró, mostrar mensaje de error
                 JOptionPane.showMessageDialog(buscarEstudiante,
                         "No se encontro ningun estudiante con esa cedula o carnet",
-                        "Estudiante no encontrado", JOptionPane.INFORMATION_MESSAGE);
+                        "Estudiante no encontrado", JOptionPane.ERROR_MESSAGE);
             }
          }
          if(!carnet.isEmpty()) {
@@ -1201,16 +1198,17 @@ public class Controller {
             	// Si no se encontró, mostrar mensaje de error
                 JOptionPane.showMessageDialog(buscarEstudiante,
                         "No se encontro ningun estudiante con esa cedula o carnet",
-                        "Estudiante no encontrado", JOptionPane.INFORMATION_MESSAGE);
+                        "Estudiante no encontrado", JOptionPane.ERROR_MESSAGE);
          }
 
          }
     }
+
     private void mostrarDetalleEstudiante(Estudiante estudiante) {
         DetalleEstudiante detalleEstudiante = new DetalleEstudiante();
         view.cambiarPanelCentral(detalleEstudiante);
 
-        // Actualizar los datos del profesor en el panel
+        // Actualizar los datos del estudiante en el panel
         detalleEstudiante.actualizarDatosEstudiante(
                 estudiante.getCedula(),
                 estudiante.getVarCarnet(),
@@ -1220,7 +1218,7 @@ public class Controller {
                 String.valueOf(estudiante.getVarBeca())
         );
 
-        // Actualizar la tabla de cursos del profesor
+        // Actualizar la tabla de cursos del estudiante
         actualizarTablaCursosEstudiante(detalleEstudiante, estudiante);
 
         // Configurar listeners para los botones del panel de detalles
@@ -1250,7 +1248,59 @@ public class Controller {
             datosCursos[i][2] = nombreEscuela;
         }
     }
+
     public void configurarListenersDetalleEstudiante(DetalleEstudiante detalleEstudiante, Estudiante estudiante) {
-   	
+        detalleEstudiante.getBtnVolver().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                view.cambiarPanelCentral(estudiantesMainPanel);
+            }
+        });
+        detalleEstudiante.getBtnModificarDatos().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ModificarEstudiante modStudent = new ModificarEstudiante();
+                view.cambiarPanelCentral(modStudent);
+                configurarListenersModificarEstudiante(modStudent, estudiante);
+            }
+        });
+    }
+
+    public void configurarListenersModificarEstudiante(ModificarEstudiante pView, Estudiante pEstudiante){
+        pView.getBtnGuardar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nuevoNombre = pView.getNombre();
+                String nuevoApellido = pView.getApellidos();
+                String nuevaNacionalidad = pView.getInputNacionalidad();
+
+                if(nuevoNombre.isEmpty() && nuevoApellido.isEmpty()){
+                    if(pEstudiante.getVarNacionalidad().equalsIgnoreCase(nuevaNacionalidad)){
+                        JOptionPane.showMessageDialog(pView, "Al menos un dato debe de ser modificado para continuar.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }else{
+                        if(logic.modificarDatosEstudiante(pEstudiante.getCedula(), pEstudiante.getVarNombre(), pEstudiante.getVarApellido(), nuevaNacionalidad)){
+                            JOptionPane.showMessageDialog(pView, "Estudianto actualizado!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
+                        }else {
+                            JOptionPane.showMessageDialog(pView, "Error al actualizar!", "Error!", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                }
+                if(!nuevoNombre.isEmpty()){
+                    if(!nuevoApellido.isEmpty()){
+                        if(!pEstudiante.getVarNacionalidad().equalsIgnoreCase(nuevaNacionalidad)){
+                            logic.modificarDatosEstudiante(pEstudiante.getCedula(), nuevoNombre, nuevoApellido, nuevaNacionalidad);
+                        }else{
+                            logic.modificarDatosEstudiante(pEstudiante.getCedula(), nuevoNombre,nuevoApellido, pEstudiante.getVarNacionalidad());
+                        }
+                    }
+                }
+            }
+        });
+        pView.getBtnVolver().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                view.cambiarPanelCentral(estudiantesMainPanel);
+            }
+        });
     }
 }

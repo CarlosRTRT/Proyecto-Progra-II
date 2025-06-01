@@ -18,16 +18,16 @@ public class BuscarEstudiante extends JPanel {
 
     private void init() {
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(700, 350));
+        setPreferredSize(new Dimension(700, 210));
 
         // Panel principal
         JPanel mainPanel = new JPanel(new BorderLayout(10, 20));
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(30, 40, 0, 40));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 30, 10, 30));
 
         // Panel para búsquedas
-        JPanel panelBusquedas = new JPanel(new GridLayout(2, 1, 0, 20));
+        JPanel panelBusquedas = new JPanel(new GridLayout(2, 1, 0, 5));
         panelBusquedas.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createEmptyBorder(30, 0, 0, 0),
+            BorderFactory.createEmptyBorder(20, 0, 0, 0),
             BorderFactory.createTitledBorder(
                 BorderFactory.createLineBorder(Color.DARK_GRAY, 1, true),
                 "Buscar Estudiante",
@@ -39,20 +39,20 @@ public class BuscarEstudiante extends JPanel {
         ));
 
         // Panel para búsqueda por cédula
-        JPanel panelCedula = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        
+        JPanel panelCedula = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 2));
+
         JLabel lblCedula = new JLabel("Buscar por Cédula:");
         lblCedula.setFont(new Font("SansSerif", Font.PLAIN, 14));
         
         txtCedula = new JTextField();
         txtCedula.setPreferredSize(new Dimension(200, 25));
         txtCedula.setBorder(BorderFactory.createEmptyBorder(2, 5, 2, 5));
-        
+
         panelCedula.add(lblCedula);
         panelCedula.add(txtCedula);
 
         // Panel para búsqueda por carnet
-        JPanel panelCarnet = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        JPanel panelCarnet = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 2));
         
         JLabel lblCarnet = new JLabel("Buscar por Carnet:");
         lblCarnet.setFont(new Font("SansSerif", Font.PLAIN, 14));
@@ -60,7 +60,7 @@ public class BuscarEstudiante extends JPanel {
         txtCarnet = new JTextField();
         txtCarnet.setPreferredSize(new Dimension(200, 25));
         txtCarnet.setBorder(BorderFactory.createEmptyBorder(2, 5, 2, 5));
-        
+
         panelCarnet.add(lblCarnet);
         panelCarnet.add(txtCarnet);
 
@@ -74,12 +74,12 @@ public class BuscarEstudiante extends JPanel {
         btnBuscar = new JButton("Buscar");
         btnBuscar.setFocusPainted(false);
         btnBuscar.setFont(new Font("SansSerif", Font.PLAIN, 13));
-        btnBuscar.setPreferredSize(new Dimension(250, 40));
+        btnBuscar.setPreferredSize(new Dimension(180, 35));
         
         btnVolver = new JButton("Volver");
         btnVolver.setFocusPainted(false);
         btnVolver.setFont(new Font("SansSerif", Font.PLAIN, 13));
-        btnVolver.setPreferredSize(new Dimension(250, 40));
+        btnVolver.setPreferredSize(new Dimension(180, 35));
         
         panelBotones.add(btnBuscar);
         panelBotones.add(btnVolver);

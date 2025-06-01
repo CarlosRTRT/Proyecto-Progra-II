@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="419b16e5-9bf7-4b2b-b0a9-8ba7041237e1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto Progra II.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Progra II.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/init/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/init/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/models/Curso.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/models/Curso.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/models/Director.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/models/Director.class" afterDir="false" />
@@ -39,15 +35,14 @@
       <change beforePath="$PROJECT_DIR$/bin/views/MenuPrincipal/MenuPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/MenuPrincipal/MenuPrincipal.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/views/ModificarUniversidad/ModificarUniversidad.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/ModificarUniversidad/ModificarUniversidad.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/views/VentanaPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/VentanaPrincipal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/control/ConsultarEscuelasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/ConsultarEscuelasController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/control/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Curso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Curso.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/Estudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Estudiante.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/EstudianteExtranjero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/EstudianteExtranjero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/EstudianteNacional.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/EstudianteNacional.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Logic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Profesor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Profesor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Universidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Universidad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/ConsultarEscuelasMP/OpcionesDeGestionDeCursos/GestionDeCursos/AgregarUnCurso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/ConsultarEscuelasMP/OpcionesDeGestionDeCursos/GestionDeCursos/AgregarUnCurso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Estudiantes/AdministrarEstudiantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Estudiantes/AdministrarEstudiantes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Estudiantes/AgregarEstudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Estudiantes/AgregarEstudiante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Estudiantes/BuscarEstudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Estudiantes/BuscarEstudiante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/GestionDeProfesores/AdministrarProfesor/ConsultarProfesor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/GestionDeProfesores/AdministrarProfesor/ConsultarProfesor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/VentanaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/VentanaPrincipal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,27 +60,28 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2xnZcB5r9i2IrhI9eLAiiAjNItx" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.editor"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/mikey/Documents/proyecto main/Proyecto-Progra-II&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="init.Main" />

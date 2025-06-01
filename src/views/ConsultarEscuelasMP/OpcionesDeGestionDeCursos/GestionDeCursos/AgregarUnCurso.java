@@ -20,7 +20,7 @@ public class AgregarUnCurso extends JPanel{
     private void init() {
         // Configuración básica de la ventana - TAMAÑO AUMENTADO
         setLayout(new BorderLayout(20, 20));
-        setPreferredSize(new Dimension(650, 350));
+        setPreferredSize(new Dimension(600, 400));
 
         // Panel de formulario con más espacio
         JPanel panelFormulario = new JPanel(new GridLayout(3, 2, 15, 20));

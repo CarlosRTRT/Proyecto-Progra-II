@@ -44,5 +44,7 @@ public abstract class Estudiante {
 
     public ArrayList<Curso> getVectorCursos() { return cursos; }
 
+    public void setVectorCursos(ArrayList<Curso> pCurso) { cursos = pCurso; }
+
 
 }

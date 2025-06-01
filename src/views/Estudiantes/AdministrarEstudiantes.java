@@ -19,7 +19,7 @@ private static final long serialVersionUID = 1L;
     
     void init(){ 
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(650, 350));
+        setPreferredSize(new Dimension(650, 320));
 
         // Panel principal con los botones
         JPanel panelOpciones = new JPanel(new GridLayout(4, 1, 20, 20));
