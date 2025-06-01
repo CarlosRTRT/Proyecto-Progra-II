@@ -218,14 +218,14 @@ public class Logic {
     public void agregarEstudiante(Estudiante pEstudiante) {
     	u.getEstudiantes().add(pEstudiante);
     	}
-    public String recuperarDatosEstudiante(String pCedulaVCarnet){
+    public Estudiante BuscarEstudiante(String pCedulaVCarnet){
         String aux = "";
         for (Estudiante auxEx : u.getEstudiantes()) {
             if(auxEx.getCedula().equalsIgnoreCase(pCedulaVCarnet) || auxEx.getVarCarnet().equalsIgnoreCase(pCedulaVCarnet)){
-                return auxEx.toString();
+                return auxEx;
             }
         }
-        return "No se encontró el estudiante.";
+        return null;
     }
     public boolean modificarDatosEstudiante(String pCedulaVCarnet, String pNuevoNombre, String pNuevoApellido, String pNuevaNacionalidad){
         for(Estudiante auxEx : u.getEstudiantes()){

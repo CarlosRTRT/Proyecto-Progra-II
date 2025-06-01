@@ -11,6 +11,8 @@ import views.AgregarEscuela.AgregarEscuela;
 import views.ConsultarEscuelasMP.SeleccionDeEscuela;
 import views.Estudiantes.AdministrarEstudiantes;
 import views.Estudiantes.AgregarEstudiante;
+import views.Estudiantes.BuscarEstudiante;
+import views.Estudiantes.DetalleEstudiante;
 import views.GestionDeProfesores.AdministrarProfesor.ConsultarProfesor;
 import views.GestionDeProfesores.AgregarProfesor.AgregarProfesor;
 import views.GestionDeProfesores.ConsultarProfesorPorCurso.ConsultarProfesorPorCurso;
@@ -958,9 +960,297 @@ public class Controller {
                  configurarListenersAgregarEstudiante(agregarEstudiante);
              }
     	});
+    	 
+    	 estudiantesMainPanel.getBtnAdministrarEstudiante().addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+                 BuscarEstudiante buscarEstudiante = new BuscarEstudiante();
+                 view.cambiarPanelCentral(buscarEstudiante);
+
+                 // Configurar listeners para buscar estudiante
+                 configurarListenersBuscarEstudiante(buscarEstudiante);
+             }
+    	});
     }
+    
     public void configurarListenersAgregarEstudiante(AgregarEstudiante agregarEstudiante) {
+    	//Listener para guardar
+    	agregarEstudiante.getBtnGuardar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	guardarNuevoEstudiante(agregarEstudiante);
+            }
+        });
+    	//Listener para volver
+    	agregarEstudiante.getBtnVolver().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                view.cambiarPanelCentral(estudiantesMainPanel);
+            }
+        });
     	
+    }
+    
+    public void guardarNuevoEstudiante(AgregarEstudiante agregarEstudiante) {
+    	  try {
+    	        // Obtener los valores de la interfaz
+    	        String varCedula = agregarEstudiante.getCedula();
+    	        String varCarnet = agregarEstudiante.getCarnet();
+    	        String varNombre = agregarEstudiante.getNombre();
+    	        String varApellidos = agregarEstudiante.getApellidos();
+    	        String varNacionalidad = agregarEstudiante.getNacionalidad();
+    	        String varBeca = agregarEstudiante.getPorcentajeBeca();
+    	        
+    	        // Validación de Cédula
+    	        if (varCedula == null || varCedula.trim().isEmpty()) {
+    	            JOptionPane.showMessageDialog(null, 
+    	                "Error: La cédula es obligatoria.", 
+    	                "Error de Validación", 
+    	                JOptionPane.ERROR_MESSAGE);
+    	            return;
+    	        }
+    	        
+    	        // Validar que la cédula tenga exactamente 9 caracteres
+    	        if (varCedula.length() != 9) {
+    	            JOptionPane.showMessageDialog(null, 
+    	                "Error: La cédula debe tener exactamente 9 caracteres.", 
+    	                "Error de Validación", 
+    	                JOptionPane.ERROR_MESSAGE);
+    	            return;
+    	        }
+    	        
+    	        // Validar que la cédula solo contenga números
+    	        if (!varCedula.trim().matches("\\d+")) {
+    	            JOptionPane.showMessageDialog(null, 
+    	                "Error: La cédula solo puede contener números.", 
+    	                "Error de Validación", 
+    	                JOptionPane.ERROR_MESSAGE);
+    	            return;
+    	        }
+    	        
+    	        // Validación de Carnet
+    	        if (varCarnet == null || varCarnet.trim().isEmpty()) {
+    	            JOptionPane.showMessageDialog(null, 
+    	                "Error: El carnet es obligatorio.", 
+    	                "Error de Validación", 
+    	                JOptionPane.ERROR_MESSAGE);
+    	            return;
+    	        }
+    	        
+    	        // Validar que el carnet tenga exactamente 9 caracteres
+    	        if (varCarnet.length() != 9) {
+    	            JOptionPane.showMessageDialog(null, 
+    	                "Error: El carnet debe tener exactamente 9 caracteres.", 
+    	                "Error de Validación", 
+    	                JOptionPane.ERROR_MESSAGE);
+    	            return;
+    	        }
+    	        
+    	     // Validar que el carnet solo contenga números
+    	        if (!varCarnet.trim().matches("\\d+")) {
+    	            JOptionPane.showMessageDialog(null, 
+    	                "Error: El carnet solo puede contener números.", 
+    	                "Error de Validación", 
+    	                JOptionPane.ERROR_MESSAGE);
+    	            return;
+    	        }
+    	        
+    	        // Validación de Nombre
+    	        if (varNombre == null || varNombre.trim().isEmpty()) {
+    	            JOptionPane.showMessageDialog(null, 
+    	                "Error: El nombre es obligatorio.", 
+    	                "Error de Validación", 
+    	                JOptionPane.ERROR_MESSAGE);
+    	            return;
+    	        }
+    	        
+    	        // Validar que el nombre solo contenga letras y espacios
+    	        if (!varNombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+    	            JOptionPane.showMessageDialog(null, 
+    	                "Error: El nombre solo puede contener letras y espacios.", 
+    	                "Error de Validación", 
+    	                JOptionPane.ERROR_MESSAGE);
+    	            return;
+    	        }
+    	        
+    	        // Validación de Apellidos
+    	        if (varApellidos == null || varApellidos.trim().isEmpty()) {
+    	            JOptionPane.showMessageDialog(null, 
+    	                "Error: Los apellidos son obligatorios.", 
+    	                "Error de Validación", 
+    	                JOptionPane.ERROR_MESSAGE);
+    	            return;
+    	        }
+    	        
+    	        // Validar que los apellidos solo contengan letras y espacios
+    	        if (!varApellidos.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+    	            JOptionPane.showMessageDialog(null, 
+    	                "Error: Los apellidos solo pueden contener letras y espacios.", 
+    	                "Error de Validación", 
+    	                JOptionPane.ERROR_MESSAGE);
+    	            return;
+    	        }
+    	        
+    	        
+    	        // Validación y conversión de Porcentaje de Beca
+    	        double porcentajeBeca = 0.0;
+    	        
+    	        if (varBeca == null || varBeca.trim().isEmpty()) {
+    	            JOptionPane.showMessageDialog(null, 
+    	                "Error: El porcentaje de beca es obligatorio.", 
+    	                "Error de Validación", 
+    	                JOptionPane.ERROR_MESSAGE);
+    	            return;
+    	        }
+    	        
+    	        try {
+    	            porcentajeBeca = Double.parseDouble(varBeca.trim());
+    	            
+    	            // Validar que el porcentaje esté en un rango válido (0-100)
+    	            if (porcentajeBeca < 0 || porcentajeBeca > 100) {
+    	                JOptionPane.showMessageDialog(null, 
+    	                    "Error: El porcentaje de beca debe estar entre 0 y 100.", 
+    	                    "Error de Validación", 
+    	                    JOptionPane.ERROR_MESSAGE);
+    	                return;
+    	            }
+    	            
+    	        } catch (NumberFormatException e) {
+    	            JOptionPane.showMessageDialog(null, 
+    	                "Error: El porcentaje de beca debe ser un número válido.", 
+    	                "Error de Validación", 
+    	                JOptionPane.ERROR_MESSAGE);
+    	            return;
+    	        }
+    	        
+    	        // Si todas las validaciones pasan, crear el objeto Estudiante y guardarlo
+    	        if(varNacionalidad.equals("Nacional")) {
+    	        	EstudianteNacional nuevoEstudiante = new EstudianteNacional(varCedula,varCarnet,varNombre,varApellidos,varNacionalidad,porcentajeBeca);
+    	        	logic.agregarEstudiante(nuevoEstudiante);
+    	        }else {
+    	        	EstudianteExtranjero nuevoEstudiante = new EstudianteExtranjero(varCedula,varCarnet,varNombre,varApellidos,varNacionalidad);
+    	        	logic.agregarEstudiante(nuevoEstudiante);
+    	        }
+    	       
+    	        // Mostrar mensaje de éxito
+    	        JOptionPane.showMessageDialog(null, 
+    	            "Estudiante guardado exitosamente.", 
+    	            "Éxito", 
+    	            JOptionPane.INFORMATION_MESSAGE);
+    	        agregarEstudiante.limpiarCampos();
+    	        
+    	            
+    	    } catch (Exception e) {
+    	        JOptionPane.showMessageDialog(null, 
+    	            "Error inesperado: " + e.getMessage(), 
+    	            "Error", 
+    	            JOptionPane.ERROR_MESSAGE);
+    	        e.printStackTrace();
+    	    }
     	
+    }
+    
+    public void configurarListenersBuscarEstudiante(BuscarEstudiante buscarEstudiante) {
+    	buscarEstudiante.getBtnBuscar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	buscarYMostrarEstudiante(buscarEstudiante);
+            }
+        });
+    	buscarEstudiante.getBtnVolver().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	view.cambiarPanelCentral(estudiantesMainPanel);
+            }
+        });
+    	
+    }
+    
+    public void buscarYMostrarEstudiante(BuscarEstudiante buscarEstudiante) {
+    	 String cedula = buscarEstudiante.getCedula().trim();
+    	 String carnet = buscarEstudiante.getCarnet().trim();
+
+         // Validar que se haya ingresado una cédula o un carnet
+         if (cedula.isEmpty() && carnet.isEmpty()) {
+             JOptionPane.showMessageDialog(buscarEstudiante,
+                     "Por favor, ingrese una cedula o un carnet",
+                     "Error", JOptionPane.ERROR_MESSAGE);
+             return;
+         }
+         //Buscar estudiante ya sea con la cedula o el carnet
+         if(!cedula.isEmpty()) {
+        	 Estudiante estudianteEncontrado = logic.BuscarEstudiante(cedula);
+        	 if (estudianteEncontrado != null) {
+                 // Si se encontró el estudiante, mostrar el panel de detalles
+                 mostrarDetalleEstudiante(estudianteEncontrado);
+        	 
+            }else {
+            	// Si no se encontró, mostrar mensaje de error
+                JOptionPane.showMessageDialog(buscarEstudiante,
+                        "No se encontro ningun estudiante con esa cedula o carnet",
+                        "Estudiante no encontrado", JOptionPane.INFORMATION_MESSAGE);
+            }
+         }
+         if(!carnet.isEmpty()) {
+        	 Estudiante estudianteEncontrado = logic.BuscarEstudiante(carnet);
+        	 if (estudianteEncontrado != null) {
+                 // Si se encontró el estudiante, mostrar el panel de detalles
+                 mostrarDetalleEstudiante(estudianteEncontrado);
+        	 
+            }else {
+            	// Si no se encontró, mostrar mensaje de error
+                JOptionPane.showMessageDialog(buscarEstudiante,
+                        "No se encontro ningun estudiante con esa cedula o carnet",
+                        "Estudiante no encontrado", JOptionPane.INFORMATION_MESSAGE);
+         }
+
+         }
+    }
+    private void mostrarDetalleEstudiante(Estudiante estudiante) {
+        DetalleEstudiante detalleEstudiante = new DetalleEstudiante();
+        view.cambiarPanelCentral(detalleEstudiante);
+
+        // Actualizar los datos del profesor en el panel
+        detalleEstudiante.actualizarDatosEstudiante(
+                estudiante.getCedula(),
+                estudiante.getVarCarnet(),
+                estudiante.getVarNombre(),
+                estudiante.getVarApellido(),
+                estudiante.getVarNacionalidad(),
+                String.valueOf(estudiante.getVarBeca())
+        );
+
+        // Actualizar la tabla de cursos del profesor
+        actualizarTablaCursosEstudiante(detalleEstudiante, estudiante);
+
+        // Configurar listeners para los botones del panel de detalles
+        configurarListenersDetalleEstudiante(detalleEstudiante, estudiante);
+    }
+    
+    private void actualizarTablaCursosEstudiante(DetalleEstudiante detalleEstudiante, Estudiante estudiante) {
+        // Obtener los cursos del estudiante
+        ArrayList<Curso> cursosEstudiante = estudiante.getVectorCursos();
+
+        // Crear datos para la tabla
+        Object[][] datosCursos = new Object[cursosEstudiante.size()][3];
+
+        for (int i = 0; i < cursosEstudiante.size(); i++) {
+            Curso curso = cursosEstudiante.get(i);
+            // Buscar la escuela que contiene este curso
+            String nombreEscuela = "No encontrada";
+            for (Escuela escuela : universidad.getVector()) {
+                if (escuela.getCursos().contains(curso)) {
+                    nombreEscuela = escuela.getNombre();
+                    break;
+                }
+            }
+
+            datosCursos[i][0] = curso.getSigla(); // Usar getSigla() en lugar de getCodigo()
+            datosCursos[i][1] = curso.getNombre();
+            datosCursos[i][2] = nombreEscuela;
+        }
+    }
+    public void configurarListenersDetalleEstudiante(DetalleEstudiante detalleEstudiante, Estudiante estudiante) {
+   	
     }
 }

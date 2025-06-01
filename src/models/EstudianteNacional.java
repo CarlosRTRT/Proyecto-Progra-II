@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class EstudianteNacional extends Estudiante {
     private double varBeca;
 
-    public EstudianteNacional(String pCedula, String pCarnet, String pNombre, String pApellido, String pNacionalidad, int pPorcentajeBeca) {
-        super(pCedula, pCarnet, pNombre, pApellido, pNacionalidad);
-        varBeca = pPorcentajeBeca;
+    public EstudianteNacional(String pCedula, String pCarnet, String pNombre, String pApellido, String pNacionalidad, double pBeca) {
+        super(pCedula, pCarnet, pNombre, pApellido, pNacionalidad, pBeca);
+
     }
 
     public double calcularAranceles() {

@@ -11,13 +11,13 @@ public abstract class Estudiante {
     protected double varBeca;
     protected ArrayList<Curso> cursos;
 
-    public Estudiante(String pCedula, String pCarnet, String pNombre, String pApellido , String pNacionalidad){
+    public Estudiante(String pCedula, String pCarnet, String pNombre, String pApellido , String pNacionalidad, double pBeca){
         varCedula = pCedula;
         varCarnet = pCarnet;
         varNombre = pNombre;
         varApellidos = pApellido;
+        varBeca=pBeca;
         varNacionalidad = pNacionalidad;
-        varBeca = 0;
         cursos = new ArrayList<Curso>();
 
     }
